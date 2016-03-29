@@ -6,14 +6,14 @@
 //  Copyright © 2016年 tzuyangliu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-//! Project version number for ZYModel.
+#if __has_include(<ZYModel/ZYModel.h>)
 FOUNDATION_EXPORT double ZYModelVersionNumber;
-
-//! Project version string for ZYModel.
 FOUNDATION_EXPORT const unsigned char ZYModelVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <ZYModel/PublicHeader.h>
+#import <ZYModel/NSObject+ZYModel.h>
+#else
+#import "NSObject+ZYModel.h"
+#endif
 
 
