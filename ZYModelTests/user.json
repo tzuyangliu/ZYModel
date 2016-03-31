@@ -1,5 +1,5 @@
 {
-    "uid":123456,
-    "name":"Harry",
+    "user_uid":123456,
+    "user_name":"Harry",
     "created":"1965-07-31T00:00:00+0000"
 }

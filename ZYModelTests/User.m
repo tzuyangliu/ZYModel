@@ -13,8 +13,8 @@
 
 + (NSDictionary *)mapper
 {
-    return @{@"name": @"name",
-             @"uid": @"uid",
+    return @{@"name": @"user_name",
+             @"uid": @"user_uid",
              };
 }
 

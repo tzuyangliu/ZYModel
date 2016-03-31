@@ -45,13 +45,13 @@ static const NSUInteger kTestRepeatTimes = 10000;
 {
     NSDictionary* json = self.json;
     User* user = [[User alloc] init];
-    user.name = json[@"name"];
-    user.uid = json[@"uid"];
+    user.uid = json[@"user_uid"];
+    user.name = json[@"user_name"];
     XCTAssertNotNil(user.uid);
     XCTAssertNotNil(user.name);
 
-    XCTAssertEqual(user.uid, json[@"uid"]);
-    XCTAssertEqual(user.name, json[@"name"]);
+    XCTAssertEqual(user.uid, json[@"user_uid"]);
+    XCTAssertEqual(user.name, json[@"user_name"]);
 }
 
 - (void)testZYModelFunction
@@ -63,8 +63,8 @@ static const NSUInteger kTestRepeatTimes = 10000;
     XCTAssertNotNil(user.uid);
     XCTAssertNotNil(user.name);
 
-    XCTAssertEqual(user.uid, json[@"uid"]);
-    XCTAssertEqual(user.name, json[@"name"]);
+    XCTAssertEqual(user.uid, json[@"user_uid"]);
+    XCTAssertEqual(user.name, json[@"user_name"]);
 
     // Test log
     NSLog(@"\n\n%@\n\n", user);
