@@ -10,28 +10,30 @@
 #import <objc/runtime.h>
 
 @interface ZYClassIvar : NSObject
-@property (assign, nonatomic) Ivar ivar;
-@property (strong, nonatomic) NSString* name;
-
+{
+    @package
+    Ivar _ivar;
+    NSString *_name;
+}
 - (instancetype)initWithIvar:(Ivar)ivar;
-
 @end
 
 @interface ZYClassProperty : NSObject
-@property (assign, nonatomic) objc_property_t property ;
-@property (strong, nonatomic) NSString* name;
-
-@property (assign, nonatomic) SEL setter;
-
+{
+    @package
+    objc_property_t _property;
+    NSString *_name;
+    SEL _setter;
+}
 - (instancetype)initWithProperty:(objc_property_t)property;
-
 @end
 
 @interface ZYClassInfo : NSObject
-@property (strong, nonatomic) NSDictionary<NSString*, ZYClassIvar*>* ivars;
-@property (strong, nonatomic) NSDictionary<NSString*, ZYClassProperty*>* properties;
-
+{
+    @package
+    NSDictionary<NSString*, ZYClassIvar*>* _ivars;
+    NSDictionary<NSString*, ZYClassProperty*>* _properties;
+}
 - (instancetype)initWithClass:(Class) class;
 + (instancetype)classInfoWithClass:(Class) class;
-
 @end

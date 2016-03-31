@@ -8,6 +8,7 @@
 
 #import "NSObject+ZYModel.h"
 #import "ZYClassInfo.h"
+#import "ZYModelMeta.h"
 #import <objc/objc-runtime.h>
 
 @implementation NSObject (ZYModel)
@@ -18,15 +19,26 @@
     return nil;
 }
 
-- (void)setValuesWithDictionary:(NSDictionary*)dictionary
++ (NSArray *)whitelistProperty
 {
+    return nil;
+}
+
++ (NSArray *)blacklistProperty
+{
+    return nil;
+}
+
+- (void)setPropertiesWithDictionary:(NSDictionary*)dictionary
+{
+    Class cls = [self class];
+    ZYModelMeta *meta = [ZYModelMeta metaWithClass:cls];
     // 获取映射字典
-    id<ZYModel> cls = (id<ZYModel>)[self class];
-    NSDictionary* mapperDictionary = [cls mapper];
+    NSDictionary* mapperDictionary = meta->_mapper;
     // 获取类结构信息
-    ZYClassInfo* clsInfo = [ZYClassInfo classInfoWithClass:[self class]];
+    ZYClassInfo* clsInfo = meta->_classInfo;
     // 获取属性列表
-    NSDictionary* propertyDictionary = clsInfo.properties;
+    NSDictionary* propertyDictionary = clsInfo->_properties;
     // 获取JSON键列表
     NSArray* mapperKeys = dictionary.allKeys;
     for (NSString* propertyName in propertyDictionary.allKeys) {
@@ -44,14 +56,14 @@
         // 设置属性
         ZYClassProperty* property = propertyDictionary[propertyName];
         id content = dictionary[contentKey];
-        ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property.setter, content);
+        ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, content);
     }
 }
 
 + (instancetype)zy_modelWithJSON:(id)json
 {
     NSObject* obj = [[self class] new];
-    [obj setValuesWithDictionary:json];
+    [obj setPropertiesWithDictionary:json];
     return obj;
 }
 

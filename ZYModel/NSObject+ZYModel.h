@@ -11,6 +11,8 @@
 @protocol ZYModel <NSObject>
 @optional
 + (NSDictionary<NSString*, id>*)mapper;
++ (NSArray *)whitelistProperty;
++ (NSArray *)blacklistProperty;
 @end
 
 @interface NSObject (ZYModel)

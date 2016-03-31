@@ -84,8 +84,8 @@
             _properties = propertyInfos;
             for (unsigned int i = 0; i < propertyCount; i++) {
                 ZYClassProperty* info = [[ZYClassProperty alloc] initWithProperty:properties[i]];
-                if (info.name)
-                    propertyInfos[info.name] = info;
+                if (info->_name)
+                    propertyInfos[info->_name] = info;
             }
             free(properties);
         }
@@ -96,8 +96,8 @@
             _ivars = ivarInfos;
             for (unsigned int i = 0; i < ivarCount; i++) {
                 ZYClassIvar* info = [[ZYClassIvar alloc] initWithIvar:ivars[i]];
-                if (info.name)
-                    ivarInfos[info.name] = info;
+                if (info->_name)
+                    ivarInfos[info->_name] = info;
             }
             free(ivars);
         }
@@ -110,7 +110,7 @@
     return self;
 }
 
-    + (instancetype)classInfoWithClass : (Class)cls
++ (instancetype)classInfoWithClass : (Class)cls
 {
     if (!cls)
         return nil;

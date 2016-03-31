@@ -15,6 +15,8 @@
 {
     return @{@"name": @"user_name",
              @"uid": @"user_uid",
+             @"gender": @"user_gender",
+             @"address": @"user_address",
              };
 }
 
@@ -26,6 +28,8 @@
     
     [result appendString:[NSString stringWithFormat:@"\nuid: %@", self.uid]];
     [result appendString:[NSString stringWithFormat:@"\nname: %@", self.name]];
+    [result appendString:[NSString stringWithFormat:@"\ngender: %@", self.gender]];
+    [result appendString:[NSString stringWithFormat:@"\naddress: %@", self.address]];
     
     [result appendString:@"\n}"];
     return result;

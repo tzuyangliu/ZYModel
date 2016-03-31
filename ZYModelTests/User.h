@@ -11,4 +11,6 @@
 @interface User : NSObject
 @property (assign, nonatomic) NSNumber *uid;
 @property (strong, nonatomic, setter=setWhatEver:) NSString *name;
+@property (strong, nonatomic) NSString *gender;
+@property (strong, nonatomic) NSString *address;
 @end

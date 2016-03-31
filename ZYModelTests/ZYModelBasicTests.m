@@ -10,7 +10,7 @@
 #import "ZYModel.h"
 #import <XCTest/XCTest.h>
 
-static const NSUInteger kTestRepeatTimes = 10000;
+static const NSUInteger kTestRepeatTimes = 100000;
 
 @interface ZYModelBasicTests : XCTestCase
 @property (strong, nonatomic) NSDictionary* json;
@@ -47,11 +47,18 @@ static const NSUInteger kTestRepeatTimes = 10000;
     User* user = [[User alloc] init];
     user.uid = json[@"user_uid"];
     user.name = json[@"user_name"];
+    user.gender = json[@"user_gender"];
+    user.address = json[@"user_address"];
+    
     XCTAssertNotNil(user.uid);
     XCTAssertNotNil(user.name);
-
+    XCTAssertNotNil(user.gender);
+    XCTAssertNotNil(user.address);
+    
     XCTAssertEqual(user.uid, json[@"user_uid"]);
     XCTAssertEqual(user.name, json[@"user_name"]);
+    XCTAssertEqual(user.gender, json[@"user_gender"]);
+    XCTAssertEqual(user.address, json[@"user_address"]);
 }
 
 - (void)testZYModelFunction
@@ -62,10 +69,13 @@ static const NSUInteger kTestRepeatTimes = 10000;
     User* user = [User zy_modelWithJSON:json];
     XCTAssertNotNil(user.uid);
     XCTAssertNotNil(user.name);
+    XCTAssertNotNil(user.gender);
+    XCTAssertNotNil(user.address);
 
     XCTAssertEqual(user.uid, json[@"user_uid"]);
     XCTAssertEqual(user.name, json[@"user_name"]);
-
+    XCTAssertEqual(user.gender, json[@"user_gender"]);
+    XCTAssertEqual(user.address, json[@"user_address"]);
     // Test log
     NSLog(@"\n\n%@\n\n", user);
 }
