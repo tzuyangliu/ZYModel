@@ -18,30 +18,34 @@
     self = [super init];
     if (self)
     {
-        id<ZYModel> modelCls = (id<ZYModel>)cls;
-        NSDictionary *userMapper = [modelCls mapper];
+        Class curCls = cls;
+        NSMutableDictionary *tempJsonKeyToSetterMapper = [NSMutableDictionary dictionary];
         NSArray *whitelistProperties = [cls whitelistProperties];
         NSArray *blacklistProperties = [cls blacklistProperties];
-        NSMutableDictionary *tempJsonKeyToSetterMapper = [NSMutableDictionary dictionary];
-        
-        _classInfo = [ZYClassInfo classInfoWithClass:cls];
-        NSDictionary* propertyDictionary = _classInfo->_properties;
-        NSArray *propertyNames = propertyDictionary.allKeys;
-        for (NSString *propertyName in propertyNames)
+        while (curCls && [curCls superclass] != nil)
         {
-            if (whitelistProperties.count && ![whitelistProperties containsObject:propertyName]) continue;
-            if ([blacklistProperties containsObject:propertyName]) continue;
-            ZYClassProperty *property = propertyDictionary[propertyName];
-            NSString *jsonKey;
-            if ([userMapper.allKeys containsObject:propertyName])
+            id<ZYModel> modelCls = (id<ZYModel>)curCls;
+            NSDictionary *userMapper = [modelCls mapper];
+            _classInfo = [ZYClassInfo classInfoWithClass:curCls];
+            NSDictionary* propertyDictionary = _classInfo->_properties;
+            NSArray *propertyNames = propertyDictionary.allKeys;
+            for (NSString *propertyName in propertyNames)
             {
-                jsonKey = userMapper[propertyName];
+                if (whitelistProperties.count && ![whitelistProperties containsObject:propertyName]) continue;
+                if ([blacklistProperties containsObject:propertyName]) continue;
+                ZYClassProperty *property = propertyDictionary[propertyName];
+                NSString *jsonKey;
+                if ([userMapper.allKeys containsObject:propertyName])
+                {
+                    jsonKey = userMapper[propertyName];
+                }
+                else
+                {
+                    jsonKey = propertyName;
+                }
+                tempJsonKeyToSetterMapper[jsonKey] = property->_setterString;
             }
-            else
-            {
-                jsonKey = propertyName;
-            }
-            tempJsonKeyToSetterMapper[jsonKey] = property->_setterString;
+            curCls = [curCls superclass];
         }
         _jsonKeyToSetterMapper = [tempJsonKeyToSetterMapper copy];
     }

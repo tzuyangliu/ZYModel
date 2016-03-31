@@ -10,6 +10,36 @@
 #import "ZYModel.h"
 #import <XCTest/XCTest.h>
 
+#pragma mark Whitelist Class
+
+@interface UserWithWhitelist : User
+
+@end
+
+@implementation UserWithWhitelist
+
++ (NSArray *)whitelistProperties
+{
+    return @[@"name"];
+}
+
+@end
+
+#pragma mark - Blacklist Class
+
+@interface UserWithBlacklist : User
+
+@end
+
+@implementation UserWithBlacklist
+
++ (NSArray *)blacklistProperties
+{
+    return @[@"name", @"uid", @"gender"];
+}
+
+@end
+
 @interface ZYModelWhitelistAndBlacklistTest : XCTestCase
 @property (strong, nonatomic) NSDictionary* json;
 @end
@@ -42,6 +72,13 @@
 {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    UserWithWhitelist *user = [UserWithWhitelist zy_modelWithJSON:self.json];
+    XCTAssertNotNil(user.name);
+    XCTAssertNil(user.uid);
+    XCTAssertNil(user.gender);
+    XCTAssertNil(user.address);
+    
+    XCTAssertEqual(user.name, self.json[@"user_name"]);
 }
 
 #pragma mark - Blacklist Test
@@ -50,6 +87,13 @@
 {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    UserWithBlacklist *user = [UserWithBlacklist zy_modelWithJSON:self.json];
+    XCTAssertNil(user.name);
+    XCTAssertNil(user.uid);
+    XCTAssertNil(user.gender);
+    XCTAssertNotNil(user.address);
+    
+    XCTAssertEqual(user.address, self.json[@"user_address"]);
 }
 
 @end
