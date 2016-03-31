@@ -35,7 +35,7 @@ static const NSUInteger kTestRepeatTimes = 10000;
 - (void)tearDown
 {
     self.json = nil;
-    
+
     [super tearDown];
 }
 
@@ -74,7 +74,7 @@ static const NSUInteger kTestRepeatTimes = 10000;
 
 - (void)testBaselinePerformace
 {
-    NSDictionary *json = self.json;
+    NSDictionary* json = self.json;
     [self measureBlock:^{
         for (NSUInteger i = 0; i < kTestRepeatTimes; i++) {
             User* user = [[User alloc] init];
@@ -86,7 +86,7 @@ static const NSUInteger kTestRepeatTimes = 10000;
 
 - (void)testZYModelPerformance
 {
-    NSDictionary *json = self.json;
+    NSDictionary* json = self.json;
     // This is an example of a performance test case.
     [self measureBlock:^{
         // Put the code you want to measure the time of here.

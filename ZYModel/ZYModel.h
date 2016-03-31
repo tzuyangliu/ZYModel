@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#if __has_include(<ZYModel/ZYModel.h>)
+#if __has_include(<ZYModel / ZYModel.h>)
 FOUNDATION_EXPORT double ZYModelVersionNumber;
 FOUNDATION_EXPORT const unsigned char ZYModelVersionString[];
 #import <ZYModel/NSObject+ZYModel.h>
 #else
 #import "NSObject+ZYModel.h"
 #endif
-
-

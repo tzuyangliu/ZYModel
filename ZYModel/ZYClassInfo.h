@@ -11,15 +11,15 @@
 
 @interface ZYClassIvar : NSObject
 @property (assign, nonatomic) Ivar ivar;
-@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString* name;
 
 - (instancetype)initWithIvar:(Ivar)ivar;
 
 @end
 
 @interface ZYClassProperty : NSObject
-@property (assign, nonatomic) objc_property_t property;
-@property (strong, nonatomic) NSString *name;
+@property (assign, nonatomic) objc_property_t property ;
+@property (strong, nonatomic) NSString* name;
 
 @property (assign, nonatomic) SEL setter;
 
@@ -28,10 +28,10 @@
 @end
 
 @interface ZYClassInfo : NSObject
-@property (strong, nonatomic) NSDictionary<NSString *, ZYClassIvar *>* ivars;
-@property (strong, nonatomic) NSDictionary<NSString *, ZYClassProperty *> *properties;
+@property (strong, nonatomic) NSDictionary<NSString*, ZYClassIvar*>* ivars;
+@property (strong, nonatomic) NSDictionary<NSString*, ZYClassProperty*>* properties;
 
-- (instancetype)initWithClass:(Class)class;
-+ (instancetype)classInfoWithClass:(Class)class;
+- (instancetype)initWithClass:(Class) class;
++ (instancetype)classInfoWithClass:(Class) class;
 
 @end

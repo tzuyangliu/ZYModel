@@ -19,7 +19,7 @@
 - (void)setUp
 {
     [super setUp];
-    
+
     NSError* error = nil;
     NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"user"
                                                                           ofType:@"json"];

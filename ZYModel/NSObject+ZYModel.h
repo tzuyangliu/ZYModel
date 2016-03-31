@@ -10,12 +10,12 @@
 
 @protocol ZYModel <NSObject>
 @optional
-+ (NSDictionary<NSString *, id> *)mapper;
++ (NSDictionary<NSString*, id>*)mapper;
 @end
 
 @interface NSObject (ZYModel)
 
 + (instancetype)zy_modelWithJSON:(id)json;
-+ (instancetype)zy_modelWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)zy_modelWithDictionary:(NSDictionary*)dictionary;
 
 @end
