@@ -12,7 +12,8 @@
 {
     @package
     ZYClassInfo *_classInfo;
-    NSDictionary *_mapper;
+//    NSDictionary<NSString *, NSString *> *_mapper;
+    NSDictionary<NSString *, NSString *> *_jsonKeyToSetterMapper;
 }
 
 - (instancetype)initWithClass:(Class)cls;

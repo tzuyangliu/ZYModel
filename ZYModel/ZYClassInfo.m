@@ -46,7 +46,7 @@
             switch (attrs[i].name[0]) {
             case 'S': {
                 if (attrs[i].value) {
-                    _setter = NSSelectorFromString([NSString stringWithUTF8String:attrs[i].value]);
+                    _setterString = [NSString stringWithUTF8String:attrs[i].value];
                 }
             }
             default:
@@ -58,10 +58,11 @@
             attrs = NULL;
         }
         if (_name.length) {
-            if (!_setter) {
-                _setter = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [_name substringToIndex:1].uppercaseString, [_name substringFromIndex:1]]);
+            if (!_setterString) {
+                _setterString = [NSString stringWithFormat:@"set%@%@:", [_name substringToIndex:1].uppercaseString, [_name substringFromIndex:1]];
             }
         }
+        _setter = NSSelectorFromString(_setterString);
     }
     return self;
 }

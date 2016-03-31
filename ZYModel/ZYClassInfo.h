@@ -23,6 +23,8 @@
     @package
     objc_property_t _property;
     NSString *_name;
+    
+    NSString *_setterString;
     SEL _setter;
 }
 - (instancetype)initWithProperty:(objc_property_t)property;

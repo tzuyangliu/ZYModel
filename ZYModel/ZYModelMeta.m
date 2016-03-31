@@ -19,8 +19,26 @@
     if (self)
     {
         _classInfo = [ZYClassInfo classInfoWithClass:cls];
+        NSMutableDictionary *tempJsonKeyToSetterMapper = [NSMutableDictionary dictionary];
         id<ZYModel> modelCls = (id<ZYModel>)cls;
-        _mapper = [modelCls mapper];
+        NSDictionary *userMapper = [modelCls mapper];
+        NSDictionary* propertyDictionary = _classInfo->_properties;
+        NSArray *propertyNames = propertyDictionary.allKeys;
+        for (NSString *propertyName in propertyNames)
+        {
+            ZYClassProperty *property = propertyDictionary[propertyName];
+            NSString *jsonKey;
+            if ([userMapper.allKeys containsObject:propertyName])
+            {
+                jsonKey = userMapper[propertyName];
+            }
+            else
+            {
+                jsonKey = propertyName;
+            }
+            tempJsonKeyToSetterMapper[jsonKey] = property->_setterString;
+        }
+        _jsonKeyToSetterMapper = [tempJsonKeyToSetterMapper copy];
     }
     return self;
 }
