@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 @class ZYClassInfo;
+@class ZYClassProperty;
 @interface ZYModelMeta : NSObject
 {
     @package
     ZYClassInfo *_classInfo;
-//    NSDictionary<NSString *, NSString *> *_mapper;
-    NSDictionary<NSString *, NSString *> *_jsonKeyToSetterMapper;
+    NSDictionary<NSString *, ZYClassProperty *> *_jsonKeyToSetterMapper;
 }
 
 - (instancetype)initWithClass:(Class)cls;
