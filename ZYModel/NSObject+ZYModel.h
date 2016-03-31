@@ -10,7 +10,7 @@
 
 @protocol ZYModel <NSObject>
 @optional
-+ (NSDictionary<NSString *, id> *)mappingDictionary;
++ (NSDictionary<NSString *, id> *)mapper;
 @end
 
 @interface NSObject (ZYModel)

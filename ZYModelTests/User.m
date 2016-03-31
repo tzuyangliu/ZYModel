@@ -11,7 +11,7 @@
 
 @implementation User
 
-+ (NSDictionary *)mappingDictionary
++ (NSDictionary *)mapper
 {
     return @{@"name": @"name",
              @"uid": @"uid",
