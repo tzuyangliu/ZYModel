@@ -19,12 +19,12 @@
     return nil;
 }
 
-+ (NSArray *)whitelistProperty
++ (NSArray *)whitelistProperties
 {
     return nil;
 }
 
-+ (NSArray *)blacklistProperty
++ (NSArray *)blacklistProperties
 {
     return nil;
 }

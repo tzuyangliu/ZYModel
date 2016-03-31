@@ -11,6 +11,18 @@
 
 @implementation User
 
+//+ (NSArray *)whitelistProperties
+//{
+//    return @[@"name"];
+//    return nil;
+//}
+
+//+ (NSArray *)blacklistProperties
+//{
+//    return nil;
+//    return @[@"gender"];
+//}
+
 + (NSDictionary *)mapper
 {
     return @{@"name": @"user_name",

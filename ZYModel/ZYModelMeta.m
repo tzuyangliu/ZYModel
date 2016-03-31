@@ -18,14 +18,19 @@
     self = [super init];
     if (self)
     {
-        _classInfo = [ZYClassInfo classInfoWithClass:cls];
-        NSMutableDictionary *tempJsonKeyToSetterMapper = [NSMutableDictionary dictionary];
         id<ZYModel> modelCls = (id<ZYModel>)cls;
         NSDictionary *userMapper = [modelCls mapper];
+        NSArray *whitelistProperties = [cls whitelistProperties];
+        NSArray *blacklistProperties = [cls blacklistProperties];
+        NSMutableDictionary *tempJsonKeyToSetterMapper = [NSMutableDictionary dictionary];
+        
+        _classInfo = [ZYClassInfo classInfoWithClass:cls];
         NSDictionary* propertyDictionary = _classInfo->_properties;
         NSArray *propertyNames = propertyDictionary.allKeys;
         for (NSString *propertyName in propertyNames)
         {
+            if (whitelistProperties.count && ![whitelistProperties containsObject:propertyName]) continue;
+            if ([blacklistProperties containsObject:propertyName]) continue;
             ZYClassProperty *property = propertyDictionary[propertyName];
             NSString *jsonKey;
             if ([userMapper.allKeys containsObject:propertyName])
