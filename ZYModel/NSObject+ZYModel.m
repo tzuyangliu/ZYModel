@@ -15,7 +15,6 @@
 
 + (NSDictionary*)mapper
 {
-    NSLog(@"Warning: Child Class did not implement the -(NSDictionary *)mapper method");
     return nil;
 }
 
@@ -38,7 +37,8 @@
         if ([mapper objectForKey:jsonKey])
         {
             id content = dictionary[jsonKey];
-            ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, NSSelectorFromString(mapper[jsonKey]), content);
+            ZYClassProperty *property = mapper[jsonKey];
+            ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, content);
         }
     }
 }

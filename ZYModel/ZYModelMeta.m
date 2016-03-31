@@ -43,7 +43,7 @@
                 {
                     jsonKey = propertyName;
                 }
-                tempJsonKeyToSetterMapper[jsonKey] = property->_setterString;
+                tempJsonKeyToSetterMapper[jsonKey] = property;
             }
             curCls = [curCls superclass];
         }
