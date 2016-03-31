@@ -14,6 +14,10 @@
 		A4A016561CAA6C4E0086DDAA /* NSObject+ZYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A016541CAA6C4E0086DDAA /* NSObject+ZYModel.m */; };
 		A4A016581CAA6D220086DDAA /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = A4A016571CAA6D220086DDAA /* user.json */; };
 		A4A0165B1CAA6D2E0086DDAA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A0165A1CAA6D2E0086DDAA /* User.m */; };
+		A4F87E221CACFF930060AE54 /* ZYClassInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = A4F87E201CACFF930060AE54 /* ZYClassInfo.h */; };
+		A4F87E231CACFF930060AE54 /* ZYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F87E211CACFF930060AE54 /* ZYClassInfo.m */; };
+		A4F87E261CAD0B020060AE54 /* ZYClassInfoCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A4F87E241CAD0B020060AE54 /* ZYClassInfoCache.h */; };
+		A4F87E271CAD0B020060AE54 /* ZYClassInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F87E251CAD0B020060AE54 /* ZYClassInfoCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		A4A016571CAA6D220086DDAA /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		A4A016591CAA6D2E0086DDAA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A4A0165A1CAA6D2E0086DDAA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		A4F87E201CACFF930060AE54 /* ZYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClassInfo.h; sourceTree = "<group>"; };
+		A4F87E211CACFF930060AE54 /* ZYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClassInfo.m; sourceTree = "<group>"; };
+		A4F87E241CAD0B020060AE54 /* ZYClassInfoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClassInfoCache.h; sourceTree = "<group>"; };
+		A4F87E251CAD0B020060AE54 /* ZYClassInfoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClassInfoCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,10 @@
 				A4A0163C1CAA6C010086DDAA /* ZYModel.h */,
 				A4A016531CAA6C4E0086DDAA /* NSObject+ZYModel.h */,
 				A4A016541CAA6C4E0086DDAA /* NSObject+ZYModel.m */,
+				A4F87E201CACFF930060AE54 /* ZYClassInfo.h */,
+				A4F87E211CACFF930060AE54 /* ZYClassInfo.m */,
+				A4F87E241CAD0B020060AE54 /* ZYClassInfoCache.h */,
+				A4F87E251CAD0B020060AE54 /* ZYClassInfoCache.m */,
 				A4A0163E1CAA6C010086DDAA /* Info.plist */,
 			);
 			path = ZYModel;
@@ -124,7 +136,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A0163D1CAA6C010086DDAA /* ZYModel.h in Headers */,
+				A4F87E261CAD0B020060AE54 /* ZYClassInfoCache.h in Headers */,
 				A4A016551CAA6C4E0086DDAA /* NSObject+ZYModel.h in Headers */,
+				A4F87E221CACFF930060AE54 /* ZYClassInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +240,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A016561CAA6C4E0086DDAA /* NSObject+ZYModel.m in Sources */,
+				A4F87E231CACFF930060AE54 /* ZYClassInfo.m in Sources */,
+				A4F87E271CAD0B020060AE54 /* ZYClassInfoCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +426,7 @@
 				A4A0164F1CAA6C010086DDAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4A016501CAA6C010086DDAA /* Build configuration list for PBXNativeTarget "ZYModelTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +435,7 @@
 				A4A016521CAA6C010086DDAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

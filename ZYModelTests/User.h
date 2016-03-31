@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface User : NSObject
-@property (strong, nonatomic) NSNumber *uid;
-@property (strong, nonatomic) NSString *name;
+@property (assign, nonatomic) NSNumber *uid;
+@property (strong, nonatomic, setter=setTheName:) NSString *name;
 @end
