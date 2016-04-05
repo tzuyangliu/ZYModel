@@ -8,24 +8,107 @@
 
 #import "ZYClassInfo.h"
 
-@implementation ZYClassIvar
 
-- (instancetype)initWithIvar:(Ivar)ivar
-{
-    if (!ivar)
-        return nil;
-    self = [super init];
-    if (self) {
-        _ivar = ivar;
-        const char* name = ivar_getName(ivar);
-        if (name) {
-            _name = [NSString stringWithUTF8String:name];
-        }
-    }
-    return self;
+
+/// Get the Foundation class type from property info.
+static __inline__ __attribute__((always_inline)) YYEncodingNSType YYClassGetNSType(Class cls) {
+    if (!cls) return YYEncodingTypeNSUnknown;
+    if ([cls isSubclassOfClass:[NSMutableString class]]) return YYEncodingTypeNSMutableString;
+    if ([cls isSubclassOfClass:[NSString class]]) return YYEncodingTypeNSString;
+    if ([cls isSubclassOfClass:[NSDecimalNumber class]]) return YYEncodingTypeNSDecimalNumber;
+    if ([cls isSubclassOfClass:[NSNumber class]]) return YYEncodingTypeNSNumber;
+    if ([cls isSubclassOfClass:[NSValue class]]) return YYEncodingTypeNSValue;
+    if ([cls isSubclassOfClass:[NSMutableData class]]) return YYEncodingTypeNSMutableData;
+    if ([cls isSubclassOfClass:[NSData class]]) return YYEncodingTypeNSData;
+    if ([cls isSubclassOfClass:[NSDate class]]) return YYEncodingTypeNSDate;
+    if ([cls isSubclassOfClass:[NSURL class]]) return YYEncodingTypeNSURL;
+    if ([cls isSubclassOfClass:[NSMutableArray class]]) return YYEncodingTypeNSMutableArray;
+    if ([cls isSubclassOfClass:[NSArray class]]) return YYEncodingTypeNSArray;
+    if ([cls isSubclassOfClass:[NSMutableDictionary class]]) return YYEncodingTypeNSMutableDictionary;
+    if ([cls isSubclassOfClass:[NSDictionary class]]) return YYEncodingTypeNSDictionary;
+    if ([cls isSubclassOfClass:[NSMutableSet class]]) return YYEncodingTypeNSMutableSet;
+    if ([cls isSubclassOfClass:[NSSet class]]) return YYEncodingTypeNSSet;
+    return YYEncodingTypeNSUnknown;
 }
 
-@end
+YYEncodingType YYEncodingGetType(const char *typeEncoding) {
+    char *type = (char *)typeEncoding;
+    if (!type) return YYEncodingTypeUnknown;
+    size_t len = strlen(type);
+    if (len == 0) return YYEncodingTypeUnknown;
+    
+    YYEncodingType qualifier = 0;
+    bool prefix = true;
+    while (prefix) {
+        switch (*type) {
+            case 'r': {
+                qualifier |= YYEncodingTypeQualifierConst;
+                type++;
+            } break;
+            case 'n': {
+                qualifier |= YYEncodingTypeQualifierIn;
+                type++;
+            } break;
+            case 'N': {
+                qualifier |= YYEncodingTypeQualifierInout;
+                type++;
+            } break;
+            case 'o': {
+                qualifier |= YYEncodingTypeQualifierOut;
+                type++;
+            } break;
+            case 'O': {
+                qualifier |= YYEncodingTypeQualifierBycopy;
+                type++;
+            } break;
+            case 'R': {
+                qualifier |= YYEncodingTypeQualifierByref;
+                type++;
+            } break;
+            case 'V': {
+                qualifier |= YYEncodingTypeQualifierOneway;
+                type++;
+            } break;
+            default: { prefix = false; } break;
+        }
+    }
+    
+    len = strlen(type);
+    if (len == 0) return YYEncodingTypeUnknown | qualifier;
+    
+    switch (*type) {
+        case 'v': return YYEncodingTypeVoid | qualifier;
+        case 'B': return YYEncodingTypeBool | qualifier;
+        case 'c': return YYEncodingTypeInt8 | qualifier;
+        case 'C': return YYEncodingTypeUInt8 | qualifier;
+        case 's': return YYEncodingTypeInt16 | qualifier;
+        case 'S': return YYEncodingTypeUInt16 | qualifier;
+        case 'i': return YYEncodingTypeInt32 | qualifier;
+        case 'I': return YYEncodingTypeUInt32 | qualifier;
+        case 'l': return YYEncodingTypeInt32 | qualifier;
+        case 'L': return YYEncodingTypeUInt32 | qualifier;
+        case 'q': return YYEncodingTypeInt64 | qualifier;
+        case 'Q': return YYEncodingTypeUInt64 | qualifier;
+        case 'f': return YYEncodingTypeFloat | qualifier;
+        case 'd': return YYEncodingTypeDouble | qualifier;
+        case 'D': return YYEncodingTypeLongDouble | qualifier;
+        case '#': return YYEncodingTypeClass | qualifier;
+        case ':': return YYEncodingTypeSEL | qualifier;
+        case '*': return YYEncodingTypeCString | qualifier;
+        case '^': return YYEncodingTypePointer | qualifier;
+        case '[': return YYEncodingTypeCArray | qualifier;
+        case '(': return YYEncodingTypeUnion | qualifier;
+        case '{': return YYEncodingTypeStruct | qualifier;
+        case '@': {
+            if (len == 2 && *(type + 1) == '?')
+                return YYEncodingTypeBlock | qualifier;
+            else
+                return YYEncodingTypeObject | qualifier;
+        }
+        default: return YYEncodingTypeUnknown | qualifier;
+    }
+}
+
 
 @implementation ZYClassProperty
 
@@ -44,10 +127,31 @@
         objc_property_attribute_t* attrs = property_copyAttributeList(property, &attrCount);
         for (unsigned int i = 0; i < attrCount; i++) {
             switch (attrs[i].name[0]) {
+            case 'T':
+                {
+                    if (attrs[i].value) {
+                        _typeEncoding = [NSString stringWithUTF8String:attrs[i].value];
+                        _type = YYEncodingGetType(attrs[i].value);
+                        if ((_type & YYEncodingTypeMask) == YYEncodingTypeObject) {
+                            size_t len = strlen(attrs[i].value);
+                            if (len > 3) {
+                                char name[len - 2];
+                                name[len - 3] = '\0';
+                                memcpy(name, attrs[i].value + 2, len - 3);
+                                _cls = objc_getClass(name);
+                            }
+                        }
+                        if ((_type & YYEncodingTypeMask) == YYEncodingTypeObject) {
+                            _nsType = YYClassGetNSType(_cls);
+                        }
+                    }
+                    break;
+                }
             case 'S': {
                 if (attrs[i].value) {
                     _setterString = [NSString stringWithUTF8String:attrs[i].value];
                 }
+                break;
             }
             default:
                 break;
@@ -75,7 +179,6 @@
     {
     self = [super init];
     if (self) {
-        _ivars = nil;
         _properties = nil;
 
         unsigned int propertyCount = 0;
@@ -90,21 +193,6 @@
             }
             free(properties);
         }
-        unsigned int ivarCount = 0;
-        Ivar* ivars = class_copyIvarList(class, &ivarCount);
-        if (ivars) {
-            NSMutableDictionary* ivarInfos = [NSMutableDictionary new];
-            _ivars = ivarInfos;
-            for (unsigned int i = 0; i < ivarCount; i++) {
-                ZYClassIvar* info = [[ZYClassIvar alloc] initWithIvar:ivars[i]];
-                if (info->_name)
-                    ivarInfos[info->_name] = info;
-            }
-            free(ivars);
-        }
-
-        if (!_ivars)
-            _ivars = @{};
         if (!_properties)
             _properties = @{};
     }

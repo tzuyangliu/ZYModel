@@ -13,4 +13,8 @@
 @property (strong, nonatomic, setter=setWhatEver:) NSString *name;
 @property (strong, nonatomic) NSString *gender;
 @property (strong, nonatomic) NSString *address;
+//@property (strong, nonatomic) Father *father;
+@end
+
+@interface Teacher : User
 @end
