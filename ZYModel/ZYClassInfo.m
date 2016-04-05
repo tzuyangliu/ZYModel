@@ -11,62 +11,62 @@
 
 
 /// Get the Foundation class type from property info.
-static __inline__ __attribute__((always_inline)) YYEncodingNSType YYClassGetNSType(Class cls) {
-    if (!cls) return YYEncodingTypeNSUnknown;
-    if ([cls isSubclassOfClass:[NSMutableString class]]) return YYEncodingTypeNSMutableString;
-    if ([cls isSubclassOfClass:[NSString class]]) return YYEncodingTypeNSString;
-    if ([cls isSubclassOfClass:[NSDecimalNumber class]]) return YYEncodingTypeNSDecimalNumber;
-    if ([cls isSubclassOfClass:[NSNumber class]]) return YYEncodingTypeNSNumber;
-    if ([cls isSubclassOfClass:[NSValue class]]) return YYEncodingTypeNSValue;
-    if ([cls isSubclassOfClass:[NSMutableData class]]) return YYEncodingTypeNSMutableData;
-    if ([cls isSubclassOfClass:[NSData class]]) return YYEncodingTypeNSData;
-    if ([cls isSubclassOfClass:[NSDate class]]) return YYEncodingTypeNSDate;
-    if ([cls isSubclassOfClass:[NSURL class]]) return YYEncodingTypeNSURL;
-    if ([cls isSubclassOfClass:[NSMutableArray class]]) return YYEncodingTypeNSMutableArray;
-    if ([cls isSubclassOfClass:[NSArray class]]) return YYEncodingTypeNSArray;
-    if ([cls isSubclassOfClass:[NSMutableDictionary class]]) return YYEncodingTypeNSMutableDictionary;
-    if ([cls isSubclassOfClass:[NSDictionary class]]) return YYEncodingTypeNSDictionary;
-    if ([cls isSubclassOfClass:[NSMutableSet class]]) return YYEncodingTypeNSMutableSet;
-    if ([cls isSubclassOfClass:[NSSet class]]) return YYEncodingTypeNSSet;
-    return YYEncodingTypeNSUnknown;
+static __inline__ __attribute__((always_inline)) ZYEncodingNSType YYClassGetNSType(Class cls) {
+    if (!cls) return ZYEncodingTypeNSUnknown;
+    if ([cls isSubclassOfClass:[NSMutableString class]]) return ZYEncodingTypeNSMutableString;
+    if ([cls isSubclassOfClass:[NSString class]]) return ZYEncodingTypeNSString;
+    if ([cls isSubclassOfClass:[NSDecimalNumber class]]) return ZYEncodingTypeNSDecimalNumber;
+    if ([cls isSubclassOfClass:[NSNumber class]]) return ZYEncodingTypeNSNumber;
+    if ([cls isSubclassOfClass:[NSValue class]]) return ZYEncodingTypeNSValue;
+    if ([cls isSubclassOfClass:[NSMutableData class]]) return ZYEncodingTypeNSMutableData;
+    if ([cls isSubclassOfClass:[NSData class]]) return ZYEncodingTypeNSData;
+    if ([cls isSubclassOfClass:[NSDate class]]) return ZYEncodingTypeNSDate;
+    if ([cls isSubclassOfClass:[NSURL class]]) return ZYEncodingTypeNSURL;
+    if ([cls isSubclassOfClass:[NSMutableArray class]]) return ZYEncodingTypeNSMutableArray;
+    if ([cls isSubclassOfClass:[NSArray class]]) return ZYEncodingTypeNSArray;
+    if ([cls isSubclassOfClass:[NSMutableDictionary class]]) return ZYEncodingTypeNSMutableDictionary;
+    if ([cls isSubclassOfClass:[NSDictionary class]]) return ZYEncodingTypeNSDictionary;
+    if ([cls isSubclassOfClass:[NSMutableSet class]]) return ZYEncodingTypeNSMutableSet;
+    if ([cls isSubclassOfClass:[NSSet class]]) return ZYEncodingTypeNSSet;
+    return ZYEncodingTypeNSUnknown;
 }
 
-YYEncodingType YYEncodingGetType(const char *typeEncoding) {
+ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
     char *type = (char *)typeEncoding;
-    if (!type) return YYEncodingTypeUnknown;
+    if (!type) return ZYEncodingTypeUnknown;
     size_t len = strlen(type);
-    if (len == 0) return YYEncodingTypeUnknown;
+    if (len == 0) return ZYEncodingTypeUnknown;
     
-    YYEncodingType qualifier = 0;
+    ZYEncodingType qualifier = 0;
     bool prefix = true;
     while (prefix) {
         switch (*type) {
             case 'r': {
-                qualifier |= YYEncodingTypeQualifierConst;
+                qualifier |= ZYEncodingTypeQualifierConst;
                 type++;
             } break;
             case 'n': {
-                qualifier |= YYEncodingTypeQualifierIn;
+                qualifier |= ZYEncodingTypeQualifierIn;
                 type++;
             } break;
             case 'N': {
-                qualifier |= YYEncodingTypeQualifierInout;
+                qualifier |= ZYEncodingTypeQualifierInout;
                 type++;
             } break;
             case 'o': {
-                qualifier |= YYEncodingTypeQualifierOut;
+                qualifier |= ZYEncodingTypeQualifierOut;
                 type++;
             } break;
             case 'O': {
-                qualifier |= YYEncodingTypeQualifierBycopy;
+                qualifier |= ZYEncodingTypeQualifierBycopy;
                 type++;
             } break;
             case 'R': {
-                qualifier |= YYEncodingTypeQualifierByref;
+                qualifier |= ZYEncodingTypeQualifierByref;
                 type++;
             } break;
             case 'V': {
-                qualifier |= YYEncodingTypeQualifierOneway;
+                qualifier |= ZYEncodingTypeQualifierOneway;
                 type++;
             } break;
             default: { prefix = false; } break;
@@ -74,38 +74,38 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
     }
     
     len = strlen(type);
-    if (len == 0) return YYEncodingTypeUnknown | qualifier;
+    if (len == 0) return ZYEncodingTypeUnknown | qualifier;
     
     switch (*type) {
-        case 'v': return YYEncodingTypeVoid | qualifier;
-        case 'B': return YYEncodingTypeBool | qualifier;
-        case 'c': return YYEncodingTypeInt8 | qualifier;
-        case 'C': return YYEncodingTypeUInt8 | qualifier;
-        case 's': return YYEncodingTypeInt16 | qualifier;
-        case 'S': return YYEncodingTypeUInt16 | qualifier;
-        case 'i': return YYEncodingTypeInt32 | qualifier;
-        case 'I': return YYEncodingTypeUInt32 | qualifier;
-        case 'l': return YYEncodingTypeInt32 | qualifier;
-        case 'L': return YYEncodingTypeUInt32 | qualifier;
-        case 'q': return YYEncodingTypeInt64 | qualifier;
-        case 'Q': return YYEncodingTypeUInt64 | qualifier;
-        case 'f': return YYEncodingTypeFloat | qualifier;
-        case 'd': return YYEncodingTypeDouble | qualifier;
-        case 'D': return YYEncodingTypeLongDouble | qualifier;
-        case '#': return YYEncodingTypeClass | qualifier;
-        case ':': return YYEncodingTypeSEL | qualifier;
-        case '*': return YYEncodingTypeCString | qualifier;
-        case '^': return YYEncodingTypePointer | qualifier;
-        case '[': return YYEncodingTypeCArray | qualifier;
-        case '(': return YYEncodingTypeUnion | qualifier;
-        case '{': return YYEncodingTypeStruct | qualifier;
+        case 'v': return ZYEncodingTypeVoid | qualifier;
+        case 'B': return ZYEncodingTypeBool | qualifier;
+        case 'c': return ZYEncodingTypeInt8 | qualifier;
+        case 'C': return ZYEncodingTypeUInt8 | qualifier;
+        case 's': return ZYEncodingTypeInt16 | qualifier;
+        case 'S': return ZYEncodingTypeUInt16 | qualifier;
+        case 'i': return ZYEncodingTypeInt32 | qualifier;
+        case 'I': return ZYEncodingTypeUInt32 | qualifier;
+        case 'l': return ZYEncodingTypeInt32 | qualifier;
+        case 'L': return ZYEncodingTypeUInt32 | qualifier;
+        case 'q': return ZYEncodingTypeInt64 | qualifier;
+        case 'Q': return ZYEncodingTypeUInt64 | qualifier;
+        case 'f': return ZYEncodingTypeFloat | qualifier;
+        case 'd': return ZYEncodingTypeDouble | qualifier;
+        case 'D': return ZYEncodingTypeLongDouble | qualifier;
+        case '#': return ZYEncodingTypeClass | qualifier;
+        case ':': return ZYEncodingTypeSEL | qualifier;
+        case '*': return ZYEncodingTypeCString | qualifier;
+        case '^': return ZYEncodingTypePointer | qualifier;
+        case '[': return ZYEncodingTypeCArray | qualifier;
+        case '(': return ZYEncodingTypeUnion | qualifier;
+        case '{': return ZYEncodingTypeStruct | qualifier;
         case '@': {
             if (len == 2 && *(type + 1) == '?')
-                return YYEncodingTypeBlock | qualifier;
+                return ZYEncodingTypeBlock | qualifier;
             else
-                return YYEncodingTypeObject | qualifier;
+                return ZYEncodingTypeObject | qualifier;
         }
-        default: return YYEncodingTypeUnknown | qualifier;
+        default: return ZYEncodingTypeUnknown | qualifier;
     }
 }
 
@@ -131,8 +131,8 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
                 {
                     if (attrs[i].value) {
                         _typeEncoding = [NSString stringWithUTF8String:attrs[i].value];
-                        _type = YYEncodingGetType(attrs[i].value);
-                        if ((_type & YYEncodingTypeMask) == YYEncodingTypeObject) {
+                        _type = ZYEncodingGetType(attrs[i].value);
+                        if ((_type & ZYEncodingTypeMask) == ZYEncodingTypeObject) {
                             size_t len = strlen(attrs[i].value);
                             if (len > 3) {
                                 char name[len - 2];
@@ -141,7 +141,7 @@ YYEncodingType YYEncodingGetType(const char *typeEncoding) {
                                 _cls = objc_getClass(name);
                             }
                         }
-                        if ((_type & YYEncodingTypeMask) == YYEncodingTypeObject) {
+                        if ((_type & ZYEncodingTypeMask) == ZYEncodingTypeObject) {
                             _nsType = YYClassGetNSType(_cls);
                         }
                     }

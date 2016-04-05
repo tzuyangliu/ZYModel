@@ -10,69 +10,69 @@
 #import <objc/runtime.h>
 
 /// Foundation Class Type
-typedef NS_ENUM (NSUInteger, YYEncodingNSType) {
-    YYEncodingTypeNSUnknown = 0,
-    YYEncodingTypeNSString,
-    YYEncodingTypeNSMutableString,
-    YYEncodingTypeNSValue,
-    YYEncodingTypeNSNumber,
-    YYEncodingTypeNSDecimalNumber,
-    YYEncodingTypeNSData,
-    YYEncodingTypeNSMutableData,
-    YYEncodingTypeNSDate,
-    YYEncodingTypeNSURL,
-    YYEncodingTypeNSArray,
-    YYEncodingTypeNSMutableArray,
-    YYEncodingTypeNSDictionary,
-    YYEncodingTypeNSMutableDictionary,
-    YYEncodingTypeNSSet,
-    YYEncodingTypeNSMutableSet,
+typedef NS_ENUM (NSUInteger, ZYEncodingNSType) {
+    ZYEncodingTypeNSUnknown = 0,
+    ZYEncodingTypeNSString,
+    ZYEncodingTypeNSMutableString,
+    ZYEncodingTypeNSValue,
+    ZYEncodingTypeNSNumber,
+    ZYEncodingTypeNSDecimalNumber,
+    ZYEncodingTypeNSData,
+    ZYEncodingTypeNSMutableData,
+    ZYEncodingTypeNSDate,
+    ZYEncodingTypeNSURL,
+    ZYEncodingTypeNSArray,
+    ZYEncodingTypeNSMutableArray,
+    ZYEncodingTypeNSDictionary,
+    ZYEncodingTypeNSMutableDictionary,
+    ZYEncodingTypeNSSet,
+    ZYEncodingTypeNSMutableSet,
 };
 
-typedef NS_OPTIONS(NSUInteger, YYEncodingType) {
-    YYEncodingTypeMask       = 0xFF, ///< mask of type value
-    YYEncodingTypeUnknown    = 0, ///< unknown
-    YYEncodingTypeVoid       = 1, ///< void
-    YYEncodingTypeBool       = 2, ///< bool
-    YYEncodingTypeInt8       = 3, ///< char / BOOL
-    YYEncodingTypeUInt8      = 4, ///< unsigned char
-    YYEncodingTypeInt16      = 5, ///< short
-    YYEncodingTypeUInt16     = 6, ///< unsigned short
-    YYEncodingTypeInt32      = 7, ///< int
-    YYEncodingTypeUInt32     = 8, ///< unsigned int
-    YYEncodingTypeInt64      = 9, ///< long long
-    YYEncodingTypeUInt64     = 10, ///< unsigned long long
-    YYEncodingTypeFloat      = 11, ///< float
-    YYEncodingTypeDouble     = 12, ///< double
-    YYEncodingTypeLongDouble = 13, ///< long double
-    YYEncodingTypeObject     = 14, ///< id
-    YYEncodingTypeClass      = 15, ///< Class
-    YYEncodingTypeSEL        = 16, ///< SEL
-    YYEncodingTypeBlock      = 17, ///< block
-    YYEncodingTypePointer    = 18, ///< void*
-    YYEncodingTypeStruct     = 19, ///< struct
-    YYEncodingTypeUnion      = 20, ///< union
-    YYEncodingTypeCString    = 21, ///< char*
-    YYEncodingTypeCArray     = 22, ///< char[10] (for example)
+typedef NS_OPTIONS(NSUInteger, ZYEncodingType) {
+    ZYEncodingTypeMask       = 0xFF, ///< mask of type value
+    ZYEncodingTypeUnknown    = 0, ///< unknown
+    ZYEncodingTypeVoid       = 1, ///< void
+    ZYEncodingTypeBool       = 2, ///< bool
+    ZYEncodingTypeInt8       = 3, ///< char / BOOL
+    ZYEncodingTypeUInt8      = 4, ///< unsigned char
+    ZYEncodingTypeInt16      = 5, ///< short
+    ZYEncodingTypeUInt16     = 6, ///< unsigned short
+    ZYEncodingTypeInt32      = 7, ///< int
+    ZYEncodingTypeUInt32     = 8, ///< unsigned int
+    ZYEncodingTypeInt64      = 9, ///< long long
+    ZYEncodingTypeUInt64     = 10, ///< unsigned long long
+    ZYEncodingTypeFloat      = 11, ///< float
+    ZYEncodingTypeDouble     = 12, ///< double
+    ZYEncodingTypeLongDouble = 13, ///< long double
+    ZYEncodingTypeObject     = 14, ///< id
+    ZYEncodingTypeClass      = 15, ///< Class
+    ZYEncodingTypeSEL        = 16, ///< SEL
+    ZYEncodingTypeBlock      = 17, ///< block
+    ZYEncodingTypePointer    = 18, ///< void*
+    ZYEncodingTypeStruct     = 19, ///< struct
+    ZYEncodingTypeUnion      = 20, ///< union
+    ZYEncodingTypeCString    = 21, ///< char*
+    ZYEncodingTypeCArray     = 22, ///< char[10] (for example)
     
-    YYEncodingTypeQualifierMask   = 0xFF00,   ///< mask of qualifier
-    YYEncodingTypeQualifierConst  = 1 << 8,  ///< const
-    YYEncodingTypeQualifierIn     = 1 << 9,  ///< in
-    YYEncodingTypeQualifierInout  = 1 << 10, ///< inout
-    YYEncodingTypeQualifierOut    = 1 << 11, ///< out
-    YYEncodingTypeQualifierBycopy = 1 << 12, ///< bycopy
-    YYEncodingTypeQualifierByref  = 1 << 13, ///< byref
-    YYEncodingTypeQualifierOneway = 1 << 14, ///< oneway
+    ZYEncodingTypeQualifierMask   = 0xFF00,   ///< mask of qualifier
+    ZYEncodingTypeQualifierConst  = 1 << 8,  ///< const
+    ZYEncodingTypeQualifierIn     = 1 << 9,  ///< in
+    ZYEncodingTypeQualifierInout  = 1 << 10, ///< inout
+    ZYEncodingTypeQualifierOut    = 1 << 11, ///< out
+    ZYEncodingTypeQualifierBycopy = 1 << 12, ///< bycopy
+    ZYEncodingTypeQualifierByref  = 1 << 13, ///< byref
+    ZYEncodingTypeQualifierOneway = 1 << 14, ///< oneway
     
-    YYEncodingTypePropertyMask         = 0xFF0000, ///< mask of property
-    YYEncodingTypePropertyReadonly     = 1 << 16, ///< readonly
-    YYEncodingTypePropertyCopy         = 1 << 17, ///< copy
-    YYEncodingTypePropertyRetain       = 1 << 18, ///< retain
-    YYEncodingTypePropertyNonatomic    = 1 << 19, ///< nonatomic
-    YYEncodingTypePropertyWeak         = 1 << 20, ///< weak
-    YYEncodingTypePropertyCustomGetter = 1 << 21, ///< getter=
-    YYEncodingTypePropertyCustomSetter = 1 << 22, ///< setter=
-    YYEncodingTypePropertyDynamic      = 1 << 23, ///< @dynamic
+    ZYEncodingTypePropertyMask         = 0xFF0000, ///< mask of property
+    ZYEncodingTypePropertyReadonly     = 1 << 16, ///< readonly
+    ZYEncodingTypePropertyCopy         = 1 << 17, ///< copy
+    ZYEncodingTypePropertyRetain       = 1 << 18, ///< retain
+    ZYEncodingTypePropertyNonatomic    = 1 << 19, ///< nonatomic
+    ZYEncodingTypePropertyWeak         = 1 << 20, ///< weak
+    ZYEncodingTypePropertyCustomGetter = 1 << 21, ///< getter=
+    ZYEncodingTypePropertyCustomSetter = 1 << 22, ///< setter=
+    ZYEncodingTypePropertyDynamic      = 1 << 23, ///< @dynamic
 };
 
 
@@ -81,8 +81,8 @@ typedef NS_OPTIONS(NSUInteger, YYEncodingType) {
     @package
     objc_property_t _property;
     NSString *_name;
-    YYEncodingType _type;
-    YYEncodingNSType _nsType;
+    ZYEncodingType _type;
+    ZYEncodingNSType _nsType;
     NSString *_typeEncoding;
     Class _cls;
     NSString *_setterString;

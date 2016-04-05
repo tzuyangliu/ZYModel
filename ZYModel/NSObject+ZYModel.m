@@ -75,9 +75,7 @@
         {
             id content = dictionary[jsonKey];
             ZYClassProperty *property = mapper[jsonKey];
-//            NSLog(@"%@", property->_typeEncoding);
-//            NSLog(@"%@", property->_cls);
-            if (property->_nsType == YYEncodingTypeNSUnknown)
+            if (property->_nsType == ZYEncodingTypeNSUnknown)
             {
                 id propertyObject = [property->_cls zy_modelWithJSON:content];
                 ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, propertyObject);

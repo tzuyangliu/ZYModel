@@ -88,13 +88,13 @@ static const NSUInteger kTestRepeatTimes = 100000;
 {
     NSDictionary* json = self.json;
     [self measureBlock:^{
-        for (NSUInteger i = 0; i < kTestRepeatTimes; i++) {
-            User* user = [[User alloc] init];
-            user.name = json[@"user_name"];
-            user.uid = json[@"user_uid"];
-            user.gender = json[@"user_gender"];
-            user.address = json[@"user_address"];
-        }
+//        for (NSUInteger i = 0; i < kTestRepeatTimes; i++) {
+//            User* user = [[User alloc] init];
+//            user.name = json[@"user_name"];
+//            user.uid = json[@"user_uid"];
+//            user.gender = json[@"user_gender"];
+//            user.address = json[@"user_address"];
+//        }
     }];
 }
 
