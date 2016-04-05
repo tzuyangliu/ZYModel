@@ -8,10 +8,8 @@
 
 #import "ZYClassInfo.h"
 
-
-
 /// Get the Foundation class type from property info.
-static __inline__ __attribute__((always_inline)) ZYEncodingNSType YYClassGetNSType(Class cls) {
+static __inline__ __attribute__((always_inline)) ZYEncodingNSType ZYClassGetNSType(Class cls) {
     if (!cls) return ZYEncodingTypeNSUnknown;
     if ([cls isSubclassOfClass:[NSMutableString class]]) return ZYEncodingTypeNSMutableString;
     if ([cls isSubclassOfClass:[NSString class]]) return ZYEncodingTypeNSString;
@@ -142,7 +140,7 @@ ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
                             }
                         }
                         if ((_type & ZYEncodingTypeMask) == ZYEncodingTypeObject) {
-                            _nsType = YYClassGetNSType(_cls);
+                            _nsType = ZYClassGetNSType(_cls);
                         }
                     }
                     break;
