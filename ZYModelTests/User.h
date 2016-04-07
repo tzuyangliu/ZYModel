@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class Father;
 @interface User : NSObject
 @property (assign, nonatomic) NSNumber *uid;
 @property (strong, nonatomic, setter=setWhatEver:) NSString *name;
 @property (strong, nonatomic) NSString *gender;
 @property (strong, nonatomic) NSString *address;
-//@property (strong, nonatomic) Father *father;
+@property (strong, nonatomic) Father *father;
 @end
 
-@interface Teacher : User
+@interface Father : User
 @end

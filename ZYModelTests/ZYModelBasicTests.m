@@ -71,13 +71,13 @@ static const NSUInteger kTestRepeatTimes = 100000;
     XCTAssertNotNil(user.name);
     XCTAssertNotNil(user.gender);
     XCTAssertNotNil(user.address);
-//    XCTAssertNotNil(user.father);
+    XCTAssertNotNil(user.father);
 
     XCTAssertEqual(user.uid, json[@"user_uid"]);
     XCTAssertEqual(user.name, json[@"user_name"]);
     XCTAssertEqual(user.gender, json[@"user_gender"]);
     XCTAssertEqual(user.address, json[@"user_address"]);
-//    XCTAssertEqual(user.father.name, json[@"father"][@"user_name"]);
+    XCTAssertEqual(user.father.name, json[@"father"][@"user_name"]);
     // Test log
     NSLog(@"\n\n%@\n\n", user);
 }
@@ -86,8 +86,8 @@ static const NSUInteger kTestRepeatTimes = 100000;
 
 - (void)testBaselinePerformace
 {
-    NSDictionary* json = self.json;
-    [self measureBlock:^{
+//    NSDictionary* json = self.json;
+//    [self measureBlock:^{
 //        for (NSUInteger i = 0; i < kTestRepeatTimes; i++) {
 //            User* user = [[User alloc] init];
 //            user.name = json[@"user_name"];
@@ -95,19 +95,19 @@ static const NSUInteger kTestRepeatTimes = 100000;
 //            user.gender = json[@"user_gender"];
 //            user.address = json[@"user_address"];
 //        }
-    }];
+//    }];
 }
 
 - (void)testZYModelPerformance
 {
-    NSDictionary* json = self.json;
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+//    NSDictionary* json = self.json;
+//    // This is an example of a performance test case.
+//    [self measureBlock:^{
+//        // Put the code you want to measure the time of here.
 //        for (NSUInteger i = 0; i < kTestRepeatTimes; i++) {
 //            User __unused* user = [User zy_modelWithJSON:json];
 //        }
-    }];
+//    }];
 }
 
 @end

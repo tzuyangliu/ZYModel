@@ -113,7 +113,7 @@
 @interface YYWeiboStatus : NSObject
 @property (nonatomic, assign) uint64_t statusID;
 @property (nonatomic, strong) NSString *idstr;
-@property (nonatomic, strong) NSString *mid;
+@property (nonatomic, strong) NSMutableString *mid;
 @property (nonatomic, strong) NSString *rid;
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) YYWeiboUser *user;
@@ -143,6 +143,6 @@
 @property (nonatomic, strong) NSString *mblogTypeName;
 @property (nonatomic, assign) int32_t mblogType;
 @property (nonatomic, strong) NSString *scheme;
-@property (nonatomic, strong) NSDictionary *visible;
+@property (nonatomic, strong) NSMutableDictionary *visible;
 @property (nonatomic, strong) NSArray *darwinTags;
 @end

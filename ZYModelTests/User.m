@@ -33,6 +33,7 @@
              @"uid": @"user_uid",
              @"gender": @"user_gender",
              @"address": @"user_address",
+             @"father": @"father",
              };
 }
 

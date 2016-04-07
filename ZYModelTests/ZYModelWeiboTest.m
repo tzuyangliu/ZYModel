@@ -35,13 +35,18 @@
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
     id json = self.json;
     YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJSON:json];
     
-    NSLog(@"%@", weiboStatus);
+    XCTAssertNotNil(weiboStatus);
+    // User
     XCTAssertNotNil(weiboStatus.user);
+    // mid - NSMutableString
+    XCTAssertNotNil(weiboStatus.mid);
+    XCTAssert([weiboStatus.mid isKindOfClass:[NSMutableString class]]);
+    // visible - NSMutableDictionary
+    XCTAssertNotNil(weiboStatus.visible);
+    XCTAssert([weiboStatus.visible isKindOfClass:[NSMutableDictionary class]]);
 }
 
 - (void)testPerformanceExample {

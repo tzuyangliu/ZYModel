@@ -74,16 +74,42 @@
         if ([mapper objectForKey:jsonKey])
         {
             id content = dictionary[jsonKey];
+            id setterObject = nil;
             ZYClassProperty *property = mapper[jsonKey];
-            if (property->_nsType == ZYEncodingTypeNSUnknown)
+            switch (property->_nsType)
             {
-                id propertyObject = [property->_cls zy_modelWithJSON:content];
-                ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, propertyObject);
+                case ZYEncodingTypeNSUnknown:
+                {
+                    setterObject = [property->_cls zy_modelWithJSON:content];
+                    break;
+                }
+                case ZYEncodingTypeNSMutableString:
+                {
+                    setterObject = [NSMutableString stringWithString:(NSString *)content];
+                    break;
+                }
+                case ZYEncodingTypeNSArray:
+                {
+                    
+                    break;
+                }
+                case ZYEncodingTypeNSMutableArray:
+                {
+                    
+                    break;
+                }
+                case ZYEncodingTypeNSMutableDictionary:
+                {
+                    setterObject = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)content];
+                    break;
+                }
+                default:
+                {
+                    setterObject = content;
+                    break;
+                }
             }
-            else
-            {
-                ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, content);
-            }
+            ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, setterObject);
         }
     }
 }
