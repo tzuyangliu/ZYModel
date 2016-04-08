@@ -29,6 +29,11 @@
     return nil;
 }
 
++ (NSDictionary *)modelContainerPropertyGenericClass
+{
+    return nil;
+}
+
 + (NSArray *)_zy_arrayWithJSON:(id)json
 {
     if (!json || json == (id)kCFNull) return nil;
@@ -119,13 +124,27 @@
                     break;
                 }
                 case ZYEncodingTypeNSArray:
-                {
-                    setterObject = [property->_cls zy_modelArrayWithJSON:content];
-                    break;
-                }
                 case ZYEncodingTypeNSMutableArray:
                 {
-                    setterObject = [[property->_cls zy_modelArrayWithJSON:content] mutableCopy];
+                    if (!property->_containCls) continue; // TODO: 这里要改
+                    NSArray *contentArray = (NSArray *)content;
+                    setterObject = [NSMutableArray array];
+                    for (id subContent in contentArray)
+                    {
+                        if ([subContent isKindOfClass:property->_containCls])
+                        {
+                            [setterObject addObject:subContent];
+                        }
+                        else
+                        {
+                            id tempObject = [property->_containCls zy_modelWithJSON:subContent];
+                            [setterObject addObject:tempObject];
+                        }
+                    }
+                    if (property->_nsType == ZYEncodingTypeNSArray)
+                    {
+                        setterObject = [setterObject copy];
+                    }
                     break;
                 }
                 case ZYEncodingTypeNSMutableDictionary:
@@ -139,6 +158,7 @@
                     break;
                 }
             }
+            if (!setterObject) continue;
             ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, setterObject);
         }
     }

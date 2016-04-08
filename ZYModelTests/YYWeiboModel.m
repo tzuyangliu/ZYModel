@@ -119,10 +119,10 @@
              @"picInfos" : @"pic_infos",
              @"inReplyToUserId" : @"in_reply_to_user_id"};
 }
-//+ (NSDictionary *)modelContainerPropertyGenericClass {
-//    return @{@"picIds" : [NSString class],
-//             @"picInfos" : [YYWeiboPicture class],
-//             @"urlStruct" : [YYWeiboURL class]};
-//}
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"picIds" : [NSString class],
+             @"picInfos" : [YYWeiboPicture class],
+             @"urlStruct" : [YYWeiboURL class]};
+}
 //YYModelSynthCoderAndHash
 @end

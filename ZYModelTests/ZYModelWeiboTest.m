@@ -52,9 +52,9 @@
     XCTAssert([weiboStatus.picIds isKindOfClass:[NSArray class]]);
     XCTAssert(weiboStatus.picIds.count > 0);
     // urlStruct - NSArray
-//    XCTAssertNotNil(weiboStatus.urlStruct);
-//    XCTAssert([weiboStatus.urlStruct isKindOfClass:[NSArray class]]);
-//    XCTAssert(weiboStatus.urlStruct.count > 0);
+    XCTAssertNotNil(weiboStatus.urlStruct);
+    XCTAssert([weiboStatus.urlStruct isKindOfClass:[NSArray class]]);
+    XCTAssert(weiboStatus.urlStruct.count > 0);
 }
 
 - (void)testPerformanceExample {

@@ -7,6 +7,7 @@
 //
 
 #import "ZYClassInfo.h"
+#import "NSObject+ZYModel.h"
 
 /// Get the Foundation class type from property info.
 static __inline__ __attribute__((always_inline)) ZYEncodingNSType ZYClassGetNSType(Class cls) {
@@ -122,6 +123,7 @@ ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
             _name = [NSString stringWithUTF8String:name];
         }
         unsigned int attrCount;
+        BOOL hasContentCls = NO;
         objc_property_attribute_t* attrs = property_copyAttributeList(property, &attrCount);
         for (unsigned int i = 0; i < attrCount; i++) {
             switch (attrs[i].name[0]) {
@@ -141,6 +143,10 @@ ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
                         }
                         if ((_type & ZYEncodingTypeMask) == ZYEncodingTypeObject) {
                             _nsType = ZYClassGetNSType(_cls);
+                            if (_nsType == ZYEncodingTypeNSArray || _nsType == ZYEncodingTypeNSMutableArray)
+                            {
+                                _hasCustomContainCls = YES;
+                            }
                         }
                     }
                     break;
@@ -173,14 +179,14 @@ ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
 
 @implementation ZYClassInfo
 
-- (instancetype)initWithClass:(Class) class
+- (instancetype)initWithClass:(Class)cls
     {
     self = [super init];
     if (self) {
         _properties = nil;
-
+        NSDictionary *modelContainerPropertyGenericClassMap = [(id<ZYModel>)cls modelContainerPropertyGenericClass];
         unsigned int propertyCount = 0;
-        objc_property_t* properties = class_copyPropertyList(class, &propertyCount);
+        objc_property_t* properties = class_copyPropertyList(cls, &propertyCount);
         if (properties) {
             NSMutableDictionary* propertyInfos = [NSMutableDictionary new];
             _properties = propertyInfos;
@@ -188,6 +194,10 @@ ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
                 ZYClassProperty* info = [[ZYClassProperty alloc] initWithProperty:properties[i]];
                 if (info->_name)
                     propertyInfos[info->_name] = info;
+                if (info->_hasCustomContainCls)
+                {
+                    info->_containCls = modelContainerPropertyGenericClassMap[info->_name];
+                }
             }
             free(properties);
         }

@@ -13,6 +13,7 @@
 + (NSDictionary<NSString*, id>*)mapper;
 + (NSArray *)whitelistProperties;
 + (NSArray *)blacklistProperties;
++ (NSDictionary<NSString *, Class> *)modelContainerPropertyGenericClass;
 @end
 
 @interface NSObject (ZYModel)

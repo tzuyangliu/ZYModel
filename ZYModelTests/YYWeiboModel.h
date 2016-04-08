@@ -121,7 +121,7 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSArray *picIds;        /// Array<NSString>
 @property (nonatomic, strong) NSDictionary *picInfos; /// Dic<NSString, YYWeiboPicture>
-//@property (nonatomic, strong) NSArray *urlStruct;     ///< Array<YYWeiboURL>
+@property (nonatomic, strong) NSArray *urlStruct;     ///< Array<YYWeiboURL>
 @property (nonatomic, assign) BOOL favorited;
 @property (nonatomic, assign) BOOL truncated;
 @property (nonatomic, assign) int32_t repostsCount;
@@ -136,7 +136,7 @@
 @property (nonatomic, assign) int32_t sourceType;
 @property (nonatomic, assign) int32_t sourceAllowClick;
 @property (nonatomic, strong) NSString *geo;
-@property (nonatomic, strong) NSArray *annotations;
+@property (nonatomic, strong) NSArray *annotations; // 对
 @property (nonatomic, assign) int32_t bizFeature;
 @property (nonatomic, assign) int32_t mlevel;
 @property (nonatomic, strong) NSString *mblogid;

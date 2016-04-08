@@ -10,6 +10,11 @@
     "idstr" : "3887674148022737",
     "source_type" : 1,
     "geo" : "",
+    "url_struct" : [
+        {
+            "url_title" : "23333"
+        }
+    ],
     "user" : {
         "cover_image_phone" : "http://ww4.sinaimg.cn/crop.0.0.640.640.640/6ce2240djw1e8iktk4ohij20hs0hsmz6.jpg",
         "id" : 3952070245,

@@ -14,6 +14,7 @@
     @package
     ZYClassInfo *_classInfo;
     NSDictionary<NSString *, ZYClassProperty *> *_jsonKeyToSetterMapper;
+    NSDictionary<NSString *, Class> *_modelContainerPropertyGenericClassMap;
 }
 
 - (instancetype)initWithClass:(Class)cls;

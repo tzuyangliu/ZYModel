@@ -19,6 +19,7 @@
     if (self)
     {
         Class curCls = cls;
+        _modelContainerPropertyGenericClassMap = [cls modelContainerPropertyGenericClass];
         NSMutableDictionary *tempJsonKeyToSetterMapper = [NSMutableDictionary dictionary];
         NSArray *whitelistProperties = [cls whitelistProperties];
         NSArray *blacklistProperties = [cls blacklistProperties];
