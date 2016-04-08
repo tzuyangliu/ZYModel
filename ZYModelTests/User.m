@@ -9,9 +9,9 @@
 #import "User.h"
 #import "NSObject+ZYModel.h"
 
-//@implementation Father
-//
-//@end
+@implementation Father
+
+@end
 
 @implementation User
 
