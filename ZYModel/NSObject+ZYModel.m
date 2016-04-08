@@ -13,6 +13,7 @@
 
 @implementation NSObject (ZYModel)
 
+// 虚函数们
 + (NSDictionary*)mapper
 {
     return nil;
@@ -25,6 +26,35 @@
 
 + (NSArray *)blacklistProperties
 {
+    return nil;
+}
+
++ (NSArray *)_zy_arrayWithJSON:(id)json
+{
+    if (!json || json == (id)kCFNull) return nil;
+    if ([json isKindOfClass:[NSArray class]])
+    {
+        return json;
+    }
+    BOOL isData = [json isKindOfClass:[NSData class]];
+    BOOL isString = [json isKindOfClass:[NSString class]];
+    if (isData || isString)
+    {
+        NSData *data = nil;
+        if (isString)
+        {
+            data = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
+        }
+        else
+        {
+            data = json;
+        }
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:NULL];
+        if ([array isKindOfClass:[NSArray class]])
+        {
+            return array;
+        }
+    }
     return nil;
 }
 
@@ -90,12 +120,12 @@
                 }
                 case ZYEncodingTypeNSArray:
                 {
-                    
+                    setterObject = [property->_cls zy_modelArrayWithJSON:content];
                     break;
                 }
                 case ZYEncodingTypeNSMutableArray:
                 {
-                    
+                    setterObject = [[property->_cls zy_modelArrayWithJSON:content] mutableCopy];
                     break;
                 }
                 case ZYEncodingTypeNSMutableDictionary:
@@ -128,6 +158,25 @@
     NSObject* obj = [[self class] new];
     [obj zy_setPropertiesWithDictionary:dictionary];
     return obj;
+}
+
++ (NSMutableArray *)zy_modelMutableArrayWithJSON:(id)json
+{
+    NSMutableArray *objectArray = [NSMutableArray array];
+    NSArray *array = [self _zy_arrayWithJSON:json];
+    for (id subJson in array){
+        id obj = [self zy_modelWithJSON:subJson];
+        if (obj)
+        {
+            [objectArray addObject:obj];
+        }
+    }
+    return objectArray;
+}
+
++ (NSArray *)zy_modelArrayWithJSON:(id)json
+{
+    return [[self zy_modelMutableArrayWithJSON:json] copy];
 }
 
 @end
