@@ -9,7 +9,6 @@
 #import "ZYClassInfo.h"
 #import "NSObject+ZYModel.h"
 
-/// Get the Foundation class type from property info.
 static __inline__ __attribute__((always_inline)) ZYEncodingNSType ZYClassGetNSType(Class cls) {
     if (!cls) return ZYEncodingTypeNSUnknown;
     if ([cls isSubclassOfClass:[NSMutableString class]]) return ZYEncodingTypeNSMutableString;
@@ -30,7 +29,26 @@ static __inline__ __attribute__((always_inline)) ZYEncodingNSType ZYClassGetNSTy
     return ZYEncodingTypeNSUnknown;
 }
 
-ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
+static __inline__ __attribute__((always_inline)) BOOL ZYEncodingGetIsCNumber(ZYEncodingType encodingType)
+{
+    switch (encodingType & ZYEncodingTypeMask) {
+        case ZYEncodingTypeBool:
+        case ZYEncodingTypeInt8:
+        case ZYEncodingTypeUInt8:
+        case ZYEncodingTypeInt16:
+        case ZYEncodingTypeUInt16:
+        case ZYEncodingTypeInt32:
+        case ZYEncodingTypeUInt32:
+        case ZYEncodingTypeInt64:
+        case ZYEncodingTypeUInt64:
+        case ZYEncodingTypeFloat:
+        case ZYEncodingTypeDouble:
+        case ZYEncodingTypeLongDouble:return YES;
+        default: return NO;
+    }
+}
+
+static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
     char *type = (char *)typeEncoding;
     if (!type) return ZYEncodingTypeUnknown;
     size_t len = strlen(type);
@@ -123,7 +141,6 @@ ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
             _name = [NSString stringWithUTF8String:name];
         }
         unsigned int attrCount;
-        BOOL hasContentCls = NO;
         objc_property_attribute_t* attrs = property_copyAttributeList(property, &attrCount);
         for (unsigned int i = 0; i < attrCount; i++) {
             switch (attrs[i].name[0]) {
@@ -132,6 +149,7 @@ ZYEncodingType ZYEncodingGetType(const char *typeEncoding) {
                     if (attrs[i].value) {
                         _typeEncoding = [NSString stringWithUTF8String:attrs[i].value];
                         _type = ZYEncodingGetType(attrs[i].value);
+                        _isCNumber = ZYEncodingGetIsCNumber(_type);
                         if ((_type & ZYEncodingTypeMask) == ZYEncodingTypeObject) {
                             size_t len = strlen(attrs[i].value);
                             if (len > 3) {

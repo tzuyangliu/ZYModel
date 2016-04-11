@@ -5,6 +5,34 @@
 //  Created by sheepliu on 16/4/5.
 //  Copyright © 2016年 tzuyangliu. All rights reserved.
 //
+/**
+ 支持的类型：
+ 
+ NSObject 及其子类
+ 
+ NSNumber
+ NSString
+ NSMutableString
+ NSArray<T>
+ NSMutableArray<T>
+ NSDictionary<T,T>
+ NSMutableDictionary<T,T>
+ 
+ ---C系数值---
+ bool
+ int8_t __signed char
+ uint8_t unsigned char
+ int16_t short
+ uint16_t unsigned short
+ int32_t int
+ uint32_t unsigned int
+ int64_t long long
+ uint64_t unsigned long long
+ 
+ float
+ double
+ long double
+ */
 
 #import <XCTest/XCTest.h>
 #import "ZYModel.h"
@@ -18,7 +46,7 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+
     NSError* error = nil;
     NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"weibo"
                                                                           ofType:@"json"];
@@ -30,37 +58,52 @@
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testBasicFunction {
     id json = self.json;
     YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJSON:json];
     
     XCTAssertNotNil(weiboStatus);
+    // statusID
+    XCTAssertEqual(weiboStatus.statusID, 3887674148022737);
+    // idstr
+    XCTAssertTrue([weiboStatus.idstr isKindOfClass:[NSString class]]);
+    XCTAssertTrue([weiboStatus.idstr isEqual:@"3887674148022737"]);
+    // favorited
+    XCTAssertEqual(weiboStatus.favorited, YES);
+    // repostsCount
+    XCTAssertEqual(weiboStatus.repostsCount, 12662);
+    // createdAt
+    XCTAssertNotNil(weiboStatus.createdAt);
+    XCTAssertTrue([weiboStatus.createdAt isKindOfClass:[NSDate class]]); // TODO: 支持NSDate
     // User
     XCTAssertNotNil(weiboStatus.user);
     // mid - NSMutableString
     XCTAssertNotNil(weiboStatus.mid);
-    XCTAssert([weiboStatus.mid isKindOfClass:[NSMutableString class]]);
+    XCTAssertTrue([weiboStatus.mid isKindOfClass:[NSMutableString class]]);
     // visible - NSMutableDictionary
     XCTAssertNotNil(weiboStatus.visible);
-    XCTAssert([weiboStatus.visible isKindOfClass:[NSMutableDictionary class]]);
-    // picIds - NSArray
+    XCTAssertTrue([weiboStatus.visible isKindOfClass:[NSMutableDictionary class]]);
+    // picIds - NSArray<NSString *> *
     XCTAssertNotNil(weiboStatus.picIds);
-    XCTAssert([weiboStatus.picIds isKindOfClass:[NSArray class]]);
-    XCTAssert(weiboStatus.picIds.count > 0);
-    // urlStruct - NSArray
+    XCTAssertTrue([weiboStatus.picIds isKindOfClass:[NSArray class]]);
+    XCTAssertTrue(weiboStatus.picIds.count > 0);
+    XCTAssertTrue([weiboStatus.picIds[0] isKindOfClass:[NSString class]]);
+    // urlStruct - NSArray<YYWeiboURL *> *
     XCTAssertNotNil(weiboStatus.urlStruct);
-    XCTAssert([weiboStatus.urlStruct isKindOfClass:[NSArray class]]);
-    XCTAssert(weiboStatus.urlStruct.count > 0);
+    XCTAssertTrue([weiboStatus.urlStruct isKindOfClass:[NSArray class]]);
+    XCTAssertTrue(weiboStatus.urlStruct.count > 0);
+    XCTAssertTrue([weiboStatus.urlStruct[0] isKindOfClass:[YYWeiboURL class]]);
 }
 
 - (void)testPerformanceExample {
-    // This is an example of a performance test case.
+    id json = self.json;
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+        for (NSInteger i = 0; i < 10000; i++){
+            __unused YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJSON:json];
+        }
     }];
 }
 

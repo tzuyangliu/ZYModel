@@ -87,6 +87,7 @@ typedef NS_OPTIONS(NSUInteger, ZYEncodingType) {
     Class _cls;
     Class _containCls;
     BOOL _hasCustomContainCls;
+    BOOL _isCNumber;
     NSString *_setterString;
     SEL _setter;
 }

@@ -109,57 +109,120 @@
         if ([mapper objectForKey:jsonKey])
         {
             id content = dictionary[jsonKey];
-            id setterObject = nil;
+            
             ZYClassProperty *property = mapper[jsonKey];
-            switch (property->_nsType)
+            if (property->_isCNumber)
             {
-                case ZYEncodingTypeNSUnknown:
+                NSNumber *numberContent = (NSNumber *)content;
+                switch (property->_type)
                 {
-                    setterObject = [property->_cls zy_modelWithJSON:content];
-                    break;
-                }
-                case ZYEncodingTypeNSMutableString:
-                {
-                    setterObject = [NSMutableString stringWithString:(NSString *)content];
-                    break;
-                }
-                case ZYEncodingTypeNSArray:
-                case ZYEncodingTypeNSMutableArray:
-                {
-                    if (!property->_containCls) continue; // TODO: 这里要改
-                    NSArray *contentArray = (NSArray *)content;
-                    setterObject = [NSMutableArray array];
-                    for (id subContent in contentArray)
+                    case ZYEncodingTypeBool:
                     {
-                        if ([subContent isKindOfClass:property->_containCls])
-                        {
-                            [setterObject addObject:subContent];
-                        }
-                        else
-                        {
-                            id tempObject = [property->_containCls zy_modelWithJSON:subContent];
-                            [setterObject addObject:tempObject];
-                        }
+                        ((void (*)(id, SEL, BOOL))(void*)objc_msgSend)((id)self, property->_setter, numberContent.boolValue);
+                        break;
                     }
-                    if (property->_nsType == ZYEncodingTypeNSArray)
+                    case ZYEncodingTypeInt8:
                     {
-                        setterObject = [setterObject copy];
+                        ((void (*)(id, SEL, int8_t))(void*)objc_msgSend)((id)self, property->_setter, (int8_t)numberContent.charValue);
+                        break;
                     }
-                    break;
-                }
-                case ZYEncodingTypeNSMutableDictionary:
-                {
-                    setterObject = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)content];
-                    break;
-                }
-                default:
-                {
-                    setterObject = content;
-                    break;
+                    case ZYEncodingTypeUInt8:
+                    {
+                        ((void (*)(id, SEL, int8_t))(void*)objc_msgSend)((id)self, property->_setter, (uint8_t)numberContent.unsignedCharValue);
+                        break;
+                    }
+                    case ZYEncodingTypeInt16:
+                    {
+                        ((void (*)(id, SEL, int16_t))(void*)objc_msgSend)((id)self, property->_setter, (int16_t)numberContent.shortValue);
+                        break;
+                    }
+                    case ZYEncodingTypeUInt16:
+                    {
+                        ((void (*)(id, SEL, uint16_t))(void*)objc_msgSend)((id)self, property->_setter, (uint16_t)numberContent.unsignedShortValue);
+                        break;
+                    }
+                    case ZYEncodingTypeInt32:
+                    {
+                        ((void (*)(id, SEL, int32_t))(void*)objc_msgSend)((id)self, property->_setter, (int32_t)numberContent.intValue);
+                        break;
+                    }
+                    case ZYEncodingTypeUInt32:
+                    {
+                        ((void (*)(id, SEL, uint32_t))(void*)objc_msgSend)((id)self, property->_setter, (uint32_t)numberContent.unsignedIntValue);
+                        break;
+                    }
+                    case ZYEncodingTypeInt64:
+                    {
+                        ((void (*)(id, SEL, int64_t))(void*)objc_msgSend)((id)self, property->_setter, numberContent.longLongValue);
+                        break;
+                    }
+                    case ZYEncodingTypeUInt64:
+                    {
+                        ((void (*)(id, SEL, uint64_t))(void*)objc_msgSend)((id)self, property->_setter, numberContent.unsignedLongLongValue);
+                        break;
+                    }
+                    case ZYEncodingTypeFloat:
+                    {
+                    
+                        break;
+                    }
+                    default:
+                        break;
                 }
             }
-            if (!setterObject) continue;
-            ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, setterObject);
+            else
+            {
+                id setterObject = nil;
+                switch (property->_nsType)
+                {
+                    case ZYEncodingTypeNSUnknown:
+                    {
+                        setterObject = [property->_cls zy_modelWithJSON:content];
+                        break;
+                    }
+                    case ZYEncodingTypeNSMutableString:
+                    {
+                        setterObject = [NSMutableString stringWithString:(NSString *)content];
+                        break;
+                    }
+                    case ZYEncodingTypeNSArray:
+                    case ZYEncodingTypeNSMutableArray:
+                    {
+                        if (!property->_containCls) continue; // TODO: 这里要改
+                        NSArray *contentArray = (NSArray *)content;
+                        setterObject = [NSMutableArray array];
+                        for (id subContent in contentArray)
+                        {
+                            if ([subContent isKindOfClass:property->_containCls])
+                            {
+                                [setterObject addObject:subContent];
+                            }
+                            else
+                            {
+                                id tempObject = [property->_containCls zy_modelWithJSON:subContent];
+                                [setterObject addObject:tempObject];
+                            }
+                        }
+                        if (property->_nsType == ZYEncodingTypeNSArray)
+                        {
+                            setterObject = [setterObject copy];
+                        }
+                        break;
+                    }
+                    case ZYEncodingTypeNSMutableDictionary:
+                    {
+                        setterObject = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)content];
+                        break;
+                    }
+                    default:
+                    {
+                        setterObject = content;
+                        break;
+                    }
+                }
+                if (!setterObject) continue;
+                ((void (*)(id, SEL, id))(void*)objc_msgSend)((id)self, property->_setter, setterObject);
+            }
         }
     }
 }
