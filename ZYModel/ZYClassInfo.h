@@ -12,19 +12,19 @@
 /// Foundation Class Type
 typedef NS_ENUM (NSUInteger, ZYEncodingNSType) {
     ZYEncodingTypeNSUnknown = 0,
-    ZYEncodingTypeNSString,
-    ZYEncodingTypeNSMutableString,
+    ZYEncodingTypeNSString, //√
+    ZYEncodingTypeNSMutableString, //√
     ZYEncodingTypeNSValue,
-    ZYEncodingTypeNSNumber,
-    ZYEncodingTypeNSDecimalNumber,
+    ZYEncodingTypeNSNumber, //√
+    ZYEncodingTypeNSDecimalNumber, //√
     ZYEncodingTypeNSData,
     ZYEncodingTypeNSMutableData,
     ZYEncodingTypeNSDate,
     ZYEncodingTypeNSURL,
-    ZYEncodingTypeNSArray,
-    ZYEncodingTypeNSMutableArray,
-    ZYEncodingTypeNSDictionary,
-    ZYEncodingTypeNSMutableDictionary,
+    ZYEncodingTypeNSArray, //√
+    ZYEncodingTypeNSMutableArray, //√
+    ZYEncodingTypeNSDictionary, //√
+    ZYEncodingTypeNSMutableDictionary, //√
     ZYEncodingTypeNSSet,
     ZYEncodingTypeNSMutableSet,
 };

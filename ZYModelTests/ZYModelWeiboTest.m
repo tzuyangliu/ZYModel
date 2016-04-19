@@ -77,7 +77,7 @@
     XCTAssertEqual(weiboStatus.repostsCount, 12662);
     // createdAt
     XCTAssertNotNil(weiboStatus.createdAt);
-    XCTAssertTrue([weiboStatus.createdAt isKindOfClass:[NSDate class]]); // TODO: 支持NSDate
+    XCTAssertTrue([weiboStatus.createdAt isKindOfClass:[NSDate class]]);
     // User
     XCTAssertNotNil(weiboStatus.user);
     // mid - NSMutableString
@@ -96,12 +96,23 @@
     XCTAssertTrue([weiboStatus.urlStruct isKindOfClass:[NSArray class]]);
     XCTAssertTrue(weiboStatus.urlStruct.count > 0);
     XCTAssertTrue([weiboStatus.urlStruct[0] isKindOfClass:[YYWeiboURL class]]);
+    // picInfos
+    XCTAssertNotNil(weiboStatus.picInfos);
+    XCTAssertTrue([weiboStatus.picInfos isKindOfClass:[NSDictionary class]]);
+    YYWeiboPicture *picture = weiboStatus.picInfos[weiboStatus.picIds[0]];
+    XCTAssertNotNil(picture);
+    XCTAssertTrue([picture isKindOfClass:[YYWeiboPicture class]]);
+    YYWeiboPictureMetadata *thumbnail = picture.thumbnail;
+    XCTAssertNotNil(thumbnail);
+    XCTAssertTrue([thumbnail isKindOfClass:[YYWeiboPictureMetadata class]]);
+    XCTAssertNotNil(thumbnail.url);
+    XCTAssertTrue([thumbnail.url isKindOfClass:[NSURL class]]);
 }
 
 - (void)testPerformanceExample {
     id json = self.json;
     [self measureBlock:^{
-        for (NSInteger i = 0; i < 10000; i++){
+        for (NSInteger i = 0; i < 1000; i++){
             __unused YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJSON:json];
         }
     }];

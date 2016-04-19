@@ -10,7 +10,7 @@
 #import "ZYModel.h"
 
 @interface YYWeiboPictureMetadata : NSObject
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSURL *url;
 @property (nonatomic, assign) int width;
 @property (nonatomic, assign) int height;
 @property (nonatomic, strong) NSString *type;
