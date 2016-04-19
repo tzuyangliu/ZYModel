@@ -10,6 +10,21 @@
 #import "ZYClassInfo.h"
 #import "NSObject+ZYModel.h"
 
+@implementation ZYModelPropertyMeta
+
+- (instancetype)initWithClassProperty:(ZYClassProperty *)classProperty jsonKey:(NSString *)jsonKey
+{
+    self = [super init];
+    if (self)
+    {
+        _classProperty = classProperty;
+        _jsonKey = jsonKey;
+    }
+    return self;
+}
+
+@end
+
 @implementation ZYModelMeta
 
 - (instancetype)initWithClass:(Class)cls
@@ -19,8 +34,8 @@
     if (self)
     {
         Class curCls = cls;
+        _propertyMetas = [NSMutableArray array];
         _modelContainerPropertyGenericClassMap = [cls modelContainerPropertyGenericClass];
-        NSMutableDictionary *tempJsonKeyToSetterMapper = [NSMutableDictionary dictionary];
         NSArray *whitelistProperties = [cls whitelistProperties];
         NSArray *blacklistProperties = [cls blacklistProperties];
         while (curCls && [curCls superclass] != nil)
@@ -34,7 +49,8 @@
             {
                 if (whitelistProperties.count && ![whitelistProperties containsObject:propertyName]) continue;
                 if ([blacklistProperties containsObject:propertyName]) continue;
-                ZYClassProperty *property = propertyDictionary[propertyName];
+                ZYModelPropertyMeta *propertyMeta = [[ZYModelPropertyMeta alloc] init];
+                propertyMeta->_classProperty = propertyDictionary[propertyName];
                 NSString *jsonKey;
                 if ([userMapper.allKeys containsObject:propertyName])
                 {
@@ -44,11 +60,11 @@
                 {
                     jsonKey = propertyName;
                 }
-                tempJsonKeyToSetterMapper[jsonKey] = property;
+                propertyMeta->_jsonKey = jsonKey;
+                [_propertyMetas addObject:propertyMeta];
             }
             curCls = [curCls superclass];
         }
-        _jsonKeyToSetterMapper = [tempJsonKeyToSetterMapper copy];
     }
     return self;
 }

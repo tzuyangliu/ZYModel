@@ -11,6 +11,8 @@
 #import "ZYModelMeta.h"
 #import <objc/objc-runtime.h>
 
+
+
 NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id value)
 {
     id setterObject = nil;
@@ -198,6 +200,18 @@ NS_INLINE void SetCNumberToProperty(id target, ZYClassProperty *property, NSNumb
     }
 }
 
+NS_INLINE void SetValueToProperty(id target, ZYClassProperty *property, id value)
+{
+    if (property->_isCNumber)
+    {
+        SetCNumberToProperty(target, property, value);
+    }
+    else
+    {
+        SetNSObjectToProperty(target, property, value);
+    }
+}
+
 @implementation NSObject (ZYModel)
 
 #pragma mark - Virtual Methods
@@ -290,25 +304,51 @@ NS_INLINE void SetCNumberToProperty(id target, ZYClassProperty *property, NSNumb
     }
 }
 
+typedef struct {
+    void *modelMeta;  ///< ZYModelMeta
+    void *model;      ///< id (self)
+    void *dictionary; ///< NSDictionary (json)
+} ModelSetContext;
+
+static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, void *_context) {
+    ModelSetContext *context = _context;
+    __unsafe_unretained NSDictionary *dictionary = (__bridge NSDictionary *)(context->dictionary);
+    __unsafe_unretained ZYModelPropertyMeta *propertyMeta = (__bridge ZYModelPropertyMeta *)(_propertyMeta);
+    if (!propertyMeta->_classProperty->_setter) return;
+    id value = nil;
+    value = [dictionary objectForKey:propertyMeta->_jsonKey];
+
+    if (value) {
+        __unsafe_unretained id model = (__bridge id)(context->model);
+        SetValueToProperty(model, propertyMeta->_classProperty, value);
+    }
+}
+
 - (void)zy_setPropertiesWithDictionary:(NSDictionary*)dictionary
 {
     Class cls = [self class];
     ZYModelMeta *meta = [ZYModelMeta metaWithClass:cls];
-    NSDictionary *mapper = meta->_jsonKeyToSetterMapper;
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull jsonKey, id  _Nonnull content, BOOL * _Nonnull stop) {
-        if ([mapper objectForKey:jsonKey]){
-            id content = dictionary[jsonKey];
-            ZYClassProperty *property = mapper[jsonKey];
-            if (property->_isCNumber)
-            {
-                SetCNumberToProperty(self, property, content);
-            }
-            else
-            {
-                SetNSObjectToProperty(self, property, content);
-            }
-        }
-    }];
+
+//    NSDictionary *mapper = meta->_jsonKeyToSetterMapper;
+//    NSArray *properties = mapper.allValues;
+    
+    ModelSetContext context = {0};
+    context.modelMeta = (__bridge void *)(meta);
+    context.model = (__bridge void *)(self);
+    context.dictionary = (__bridge void *)(dictionary);
+
+    CFArrayApplyFunction((CFArrayRef)meta->_propertyMetas,
+                         CFRangeMake(0, meta->_propertyMetas.count),
+                         ModelSetWithPropertyMetaArrayFunction,
+                         &context);
+
+//    [dictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull jsonKey, id  _Nonnull content, BOOL * _Nonnull stop) {
+//        if ([mapper objectForKey:jsonKey]){
+//            id content = dictionary[jsonKey];
+//            ZYClassProperty *property = mapper[jsonKey];
+//            SetValueToProperty(self, property, content);
+//        }
+//    }];
 }
 
 + (instancetype)zy_modelWithJSON:(id)json

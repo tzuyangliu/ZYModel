@@ -39,7 +39,7 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
-static const NSUInteger kRepeatTimes = 1000;
+static const NSUInteger kRepeatTimes = 10000;
 
 - (void)testYYModelPerformace
 {
