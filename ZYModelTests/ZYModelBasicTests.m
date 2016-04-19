@@ -10,7 +10,7 @@
 #import "ZYModel.h"
 #import <XCTest/XCTest.h>
 
-static const NSUInteger kTestRepeatTimes = 100000;
+//static const NSUInteger kTestRepeatTimes = 1000;
 
 @interface ZYModelBasicTests : XCTestCase
 @property (strong, nonatomic) NSDictionary* json;
