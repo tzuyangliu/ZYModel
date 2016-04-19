@@ -17,6 +17,13 @@
 
 
 @implementation YYWeiboPictureMetadata
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return [self mapper];
+}
++ (NSDictionary *)modelCustomPropertyMapper {
+    return [self mapper];
+}
 + (NSDictionary *)mapper {
     return @{@"cutType" : @"cut_type"};
 }
@@ -24,6 +31,13 @@
 @end
 
 @implementation YYWeiboPicture
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return [self mapper];
+}
++ (NSDictionary *)modelCustomPropertyMapper {
+    return [self mapper];
+}
 + (NSDictionary *)mapper {
     return @{@"picID" : @"pic_id",
              @"keepSize" : @"keep_size",
@@ -35,6 +49,13 @@
 @end
 
 @implementation YYWeiboURL
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return [self mapper];
+}
++ (NSDictionary *)modelCustomPropertyMapper {
+    return [self mapper];
+}
 + (NSDictionary *)mapper {
     return @{@"oriURL" : @"ori_url",
              @"urlTitle" : @"url_title",
@@ -49,6 +70,14 @@
 @end
 
 @implementation YYWeiboUser
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return [self mapper];
+}
++ (NSDictionary *)modelCustomPropertyMapper {
+    return [self mapper];
+}
+
 + (NSDictionary *)mapper {
     return @{@"userID" : @"id",
              @"idString" : @"idstr",
@@ -97,6 +126,13 @@
 @end
 
 @implementation YYWeiboStatus
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return [self mapper];
+}
++ (NSDictionary *)modelCustomPropertyMapper {
+    return [self mapper];
+}
 + (NSDictionary *)mapper {
     return @{@"statusID" : @"id",
              @"createdAt" : @"created_at",

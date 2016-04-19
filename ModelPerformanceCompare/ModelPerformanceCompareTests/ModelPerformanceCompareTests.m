@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "YYModel.h"
 #import "ZYModel.h"
+#import "MJExtension.h"
 #import "YYWeiboModel.h"
 
 @interface ModelPerformanceCompareTests : XCTestCase
@@ -39,7 +40,7 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
-static const NSUInteger kRepeatTimes = 10000;
+static const NSUInteger kRepeatTimes = 1000;
 
 - (void)testYYModelPerformace
 {
@@ -47,6 +48,16 @@ static const NSUInteger kRepeatTimes = 10000;
     [self measureBlock:^{
         for (NSInteger i = 0; i < kRepeatTimes; i++){
             __unused YYWeiboStatus *weiboStatus = [YYWeiboStatus yy_modelWithJSON:json];
+        }
+    }];
+}
+
+- (void)testMJExtensionPerformace
+{
+    id json = self.json;
+    [self measureBlock:^{
+        for (NSInteger i = 0; i < kRepeatTimes; i++){
+            __unused YYWeiboStatus *weiboStatus = [YYWeiboStatus mj_objectWithKeyValues:json];
         }
     }];
 }
