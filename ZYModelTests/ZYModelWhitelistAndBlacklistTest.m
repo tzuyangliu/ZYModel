@@ -18,7 +18,7 @@
 
 @implementation UserWithWhitelist
 
-+ (NSArray *)whitelistProperties
++ (NSArray *)zy_whitelistProperties
 {
     return @[@"name"];
 }
@@ -33,7 +33,7 @@
 
 @implementation UserWithBlacklist
 
-+ (NSArray *)blacklistProperties
++ (NSArray *)zy_blacklistProperties
 {
     return @[@"name", @"uid", @"gender"];
 }

@@ -16,16 +16,46 @@
 NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id value)
 {
     id setterObject = nil;
-    switch (property->_nsType)
+    ZYEncodingNSType nsType = property->_nsType;
+    switch (nsType)
     {
         case ZYEncodingTypeNSUnknown:
         {
             setterObject = [property->_cls zy_modelWithJSON:value];
             break;
         }
+        // String
+        // 可以接受的类型：NSString / NSMutableString / NSAttributedString / NSNumber /
+        case ZYEncodingTypeNSString:
         case ZYEncodingTypeNSMutableString:
         {
-            setterObject = [NSMutableString stringWithString:(NSString *)value];
+            if ([value isKindOfClass:[NSString class]])
+            {
+                BOOL mutable = [value isKindOfClass:[NSMutableString class]];
+                if ((mutable && nsType == ZYEncodingTypeNSString)
+                    || (!mutable && nsType == ZYEncodingTypeNSMutableString))
+                {
+                    setterObject = (nsType == ZYEncodingTypeNSString)
+                    ?((NSString *)value).copy
+                    :((NSString *)value).mutableCopy;
+                }
+                else
+                {
+                    setterObject = value;
+                }
+            }
+            else if ([value isKindOfClass:[NSAttributedString class]])
+            {
+                setterObject = (nsType == ZYEncodingTypeNSString)
+                ?((NSAttributedString *)value).string
+                :((NSAttributedString *)value).string.mutableCopy;
+            }
+            else if ([value isKindOfClass:[NSNumber class]])
+            {
+                setterObject = (nsType == ZYEncodingTypeNSString)
+                ? ((NSNumber *)value).stringValue
+                : ((NSNumber *)value).stringValue.mutableCopy;
+            }
             break;
         }
         // Array
@@ -105,6 +135,7 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
             }
             break;
         }
+        // URL
         case ZYEncodingTypeNSURL:
         {
             if ([value isKindOfClass:[NSURL class]])
@@ -117,11 +148,13 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
             }
             break;
         }
+        // Date
         case ZYEncodingTypeNSDate:
         {
             // TODO: 未完成
             break;
         }
+        // Value
         case ZYEncodingTypeNSValue:
         {
             if ([value isKindOfClass:[NSValue class]]){
@@ -216,22 +249,22 @@ NS_INLINE void SetValueToProperty(id target, ZYClassProperty *property, id value
 
 #pragma mark - Virtual Methods
 
-+ (NSDictionary*)mapper
++ (NSDictionary*)zy_propertyToJsonKeyMapper
 {
     return nil;
 }
 
-+ (NSArray *)whitelistProperties
++ (NSArray *)zy_whitelistProperties
 {
     return nil;
 }
 
-+ (NSArray *)blacklistProperties
++ (NSArray *)zy_blacklistProperties
 {
     return nil;
 }
 
-+ (NSDictionary *)modelContainerPropertyGenericClass
++ (NSDictionary *)zy_containerPropertyGenericClass
 {
     return nil;
 }

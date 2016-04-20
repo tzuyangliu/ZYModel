@@ -17,6 +17,10 @@
 
 
 @implementation YYWeiboPictureMetadata
++ (NSDictionary *)zy_propertyToJsonKeyMapper
+{
+    return [self mapper];
+}
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return [self mapper];
@@ -24,6 +28,7 @@
 + (NSDictionary *)modelCustomPropertyMapper {
     return [self mapper];
 }
+
 + (NSDictionary *)mapper {
     return @{@"cutType" : @"cut_type"};
 }
@@ -31,6 +36,10 @@
 @end
 
 @implementation YYWeiboPicture
++ (NSDictionary *)zy_propertyToJsonKeyMapper
+{
+    return [self mapper];
+}
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return [self mapper];
@@ -49,6 +58,10 @@
 @end
 
 @implementation YYWeiboURL
++ (NSDictionary *)zy_propertyToJsonKeyMapper
+{
+    return [self mapper];
+}
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return [self mapper];
@@ -70,6 +83,10 @@
 @end
 
 @implementation YYWeiboUser
++ (NSDictionary *)zy_propertyToJsonKeyMapper
+{
+    return [self mapper];
+}
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return [self mapper];
@@ -126,6 +143,10 @@
 @end
 
 @implementation YYWeiboStatus
++ (NSDictionary *)zy_propertyToJsonKeyMapper
+{
+    return [self mapper];
+}
 + (NSDictionary *)mj_replacedKeyFromPropertyName
 {
     return [self mapper];
@@ -155,6 +176,21 @@
              @"picInfos" : @"pic_infos",
              @"inReplyToUserId" : @"in_reply_to_user_id"};
 }
+
++ (NSDictionary *)mj_objectClassInArray
+{
+    return @{@"picIds" : [NSString class],
+             @"picInfos" : [YYWeiboPicture class],
+             @"urlStruct" : [YYWeiboURL class]};
+}
+
++ (NSDictionary *)zy_containerPropertyGenericClass
+{
+    return @{@"picIds" : [NSString class],
+             @"picInfos" : [YYWeiboPicture class],
+             @"urlStruct" : [YYWeiboURL class]};
+}
+
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"picIds" : [NSString class],
              @"picInfos" : [YYWeiboPicture class],

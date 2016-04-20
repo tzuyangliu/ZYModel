@@ -205,7 +205,7 @@ static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetTyp
     self = [super init];
     if (self) {
         _properties = nil;
-        NSDictionary *modelContainerPropertyGenericClassMap = [(id<ZYModel>)cls modelContainerPropertyGenericClass];
+        NSDictionary *modelContainerPropertyGenericClassMap = [(id<ZYModel>)cls zy_containerPropertyGenericClass];
         unsigned int propertyCount = 0;
         objc_property_t* properties = class_copyPropertyList(cls, &propertyCount);
         if (properties) {

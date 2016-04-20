@@ -35,13 +35,13 @@
     {
         Class curCls = cls;
         _propertyMetas = [NSMutableArray array];
-        _modelContainerPropertyGenericClassMap = [cls modelContainerPropertyGenericClass];
-        NSArray *whitelistProperties = [cls whitelistProperties];
-        NSArray *blacklistProperties = [cls blacklistProperties];
+        _modelContainerPropertyGenericClassMap = [cls zy_containerPropertyGenericClass];
+        NSArray *whitelistProperties = [cls zy_whitelistProperties];
+        NSArray *blacklistProperties = [cls zy_blacklistProperties];
         while (curCls && [curCls superclass] != nil)
         {
             id<ZYModel> modelCls = (id<ZYModel>)curCls;
-            NSDictionary *userMapper = [modelCls mapper];
+            NSDictionary *userMapper = [modelCls zy_propertyToJsonKeyMapper];
             _classInfo = [ZYClassInfo classInfoWithClass:curCls];
             NSDictionary* propertyDictionary = _classInfo->_properties;
             NSArray *propertyNames = propertyDictionary.allKeys;
@@ -49,8 +49,6 @@
             {
                 if (whitelistProperties.count && ![whitelistProperties containsObject:propertyName]) continue;
                 if ([blacklistProperties containsObject:propertyName]) continue;
-                ZYModelPropertyMeta *propertyMeta = [[ZYModelPropertyMeta alloc] init];
-                propertyMeta->_classProperty = propertyDictionary[propertyName];
                 NSString *jsonKey;
                 if ([userMapper.allKeys containsObject:propertyName])
                 {
@@ -60,7 +58,8 @@
                 {
                     jsonKey = propertyName;
                 }
-                propertyMeta->_jsonKey = jsonKey;
+                ZYModelPropertyMeta *propertyMeta = [[ZYModelPropertyMeta alloc] initWithClassProperty:propertyDictionary[propertyName]
+                                                                                               jsonKey:jsonKey];
                 [_propertyMetas addObject:propertyMeta];
             }
             curCls = [curCls superclass];
@@ -82,7 +81,6 @@
     dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
     ZYModelMeta *meta = CFDictionaryGetValue(cache, (__bridge const void *)(cls));
     dispatch_semaphore_signal(lock);
-//    if (!meta || meta->_classInfo.needUpdate)
     if (!meta){
         meta = [[ZYModelMeta alloc] initWithClass:cls];
         if (meta) {

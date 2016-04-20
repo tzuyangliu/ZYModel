@@ -10,10 +10,10 @@
 
 @protocol ZYModel <NSObject>
 @optional
-+ (NSDictionary<NSString*, id>*)mapper;
-+ (NSArray *)whitelistProperties;
-+ (NSArray *)blacklistProperties;
-+ (NSDictionary<NSString *, Class> *)modelContainerPropertyGenericClass;
++ (NSDictionary<NSString*, id>*)zy_propertyToJsonKeyMapper;
++ (NSArray *)zy_whitelistProperties;
++ (NSArray *)zy_blacklistProperties;
++ (NSDictionary<NSString *, Class> *)zy_containerPropertyGenericClass;
 @end
 
 @interface NSObject (ZYModel)

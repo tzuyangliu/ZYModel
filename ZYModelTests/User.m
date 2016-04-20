@@ -27,7 +27,7 @@
 //    return @[@"gender"];
 //}
 
-+ (NSDictionary *)mapper
++ (NSDictionary *)zy_propertyToJsonKeyMapper
 {
     return @{@"name": @"user_name",
              @"uid": @"user_uid",

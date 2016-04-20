@@ -9,7 +9,7 @@
  支持的类型：
  
  NSObject 及其子类
- 
+ NSValue
  NSNumber
  NSString
  NSMutableString
