@@ -57,6 +57,7 @@ static const NSUInteger kRepeatTimes = 1000;
 
 - (void)testMJExtensionPerformace
 {
+    // 这货没解析NSDate，所以快
     id json = self.json;
     [self measureBlock:^{
         for (NSInteger i = 0; i < kRepeatTimes; i++){

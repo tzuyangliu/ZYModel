@@ -142,14 +142,9 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
                 }
                 else
                 {
-                    if (property->_nsType == ZYEncodingTypeNSDictionary)
-                    {
-                        setterObject = [value copy];
-                    }
-                    else
-                    {
-                        setterObject = [value mutableCopy];
-                    }
+                    setterObject = (nsType == ZYEncodingTypeNSDictionary)
+                    ? [value copy]
+                    : [value mutableCopy];
                 }
             }
             break;
