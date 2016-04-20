@@ -5,9 +5,11 @@
 //  Created by sheepliu on 16/4/5.
 //  Copyright © 2016年 tzuyangliu. All rights reserved.
 //
+
 /**
- 支持的类型：
  
+ ---支持的类型---
+
  NSObject 及其子类
  NSDate
  NSValue
@@ -25,6 +27,7 @@
  NSMutableDictionary<T,T>
  
  ---C系数值---
+ 
  bool
  int8_t __signed char
  uint8_t unsigned char
@@ -35,12 +38,12 @@
  int64_t long long
  uint64_t unsigned long long
  
- float ?
- double ?
- long double ?
+ float
+ double
+ long double
  
+ ---优化---
  
- 优化：
  class info / model meta cache
  IMP cache ?
  stack variables ?
@@ -50,6 +53,7 @@
  c function
  low-level api (core foundation)
  efficency coding
+ 
  */
 
 #import <XCTest/XCTest.h>

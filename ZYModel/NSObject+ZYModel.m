@@ -330,7 +330,23 @@ NS_INLINE void SetCNumberToProperty(id target, ZYClassProperty *property, NSNumb
         }
         case ZYEncodingTypeFloat:
         {
-            
+            float floatValue = number.floatValue;
+            if (isnan(floatValue) || isinf(floatValue)) floatValue = 0;
+            ((void (*)(id, SEL, float))(void *) objc_msgSend)((id)target, property->_setter, (float)floatValue);
+            break;
+        }
+        case ZYEncodingTypeDouble:
+        {
+            double doubleValue = number.doubleValue;
+            if (isnan(doubleValue) || isinf(doubleValue)) doubleValue = 0;
+            ((void (*)(id, SEL, double))(void *) objc_msgSend)((id)target, property->_setter, (double)doubleValue);
+            break;
+        }
+        case ZYEncodingTypeLongDouble:
+        {
+            long double longDoubleValue = (long double)number.doubleValue;
+            if (isnan(longDoubleValue) || isinf(longDoubleValue)) longDoubleValue = 0;
+            ((void (*)(id, SEL, long double))(void *) objc_msgSend)((id)target, property->_setter, (long double)longDoubleValue);
             break;
         }
         default:
