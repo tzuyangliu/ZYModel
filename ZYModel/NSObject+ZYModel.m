@@ -11,6 +11,17 @@
 #import "ZYModelMeta.h"
 #import <objc/objc-runtime.h>
 
+NS_INLINE NSDateFormatter *GlobalDateFormatter()
+{
+    static dispatch_once_t onceToken;
+    static NSDateFormatter *formatter;
+    dispatch_once(&onceToken, ^{
+        formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"EE MMM dd HH:mm:ss ZZZ yyyy";
+    });
+    return formatter;
+}
+
 NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id value)
 {
     id setterObject = nil;
@@ -159,7 +170,18 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
         // Date
         case ZYEncodingTypeNSDate:
         {
-            // TODO: 未完成
+            if ([value isKindOfClass:[NSDate class]])
+            {
+                setterObject = value;
+            }
+            else if ([value isKindOfClass:[NSString class]])
+            {
+                NSDate *date = [GlobalDateFormatter() dateFromString:(NSString *)value];
+                if (date)
+                {
+                    setterObject = date;
+                }
+            }
             break;
         }
         // Value

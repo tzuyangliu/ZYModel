@@ -9,6 +9,7 @@
  支持的类型：
  
  NSObject 及其子类
+ NSDate
  NSValue
  NSNumber ?还未支持 NSString -> NSNumber
  NSDecimalNumber ?同上
@@ -40,15 +41,15 @@
  
  
  优化：
- memory cache class info / model meta
- stack variables
+ class info / model meta cache
+ IMP cache ?
+ stack variables ?
  high performance lock
  runtime method
  force_inline
  c function
  low-level api (core foundation)
  efficency coding
- 
  */
 
 #import <XCTest/XCTest.h>
@@ -93,8 +94,8 @@
     // repostsCount
     XCTAssertEqual(weiboStatus.repostsCount, 12662);
     // createdAt
-//    XCTAssertNotNil(weiboStatus.createdAt);
-//    XCTAssertTrue([weiboStatus.createdAt isKindOfClass:[NSDate class]]);
+    XCTAssertNotNil(weiboStatus.createdAt);
+    XCTAssertTrue([weiboStatus.createdAt isKindOfClass:[NSDate class]]);
     // User
     XCTAssertNotNil(weiboStatus.user);
     // mid - NSMutableString

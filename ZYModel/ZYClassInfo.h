@@ -20,7 +20,7 @@ typedef NS_ENUM (NSUInteger, ZYEncodingNSType) {
     ZYEncodingTypeNSDecimalNumber,
     ZYEncodingTypeNSData, //√
     ZYEncodingTypeNSMutableData, //√
-    ZYEncodingTypeNSDate,
+    ZYEncodingTypeNSDate, //√
     ZYEncodingTypeNSURL, //√
     ZYEncodingTypeNSArray, //√
     ZYEncodingTypeNSMutableArray, //√
