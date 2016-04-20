@@ -28,7 +28,6 @@
     NSDictionary<NSString *, Class> *_modelContainerPropertyGenericClassMap;
     
     NSMutableArray<ZYModelPropertyMeta *> *_propertyMetas;
-    
 }
 
 - (instancetype)initWithClass:(Class)cls;

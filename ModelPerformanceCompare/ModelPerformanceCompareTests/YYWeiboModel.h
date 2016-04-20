@@ -136,7 +136,7 @@
 @property (nonatomic, assign) int32_t sourceType;
 @property (nonatomic, assign) int32_t sourceAllowClick;
 @property (nonatomic, strong) NSString *geo;
-@property (nonatomic, strong) NSArray *annotations; // 对
+@property (nonatomic, strong) NSArray *annotations;
 @property (nonatomic, assign) int32_t bizFeature;
 @property (nonatomic, assign) int32_t mlevel;
 @property (nonatomic, strong) NSString *mblogid;
