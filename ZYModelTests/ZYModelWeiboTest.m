@@ -10,8 +10,8 @@
  
  NSObject 及其子类
  NSValue
- NSNumber
- NSDecimalNumber
+ NSNumber ?还未支持 NSString -> NSNumber
+ NSDecimalNumber ?同上
  NSData
  NSMutableData
  NSString
@@ -34,9 +34,21 @@
  int64_t long long
  uint64_t unsigned long long
  
- float
- double
- long double
+ float ?
+ double ?
+ long double ?
+ 
+ 
+ 优化：
+ memory cache class info / model meta
+ stack variables
+ high performance lock
+ runtime method
+ force_inline
+ c function
+ low-level api (core foundation)
+ efficency coding
+ 
  */
 
 #import <XCTest/XCTest.h>

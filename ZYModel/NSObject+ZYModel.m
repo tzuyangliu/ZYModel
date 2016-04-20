@@ -60,34 +60,44 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
         case ZYEncodingTypeNSArray:
         case ZYEncodingTypeNSMutableArray:
         {
-            if (property->_containCls)
+            NSArray *array = nil;
+            if ([value isKindOfClass:[NSArray class]])
             {
-                if ([value isKindOfClass:[NSArray class]])
+                array = value;
+            }
+            else if ([value isKindOfClass:[NSSet class]])
+            {
+                array = ((NSSet *)value).allObjects;
+            }
+            if (array)
+            {
+                if (property->_containCls)
                 {
-                    setterObject = [NSMutableArray array];
-                    [(NSArray *)value enumerateObjectsUsingBlock:^(id  _Nonnull subContent, NSUInteger idx, BOOL * _Nonnull stop) {
+                    NSMutableArray *finalArray = [NSMutableArray array];
+                    [array enumerateObjectsUsingBlock:^(id  _Nonnull subContent, NSUInteger idx, BOOL * _Nonnull stop) {
                         if ([subContent isKindOfClass:property->_containCls])
                         {
-                            [setterObject addObject:subContent];
+                            [finalArray addObject:subContent];
                         }
                         else
                         {
                             id tempObject = [property->_containCls zy_modelWithJson:subContent];
                             if (tempObject)
                             {
-                                [setterObject addObject:tempObject];
+                                [finalArray addObject:tempObject];
                             }
                         }
                     }];
-                    if (property->_nsType == ZYEncodingTypeNSArray)
-                    {
-                        setterObject = [setterObject copy];
-                    }
+                    setterObject = (nsType == ZYEncodingTypeNSArray)
+                    ?finalArray.copy
+                    :finalArray;
                 }
-            }
-            else
-            {
-                // TODO: 未完成
+                else
+                {
+                    setterObject = (nsType == ZYEncodingTypeNSArray)
+                    ?array
+                    :array.mutableCopy;
+                }
             }
             break;
         }
@@ -196,8 +206,7 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
                 if (property->_hasCustomContainCls)
                 {
                     NSMutableSet *finalSet = [NSMutableSet set];
-                    for (id item in set)
-                    {
+                    [set enumerateObjectsUsingBlock:^(id  _Nonnull item, BOOL * _Nonnull stop) {
                         if ([item isKindOfClass:property->_containCls])
                         {
                             [finalSet addObject:item];
@@ -209,7 +218,7 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
                                 [finalSet addObject:obj];
                             }
                         }
-                    }
+                    }];
                     setterObject = (nsType == ZYEncodingTypeNSSet)
                     ?finalSet.copy
                     :finalSet;
