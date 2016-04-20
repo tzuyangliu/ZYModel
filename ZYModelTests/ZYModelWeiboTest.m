@@ -63,7 +63,7 @@
 
 - (void)testBasicFunction {
     id json = self.json;
-    YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJSON:json];
+    YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJson:json];
     
     XCTAssertNotNil(weiboStatus);
     // statusID
@@ -113,7 +113,7 @@
     id json = self.json;
     [self measureBlock:^{
         for (NSInteger i = 0; i < 1000; i++){
-            __unused YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJSON:json];
+            __unused YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJson:json];
         }
     }];
 }

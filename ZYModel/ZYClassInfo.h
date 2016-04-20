@@ -10,17 +10,18 @@
 #import <objc/runtime.h>
 
 /// Foundation Class Type
+// 已支持的在后面会有勾
 typedef NS_ENUM (NSUInteger, ZYEncodingNSType) {
-    ZYEncodingTypeNSUnknown = 0,
+    ZYEncodingTypeNSUnknown = 0, //√ 这种是自定义类型
     ZYEncodingTypeNSString, //√
     ZYEncodingTypeNSMutableString, //√
-    ZYEncodingTypeNSValue,
-    ZYEncodingTypeNSNumber, //√
-    ZYEncodingTypeNSDecimalNumber, //√
-    ZYEncodingTypeNSData,
-    ZYEncodingTypeNSMutableData,
+    ZYEncodingTypeNSValue, //√
+    ZYEncodingTypeNSNumber,
+    ZYEncodingTypeNSDecimalNumber,
+    ZYEncodingTypeNSData, //√
+    ZYEncodingTypeNSMutableData, //√
     ZYEncodingTypeNSDate,
-    ZYEncodingTypeNSURL,
+    ZYEncodingTypeNSURL, //√
     ZYEncodingTypeNSArray, //√
     ZYEncodingTypeNSMutableArray, //√
     ZYEncodingTypeNSDictionary, //√

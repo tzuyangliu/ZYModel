@@ -120,7 +120,7 @@
 @property (nonatomic, assign) int32_t userType;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSArray *picIds;        /// Array<NSString>
-//@property (nonatomic, strong) NSDictionary *picInfos; /// Dic<NSString, YYWeiboPicture>
+@property (nonatomic, strong) NSDictionary *picInfos; /// Dic<NSString, YYWeiboPicture>
 @property (nonatomic, strong) NSArray *urlStruct;     ///< Array<YYWeiboURL>
 @property (nonatomic, assign) BOOL favorited;
 @property (nonatomic, assign) BOOL truncated;

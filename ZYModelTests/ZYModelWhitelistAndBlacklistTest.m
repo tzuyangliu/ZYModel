@@ -72,7 +72,7 @@
 {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    UserWithWhitelist *user = [UserWithWhitelist zy_modelWithJSON:self.json];
+    UserWithWhitelist *user = [UserWithWhitelist zy_modelWithJson:self.json];
     XCTAssertNotNil(user.name);
     XCTAssertNil(user.uid);
     XCTAssertNil(user.gender);
@@ -87,7 +87,7 @@
 {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
-    UserWithBlacklist *user = [UserWithBlacklist zy_modelWithJSON:self.json];
+    UserWithBlacklist *user = [UserWithBlacklist zy_modelWithJson:self.json];
     XCTAssertNil(user.name);
     XCTAssertNil(user.uid);
     XCTAssertNil(user.gender);

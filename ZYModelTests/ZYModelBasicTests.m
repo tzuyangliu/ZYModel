@@ -66,7 +66,7 @@
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
     NSDictionary* json = self.json;
-    User* user = [User zy_modelWithJSON:json];
+    User* user = [User zy_modelWithJson:json];
     XCTAssertNotNil(user.uid);
     XCTAssertNotNil(user.name);
     XCTAssertNotNil(user.gender);

@@ -18,13 +18,12 @@
 
 @interface NSObject (ZYModel)
 
-- (void)zy_setPropertiesWithJSON:(id)json;
+- (void)zy_setPropertiesWithJson:(id)json;
 - (void)zy_setPropertiesWithDictionary:(NSDictionary*)dictionary;
 
-+ (instancetype)zy_modelWithJSON:(id)json;
++ (instancetype)zy_modelWithJson:(id)json;
 + (instancetype)zy_modelWithDictionary:(NSDictionary*)dictionary;
 
-+ (NSArray *)zy_modelArrayWithJSON:(id)json;
-//+ (NSArray *)zy_modelArrayWithDictionaryArray:(NSArray<NSDictionary *> *)array;
++ (NSArray *)zy_modelArrayWithJson:(id)json;
 
 @end

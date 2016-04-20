@@ -11,8 +11,6 @@
 #import "ZYModelMeta.h"
 #import <objc/objc-runtime.h>
 
-
-
 NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id value)
 {
     id setterObject = nil;
@@ -21,11 +19,11 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
     {
         case ZYEncodingTypeNSUnknown:
         {
-            setterObject = [property->_cls zy_modelWithJSON:value];
+            setterObject = [property->_cls zy_modelWithJson:value];
             break;
         }
         // String
-        // 可以接受的类型：NSString / NSMutableString / NSAttributedString / NSNumber /
+        // 可以接受的类型：NSString / NSMutableString / NSAttributedString / NSNumber
         case ZYEncodingTypeNSString:
         case ZYEncodingTypeNSMutableString:
         {
@@ -74,7 +72,7 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
                         }
                         else
                         {
-                            id tempObject = [property->_containCls zy_modelWithJSON:subContent];
+                            id tempObject = [property->_containCls zy_modelWithJson:subContent];
                             if (tempObject)
                             {
                                 [setterObject addObject:tempObject];
@@ -109,7 +107,7 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
                         }
                         else
                         {
-                            id tempObject = [property->_containCls zy_modelWithJSON:valueForKey];
+                            id tempObject = [property->_containCls zy_modelWithJson:valueForKey];
                             if (tempObject)
                             {
                                 setterObject[key] = tempObject;
@@ -159,6 +157,44 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
         {
             if ([value isKindOfClass:[NSValue class]]){
                 setterObject = value;
+            }
+            break;
+        }
+        // Data
+        case ZYEncodingTypeNSData:
+        case ZYEncodingTypeNSMutableData:
+        {
+            if ([value isKindOfClass:[NSData class]]){
+                setterObject = (nsType == ZYEncodingTypeNSData)
+                ?((NSData *)value).copy
+                :((NSData *)value).mutableCopy;
+            }
+            else if ([value isKindOfClass:[NSString class]])
+            {
+                NSData *data = [(NSString *)value dataUsingEncoding:NSUTF8StringEncoding];
+                setterObject = (nsType == ZYEncodingTypeNSData)
+                ?data
+                :data.mutableCopy;
+            }
+            break;
+        }
+        // Set
+        case ZYEncodingTypeNSSet:
+        case ZYEncodingTypeNSMutableSet:
+        {
+            
+            break;
+        }
+        case ZYEncodingTypeNSNumber:
+        case ZYEncodingTypeNSDecimalNumber:
+        {
+            if ([value isKindOfClass:[NSNumber class]])
+            {
+                setterObject = value;
+            }
+            else if ([value isKindOfClass:[NSString class]])
+            {
+                // NSString -> NSNumber
             }
             break;
         }
@@ -328,7 +364,7 @@ NS_INLINE void SetValueToProperty(id target, ZYClassProperty *property, id value
     return nil;
 }
 
-- (void)zy_setPropertiesWithJSON:(id)json
+- (void)zy_setPropertiesWithJson:(id)json
 {
     NSDictionary *dictionary = [[self class] _zy_dictionaryWithJSON:json];
     if (dictionary)
@@ -361,33 +397,20 @@ static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, voi
 {
     Class cls = [self class];
     ZYModelMeta *meta = [ZYModelMeta metaWithClass:cls];
-
-//    NSDictionary *mapper = meta->_jsonKeyToSetterMapper;
-//    NSArray *properties = mapper.allValues;
-    
     ModelSetContext context = {0};
     context.modelMeta = (__bridge void *)(meta);
     context.model = (__bridge void *)(self);
     context.dictionary = (__bridge void *)(dictionary);
-
     CFArrayApplyFunction((CFArrayRef)meta->_propertyMetas,
                          CFRangeMake(0, meta->_propertyMetas.count),
                          ModelSetWithPropertyMetaArrayFunction,
                          &context);
-
-//    [dictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull jsonKey, id  _Nonnull content, BOOL * _Nonnull stop) {
-//        if ([mapper objectForKey:jsonKey]){
-//            id content = dictionary[jsonKey];
-//            ZYClassProperty *property = mapper[jsonKey];
-//            SetValueToProperty(self, property, content);
-//        }
-//    }];
 }
 
-+ (instancetype)zy_modelWithJSON:(id)json
++ (instancetype)zy_modelWithJson:(id)json
 {
     NSObject* obj = [[self class] new];
-    [obj zy_setPropertiesWithJSON:json];
+    [obj zy_setPropertiesWithJson:json];
     return obj;
 }
 
@@ -400,12 +423,12 @@ static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, voi
     return obj;
 }
 
-+ (NSMutableArray *)zy_modelMutableArrayWithJSON:(id)json
++ (NSMutableArray *)zy_modelMutableArrayWithJson:(id)json
 {
     NSMutableArray *objectArray = [NSMutableArray array];
     NSArray *array = [self _zy_arrayWithJSON:json];
     for (id subJson in array){
-        id obj = [self zy_modelWithJSON:subJson];
+        id obj = [self zy_modelWithJson:subJson];
         if (obj)
         {
             [objectArray addObject:obj];
@@ -414,9 +437,9 @@ static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, voi
     return objectArray;
 }
 
-+ (NSArray *)zy_modelArrayWithJSON:(id)json
++ (NSArray *)zy_modelArrayWithJson:(id)json
 {
-    return [[self zy_modelMutableArrayWithJSON:json] copy];
+    return [[self zy_modelMutableArrayWithJson:json] copy];
 }
 
 @end
