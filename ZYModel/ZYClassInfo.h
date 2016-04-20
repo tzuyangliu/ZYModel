@@ -26,8 +26,8 @@ typedef NS_ENUM (NSUInteger, ZYEncodingNSType) {
     ZYEncodingTypeNSMutableArray, //√
     ZYEncodingTypeNSDictionary, //√
     ZYEncodingTypeNSMutableDictionary, //√
-    ZYEncodingTypeNSSet,
-    ZYEncodingTypeNSMutableSet,
+    ZYEncodingTypeNSSet, //√
+    ZYEncodingTypeNSMutableSet, //√
 };
 
 typedef NS_OPTIONS(NSUInteger, ZYEncodingType) {

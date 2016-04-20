@@ -182,7 +182,45 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
         case ZYEncodingTypeNSSet:
         case ZYEncodingTypeNSMutableSet:
         {
-            
+            NSSet *set = nil;
+            if ([value isKindOfClass:[NSSet class]])
+            {
+                set = ((NSSet *)value).copy;
+            }
+            else if ([value isKindOfClass:[NSArray class]])
+            {
+                set = [NSSet setWithArray:(NSArray *)value];
+            }
+            if (set)
+            {
+                if (property->_hasCustomContainCls)
+                {
+                    NSMutableSet *finalSet = [NSMutableSet set];
+                    for (id item in set)
+                    {
+                        if ([item isKindOfClass:property->_containCls])
+                        {
+                            [finalSet addObject:item];
+                        }
+                        else if ([item isKindOfClass:[NSDictionary class]]){
+                            id obj = [property->_containCls zy_modelWithDictionary:item];
+                            if (obj)
+                            {
+                                [finalSet addObject:obj];
+                            }
+                        }
+                    }
+                    setterObject = (nsType == ZYEncodingTypeNSSet)
+                    ?finalSet.copy
+                    :finalSet;
+                }
+                else
+                {
+                    setterObject = (nsType == ZYEncodingTypeNSSet)
+                    ?set
+                    :set.mutableCopy;
+                }
+            }
             break;
         }
         case ZYEncodingTypeNSNumber:

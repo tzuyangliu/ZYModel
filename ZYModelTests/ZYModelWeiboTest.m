@@ -11,8 +11,13 @@
  NSObject 及其子类
  NSValue
  NSNumber
+ NSDecimalNumber
+ NSData
+ NSMutableData
  NSString
  NSMutableString
+ NSSet
+ NSMutableSet
  NSArray<T>
  NSMutableArray<T>
  NSDictionary<T,T>
