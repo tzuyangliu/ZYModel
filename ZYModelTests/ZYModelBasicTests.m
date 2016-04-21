@@ -6,11 +6,9 @@
 //  Copyright © 2016年 tzuyangliu. All rights reserved.
 //
 
-#import "User.h"
+#import "DemoClass.h"
 #import "ZYModel.h"
 #import <XCTest/XCTest.h>
-
-//static const NSUInteger kTestRepeatTimes = 1000;
 
 @interface ZYModelBasicTests : XCTestCase
 @property (strong, nonatomic) NSDictionary* json;
@@ -23,7 +21,7 @@
     [super setUp];
 
     NSError* error = nil;
-    NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"user"
+    NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"demo"
                                                                           ofType:@"json"];
     NSData* dataFromFile = [NSData dataWithContentsOfFile:filePath];
     NSDictionary* data = [NSJSONSerialization JSONObjectWithData:dataFromFile
@@ -41,73 +39,63 @@
 
 #pragma mark - Function Test
 
-- (void)testBaselineFunction
+- (void)testBasicFunction
 {
-    NSDictionary* json = self.json;
-    User* user = [[User alloc] init];
-    user.uid = json[@"user_uid"];
-    user.name = json[@"user_name"];
-    user.gender = json[@"user_gender"];
-    user.address = json[@"user_address"];
+    id json = self.json;
+    DemoClass *obj = [DemoClass zy_modelWithJson:json];
     
-    XCTAssertNotNil(user.uid);
-    XCTAssertNotNil(user.name);
-    XCTAssertNotNil(user.gender);
-    XCTAssertNotNil(user.address);
+    // bool
+    XCTAssert(sizeof(obj.cBoolTrue) == sizeof(bool));
+    XCTAssert(obj.cBoolTrue == true);
+    XCTAssert(obj.cBoolFalse == false);
     
-    XCTAssertEqual(user.uid, json[@"user_uid"]);
-    XCTAssertEqual(user.name, json[@"user_name"]);
-    XCTAssertEqual(user.gender, json[@"user_gender"]);
-    XCTAssertEqual(user.address, json[@"user_address"]);
+    // BOOL
+    XCTAssert(sizeof(obj.ocBoolTrue) == sizeof(BOOL));
+    XCTAssert(obj.ocBoolTrue == YES);
+    XCTAssert(obj.ocBoolFalse == NO);
+    
+    // int8
+    XCTAssert(sizeof(obj.int8) == sizeof(int8_t));
+    XCTAssert(obj.int8 == 1);
+    
+    // uint8
+    XCTAssert(sizeof(obj.uint8) == sizeof(uint8_t));
+    XCTAssert(obj.uint8 = 1);
+    
+    // int16
+    XCTAssert(sizeof(obj.int16) == sizeof(int16_t));
+    XCTAssert(obj.int16 = 1);
+    
+    // uint16
+    XCTAssert(sizeof(obj.uint16) == sizeof(uint16_t));
+    XCTAssert(obj.uint16 = 1);
+    
+    // int32
+    XCTAssert(sizeof(obj.int32) == sizeof(int32_t));
+    XCTAssert(obj.int32 = 1);
+    
+    // uint32
+    XCTAssert(sizeof(obj.uint32) == sizeof(uint32_t));
+    XCTAssert(obj.uint32 = 1);
+    
+    // int64
+    XCTAssert(sizeof(obj.int64) == sizeof(int64_t));
+    XCTAssert(obj.int64 = 1);
+    
+    // uint64
+    XCTAssert(sizeof(obj.uint64) == sizeof(uint64_t));
+    XCTAssert(obj.uint64 = 1);
+    
+    // float
+    XCTAssert(sizeof(obj.floatValue) == sizeof(float));
+    XCTAssert(obj.floatValue == 1.0);
+    
+    // double
+    XCTAssert(sizeof(obj.doubleValue) == sizeof(double));
+    XCTAssert(obj.doubleValue == 1.0);
+    
+    // long double
+    XCTAssert(sizeof(obj.longDoubleValue) == sizeof(long double));
+    XCTAssert(obj.longDoubleValue == 1.0);
 }
-
-- (void)testZYModelFunction
-{
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-    NSDictionary* json = self.json;
-    User* user = [User zy_modelWithJson:json];
-    XCTAssertNotNil(user.uid);
-    XCTAssertNotNil(user.name);
-    XCTAssertNotNil(user.gender);
-    XCTAssertNotNil(user.address);
-    XCTAssertNotNil(user.father);
-
-    XCTAssertEqual(user.uid, json[@"user_uid"]);
-    XCTAssertEqual(user.name, json[@"user_name"]);
-    XCTAssertEqual(user.gender, json[@"user_gender"]);
-    XCTAssertEqual(user.address, json[@"user_address"]);
-    XCTAssertEqual(user.father.name, json[@"father"][@"user_name"]);
-    // Test log
-    NSLog(@"\n\n%@\n\n", user);
-}
-
-#pragma mark - Performance Test
-
-- (void)testBaselinePerformace
-{
-//    NSDictionary* json = self.json;
-//    [self measureBlock:^{
-//        for (NSUInteger i = 0; i < kTestRepeatTimes; i++) {
-//            User* user = [[User alloc] init];
-//            user.name = json[@"user_name"];
-//            user.uid = json[@"user_uid"];
-//            user.gender = json[@"user_gender"];
-//            user.address = json[@"user_address"];
-//        }
-//    }];
-}
-
-- (void)testZYModelPerformance
-{
-//    NSDictionary* json = self.json;
-//    // This is an example of a performance test case.
-//    [self measureBlock:^{
-//        // Put the code you want to measure the time of here.
-//        for (NSUInteger i = 0; i < kTestRepeatTimes; i++) {
-//            User __unused* user = [User zy_modelWithJSON:json];
-//        }
-//    }];
-}
-
 @end

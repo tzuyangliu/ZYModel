@@ -1,0 +1,17 @@
+{
+    "c_bool_true":"true",
+    "c_bool_false":"false",
+    "oc_bool_true":"YES",
+    "oc_bool_false":"NO",
+    "int8":1,
+    "uint8":1,
+    "int16":1,
+    "uint16":1,
+    "int32":1,
+    "uint32":1,
+    "int64":1,
+    "uint64":1,
+    "c_float":1.0,
+    "c_double":1.0,
+    "c_long_double":1.0,
+}
