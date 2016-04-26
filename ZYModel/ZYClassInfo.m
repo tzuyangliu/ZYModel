@@ -208,7 +208,7 @@ static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetTyp
             }
             if (!_getterString)
             {
-                _getterString = [NSString stringWithFormat:@"get%@%@:", [_name substringToIndex:1].uppercaseString, [_name substringFromIndex:1]];
+                _getterString = _name;
             }
         }
         _setter = NSSelectorFromString(_setterString);

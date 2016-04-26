@@ -1,8 +1,8 @@
 {
-    "c_bool_true":"true",
-    "c_bool_false":"false",
-    "oc_bool_true":"YES",
-    "oc_bool_false":"NO",
+    "c_bool_true":"1",
+    "c_bool_false":"0",
+    "oc_bool_true":"1",
+    "oc_bool_false":"0",
     "int8":1,
     "uint8":1,
     "int16":1,

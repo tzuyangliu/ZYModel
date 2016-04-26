@@ -473,7 +473,7 @@ static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, voi
     }
 }
 
-static NSNumber *ModelCreateNumberFromProperty(__unsafe_unretained id model,
+static __inline__ __attribute__((always_inline)) NSNumber *ModelCreateNumberFromProperty(__unsafe_unretained id model,
                                                   __unsafe_unretained ZYModelPropertyMeta *meta)
 {
     SEL getter = meta->_classProperty->_getter;
@@ -611,7 +611,6 @@ static id ModelToJson(NSObject *model)
         if (propertyMeta->_classProperty->_isCNumber)
         {
             jsonValue = ModelCreateNumberFromProperty(model, propertyMeta);
-            NSLog(@"%@", jsonValue);
         }
         else if (propertyMeta->_classProperty->_nsType)
         {
