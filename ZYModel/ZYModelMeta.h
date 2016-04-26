@@ -25,6 +25,7 @@
 {
     @package
     ZYClassInfo *_classInfo;
+    NSDictionary<NSString *, NSString *> *_mapper;
     NSDictionary<NSString *, Class> *_modelContainerPropertyGenericClassMap;
     
     NSMutableArray<ZYModelPropertyMeta *> *_propertyMetas;

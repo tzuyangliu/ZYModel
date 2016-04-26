@@ -142,11 +142,14 @@ static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetTyp
         }
         unsigned int attrCount;
         objc_property_attribute_t* attrs = property_copyAttributeList(property, &attrCount);
-        for (unsigned int i = 0; i < attrCount; i++) {
-            switch (attrs[i].name[0]) {
-            case 'T':
+        for (unsigned int i = 0; i < attrCount; i++)
+        {
+            switch (attrs[i].name[0])
+            {
+                case 'T':
                 {
-                    if (attrs[i].value) {
+                    if (attrs[i].value)
+                    {
                         _typeEncoding = [NSString stringWithUTF8String:attrs[i].value];
                         _type = ZYEncodingGetType(attrs[i].value);
                         _isCNumber = ZYEncodingGetIsCNumber(_type);
@@ -159,7 +162,8 @@ static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetTyp
                                 _cls = objc_getClass(name);
                             }
                         }
-                        if ((_type & ZYEncodingTypeMask) == ZYEncodingTypeObject) {
+                        if ((_type & ZYEncodingTypeMask) == ZYEncodingTypeObject)
+                        {
                             _nsType = ZYClassGetNSType(_cls);
                             if (_nsType == ZYEncodingTypeNSArray
                                 || _nsType == ZYEncodingTypeNSMutableArray
@@ -172,26 +176,43 @@ static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetTyp
                     }
                     break;
                 }
-            case 'S': {
-                if (attrs[i].value) {
-                    _setterString = [NSString stringWithUTF8String:attrs[i].value];
+                case 'S':
+                {
+                    if (attrs[i].value)
+                    {
+                        _setterString = [NSString stringWithUTF8String:attrs[i].value];
+                    }
+                    break;
+                    
                 }
-                break;
-            }
-            default:
-                break;
+                case 'G':
+                {
+                    if (attrs[i].value)
+                    {
+                        _getterString = [NSString stringWithUTF8String:attrs[i].value];
+                    }
+                }
+                default:
+                    break;
             }
         }
-        if (attrs) {
+        if (attrs)
+        {
             free(attrs);
             attrs = NULL;
         }
         if (_name.length) {
-            if (!_setterString) {
+            if (!_setterString)
+            {
                 _setterString = [NSString stringWithFormat:@"set%@%@:", [_name substringToIndex:1].uppercaseString, [_name substringFromIndex:1]];
+            }
+            if (!_getterString)
+            {
+                _getterString = [NSString stringWithFormat:@"get%@%@:", [_name substringToIndex:1].uppercaseString, [_name substringFromIndex:1]];
             }
         }
         _setter = NSSelectorFromString(_setterString);
+        _getter = NSSelectorFromString(_getterString);
     }
     return self;
 }

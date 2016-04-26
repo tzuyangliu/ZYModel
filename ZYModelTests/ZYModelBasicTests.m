@@ -39,11 +39,8 @@
 
 #pragma mark - Function Test
 
-- (void)testBasicFunction
+- (void)testCNumbersWithDemoClassObject:(DemoClass *)obj
 {
-    id json = self.json;
-    DemoClass *obj = [DemoClass zy_modelWithJson:json];
-    
     // bool
     XCTAssert(sizeof(obj.cBoolTrue) == sizeof(bool));
     XCTAssert(obj.cBoolTrue == true);
@@ -98,4 +95,20 @@
     XCTAssert(sizeof(obj.longDoubleValue) == sizeof(long double));
     XCTAssert(obj.longDoubleValue == 1.0);
 }
+
+- (void)testJsonToModel
+{
+    id json = self.json;
+    DemoClass *obj = [DemoClass zy_modelWithJson:json];
+    [self testCNumbersWithDemoClassObject:obj];
+}
+
+- (void)testModelToJson
+{
+    id json = self.json;
+    DemoClass *obj = [DemoClass zy_modelWithJson:json];
+    NSDictionary *modelJson = [obj zy_modelJson];
+    XCTAssert([json isEqual:modelJson]);
+}
+
 @end

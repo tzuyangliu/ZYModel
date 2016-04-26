@@ -85,12 +85,18 @@ typedef NS_OPTIONS(NSUInteger, ZYEncodingType) {
     ZYEncodingType _type;
     ZYEncodingNSType _nsType;
     NSString *_typeEncoding;
+    // Class
     Class _cls;
     Class _containCls;
     BOOL _hasCustomContainCls;
+    // CNumber
     BOOL _isCNumber;
+    // Setter
     NSString *_setterString;
     SEL _setter;
+    // Getter
+    NSString *_getterString;
+    SEL _getter;
 }
 - (instancetype)initWithProperty:(objc_property_t)property;
 @end

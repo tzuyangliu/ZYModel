@@ -473,6 +473,158 @@ static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, voi
     }
 }
 
+static NSNumber *ModelCreateNumberFromProperty(__unsafe_unretained id model,
+                                                  __unsafe_unretained ZYModelPropertyMeta *meta)
+{
+    SEL getter = meta->_classProperty->_getter;
+    switch (meta->_classProperty->_type & ZYEncodingTypeMask) {
+        case ZYEncodingTypeBool: {
+            return @(((bool (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeInt8: {
+            return @(((int8_t (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeUInt8: {
+            return @(((uint8_t (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeInt16: {
+            return @(((int16_t (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeUInt16: {
+            return @(((uint16_t (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeInt32: {
+            return @(((int32_t (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeUInt32: {
+            return @(((uint32_t (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeInt64: {
+            return @(((int64_t (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeUInt64: {
+            return @(((uint64_t (*)(id, SEL))(void *) objc_msgSend)((id)model, getter));
+        }
+        case ZYEncodingTypeFloat: {
+            float num = ((float (*)(id, SEL))(void *) objc_msgSend)((id)model, getter);
+            if (isnan(num) || isinf(num)) return nil;
+            return @(num);
+        }
+        case ZYEncodingTypeDouble: {
+            double num = ((double (*)(id, SEL))(void *) objc_msgSend)((id)model, getter);
+            if (isnan(num) || isinf(num)) return nil;
+            return @(num);
+        }
+        case ZYEncodingTypeLongDouble: {
+            double num = ((long double (*)(id, SEL))(void *) objc_msgSend)((id)model, getter);
+            if (isnan(num) || isinf(num)) return nil;
+            return @(num);
+        }
+        default: return nil;
+    }
+    return nil;
+}
+
+static id ModelToJson(NSObject *model)
+{
+    if (!model
+        || model == (id)kCFNull
+        ||[model isKindOfClass:[NSString class]]
+        || [model isKindOfClass:[NSNumber class]])
+    {
+        return model;
+    }
+    if ([model isKindOfClass:[NSDictionary class]])
+    {
+        if ([NSJSONSerialization isValidJSONObject:model])
+        {
+            return model;
+        }
+        NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+        [(NSDictionary *)model enumerateKeysAndObjectsUsingBlock:^(NSString *key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            NSString *stringKey = [key isKindOfClass:[NSString class]] ? key : key.description;
+            if (!stringKey) return;
+            id jsonObj = ModelToJson(obj);
+            if (!jsonObj) jsonObj = (id)kCFNull;
+            newDict[stringKey] = jsonObj;
+        }];
+        return newDict;
+    }
+    if ([model isKindOfClass:[NSSet class]])
+    {
+        NSArray *array = ((NSSet *)model).allObjects;
+        if ([NSJSONSerialization isValidJSONObject:array]) return array;
+        NSMutableArray *newArray = [NSMutableArray new];
+        for (id obj in array)
+        {
+            if ([obj isKindOfClass:[NSString class]] || [obj isKindOfClass:[NSNumber class]])
+            {
+                [newArray addObject:obj];
+            }
+            else
+            {
+                id jsonObj = ModelToJson(obj);
+                if (jsonObj && jsonObj != (id)kCFNull) [newArray addObject:jsonObj];
+            }
+        }
+        return newArray;
+    }
+    if ([model isKindOfClass:[NSArray class]])
+    {
+        if ([NSJSONSerialization isValidJSONObject:model]) return model;
+        NSMutableArray *newArray = [NSMutableArray new];
+        for (id obj in (NSArray *)model)
+        {
+            if ([obj isKindOfClass:[NSString class]] || [obj isKindOfClass:[NSNumber class]]) {
+                [newArray addObject:obj];
+            }
+            else
+            {
+                id jsonObj = ModelToJson(obj);
+                if (jsonObj && jsonObj != (id)kCFNull) [newArray addObject:jsonObj];
+            }
+        }
+        return newArray;
+    }
+    if ([model isKindOfClass:[NSURL class]])
+    {
+        return ((NSURL *)model).absoluteString;
+    }
+    if ([model isKindOfClass:[NSAttributedString class]]){
+        return ((NSAttributedString *)model).string;
+    }
+    if ([model isKindOfClass:[NSDate class]]){
+        NSDateFormatter *dateFormatter = GlobalDateFormatter();
+        NSString *dateString = [dateFormatter stringFromDate:(NSDate *)model];
+        return dateString;
+    }
+    if ([model isKindOfClass:[NSData class]]) return nil;
+    ZYModelMeta *modelMeta = [ZYModelMeta metaWithClass:[model class]];
+    if (!modelMeta)
+    {
+        return nil;
+    }
+    NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+    for (ZYModelPropertyMeta *propertyMeta in modelMeta->_propertyMetas){
+        NSString *jsonKey = propertyMeta->_jsonKey;
+        id jsonValue = nil;
+        if (propertyMeta->_classProperty->_isCNumber)
+        {
+            jsonValue = ModelCreateNumberFromProperty(model, propertyMeta);
+            NSLog(@"%@", jsonValue);
+        }
+        else if (propertyMeta->_classProperty->_nsType)
+        {
+            
+        }
+        if (jsonValue)
+        {
+            newDict[jsonKey] = jsonValue;
+        }
+    }
+    return newDict;
+}
+
 - (void)zy_setPropertiesWithDictionary:(NSDictionary*)dictionary
 {
     Class cls = [self class];
@@ -501,6 +653,20 @@ static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, voi
     NSObject* obj = [[self class] new];
     [obj zy_setPropertiesWithDictionary:dictionary];
     return obj;
+}
+
+- (NSDictionary *)zy_modelJson
+{
+    id json = ModelToJson(self);
+    if ([json isKindOfClass:[NSArray class]]
+        || [json isKindOfClass:[NSDictionary class]])
+    {
+        return json;
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 + (NSMutableArray *)zy_modelMutableArrayWithJson:(id)json

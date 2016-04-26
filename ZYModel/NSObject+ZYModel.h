@@ -24,6 +24,8 @@
 + (instancetype)zy_modelWithJson:(id)json;
 + (instancetype)zy_modelWithDictionary:(NSDictionary*)dictionary;
 
+- (NSDictionary *)zy_modelJson;
+
 + (NSArray *)zy_modelArrayWithJson:(id)json;
 
 @end
