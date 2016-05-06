@@ -57,31 +57,31 @@
     
     // uint8
     XCTAssert(sizeof(obj.uint8) == sizeof(uint8_t));
-    XCTAssert(obj.uint8 = 1);
+    XCTAssert(obj.uint8 == 1);
     
     // int16
     XCTAssert(sizeof(obj.int16) == sizeof(int16_t));
-    XCTAssert(obj.int16 = 1);
+    XCTAssert(obj.int16 == 1);
     
     // uint16
     XCTAssert(sizeof(obj.uint16) == sizeof(uint16_t));
-    XCTAssert(obj.uint16 = 1);
+    XCTAssert(obj.uint16 == 1);
     
     // int32
     XCTAssert(sizeof(obj.int32) == sizeof(int32_t));
-    XCTAssert(obj.int32 = 1);
+    XCTAssert(obj.int32 == 1);
     
     // uint32
     XCTAssert(sizeof(obj.uint32) == sizeof(uint32_t));
-    XCTAssert(obj.uint32 = 1);
+    XCTAssert(obj.uint32 == 1);
     
     // int64
     XCTAssert(sizeof(obj.int64) == sizeof(int64_t));
-    XCTAssert(obj.int64 = 1);
+    XCTAssert(obj.int64 == 1);
     
     // uint64
     XCTAssert(sizeof(obj.uint64) == sizeof(uint64_t));
-    XCTAssert(obj.uint64 = 1);
+    XCTAssert(obj.uint64 == 1);
     
     // float
     XCTAssert(sizeof(obj.floatValue) == sizeof(float));
