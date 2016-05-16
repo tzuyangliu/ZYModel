@@ -8,7 +8,7 @@
 
 #import "NSObject+ZYModel.h"
 #import "ZYClassInfo.h"
-#import "ZYModelMeta.h"
+#import "ZYModelTransformInfo.h"
 #import <objc/objc-runtime.h>
 
 NS_INLINE NSDateFormatter *GlobalDateFormatter()
@@ -22,7 +22,7 @@ NS_INLINE NSDateFormatter *GlobalDateFormatter()
     return formatter;
 }
 
-NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id value)
+NS_INLINE void SetNSObjectToProperty(id target, ZYClassPropertyInfo *property, id value)
 {
     id setterObject = nil;
     ZYEncodingNSType nsType = property->_nsType;
@@ -274,7 +274,7 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassProperty *property, id va
     }
 }
 
-NS_INLINE void SetCNumberToProperty(id target, ZYClassProperty *property, NSNumber *number)
+NS_INLINE void SetCNumberToProperty(id target, ZYClassPropertyInfo *property, NSNumber *number)
 {
     switch (property->_type)
     {
@@ -349,7 +349,7 @@ NS_INLINE void SetCNumberToProperty(id target, ZYClassProperty *property, NSNumb
     }
 }
 
-NS_INLINE void SetValueToProperty(id target, ZYClassProperty *property, id value)
+NS_INLINE void SetValueToProperty(id target, ZYClassPropertyInfo *property, id value)
 {
     if (property->_isCNumber)
     {
@@ -380,7 +380,7 @@ NS_INLINE void SetValueToProperty(id target, ZYClassProperty *property, id value
     return nil;
 }
 
-+ (NSDictionary *)zy_containerPropertyGenericClass
++ (NSDictionary *)zy_containerPropertyClassMapper
 {
     return nil;
 }
@@ -462,7 +462,7 @@ typedef struct {
 static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, void *_context) {
     ModelSetContext *context = _context;
     __unsafe_unretained NSDictionary *dictionary = (__bridge NSDictionary *)(context->dictionary);
-    __unsafe_unretained ZYModelPropertyMeta *propertyMeta = (__bridge ZYModelPropertyMeta *)(_propertyMeta);
+    __unsafe_unretained ZYModelPropertyTransformInfo *propertyMeta = (__bridge ZYModelPropertyTransformInfo *)(_propertyMeta);
     if (!propertyMeta->_classProperty->_setter) return;
     id value = nil;
     value = [dictionary objectForKey:propertyMeta->_jsonKey];
@@ -474,7 +474,7 @@ static void ModelSetWithPropertyMetaArrayFunction(const void *_propertyMeta, voi
 }
 
 static __inline__ __attribute__((always_inline)) NSNumber *ModelCreateNumberFromProperty(__unsafe_unretained id model,
-                                                  __unsafe_unretained ZYModelPropertyMeta *meta)
+                                                  __unsafe_unretained ZYModelPropertyTransformInfo *meta)
 {
     SEL getter = meta->_classProperty->_getter;
     switch (meta->_classProperty->_type & ZYEncodingTypeMask) {
@@ -599,13 +599,13 @@ static id ModelToJson(NSObject *model)
         return dateString;
     }
     if ([model isKindOfClass:[NSData class]]) return nil;
-    ZYModelMeta *modelMeta = [ZYModelMeta metaWithClass:[model class]];
+    ZYModelTransformInfo *modelMeta = [ZYModelTransformInfo metaWithClass:[model class]];
     if (!modelMeta)
     {
         return nil;
     }
     NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
-    for (ZYModelPropertyMeta *propertyMeta in modelMeta->_propertyMetas){
+    for (ZYModelPropertyTransformInfo *propertyMeta in modelMeta->_propertyMetas){
         NSString *jsonKey = propertyMeta->_jsonKey;
         id jsonValue = nil;
         if (propertyMeta->_classProperty->_isCNumber)
@@ -627,7 +627,7 @@ static id ModelToJson(NSObject *model)
 - (void)zy_setPropertiesWithDictionary:(NSDictionary*)dictionary
 {
     Class cls = [self class];
-    ZYModelMeta *meta = [ZYModelMeta metaWithClass:cls];
+    ZYModelTransformInfo *meta = [ZYModelTransformInfo metaWithClass:cls];
     ModelSetContext context = {0};
     context.modelMeta = (__bridge void *)(meta);
     context.model = (__bridge void *)(self);

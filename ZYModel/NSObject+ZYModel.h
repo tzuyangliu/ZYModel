@@ -13,7 +13,7 @@
 + (NSDictionary<NSString*, id>*)zy_propertyToJsonKeyMapper;
 + (NSArray *)zy_whitelistProperties;
 + (NSArray *)zy_blacklistProperties;
-+ (NSDictionary<NSString *, Class> *)zy_containerPropertyGenericClass;
++ (NSDictionary<NSString *, Class> *)zy_containerPropertyClassMapper;
 @end
 
 @interface NSObject (ZYModel)

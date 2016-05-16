@@ -6,13 +6,13 @@
 //  Copyright © 2016年 tzuyangliu. All rights reserved.
 //
 
-#import "ZYModelMeta.h"
+#import "ZYModelTransformInfo.h"
 #import "ZYClassInfo.h"
 #import "NSObject+ZYModel.h"
 
-@implementation ZYModelPropertyMeta
+@implementation ZYModelPropertyTransformInfo
 
-- (instancetype)initWithClassProperty:(ZYClassProperty *)classProperty jsonKey:(NSString *)jsonKey
+- (instancetype)initWithClassPropertyInfo:(ZYClassPropertyInfo *)classProperty jsonKey:(NSString *)jsonKey
 {
     self = [super init];
     if (self)
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation ZYModelMeta
+@implementation ZYModelTransformInfo
 
 - (instancetype)initWithClass:(Class)cls
 {
@@ -35,7 +35,7 @@
     {
         Class curCls = cls;
         _propertyMetas = [NSMutableArray array];
-        _modelContainerPropertyGenericClassMap = [cls zy_containerPropertyGenericClass];
+        _modelContainerPropertyGenericClassMap = [cls zy_containerPropertyClassMapper];
         NSArray *whitelistProperties = [cls zy_whitelistProperties];
         NSArray *blacklistProperties = [cls zy_blacklistProperties];
         while (curCls && [curCls superclass] != nil)
@@ -58,8 +58,9 @@
                 {
                     jsonKey = propertyName;
                 }
-                ZYModelPropertyMeta *propertyMeta = [[ZYModelPropertyMeta alloc] initWithClassProperty:propertyDictionary[propertyName]
-                                                                                               jsonKey:jsonKey];
+                ZYModelPropertyTransformInfo *propertyMeta = [[ZYModelPropertyTransformInfo alloc]
+                                                     initWithClassPropertyInfo:propertyDictionary[propertyName]
+                                                     jsonKey:jsonKey];
                 [_propertyMetas addObject:propertyMeta];
             }
             curCls = [curCls superclass];
@@ -79,10 +80,10 @@
         lock = dispatch_semaphore_create(1);
     });
     dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
-    ZYModelMeta *meta = CFDictionaryGetValue(cache, (__bridge const void *)(cls));
+    ZYModelTransformInfo *meta = CFDictionaryGetValue(cache, (__bridge const void *)(cls));
     dispatch_semaphore_signal(lock);
     if (!meta){
-        meta = [[ZYModelMeta alloc] initWithClass:cls];
+        meta = [[ZYModelTransformInfo alloc] initWithClass:cls];
         if (meta) {
             dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
             CFDictionarySetValue(cache, (__bridge const void *)(cls), (__bridge const void *)(meta));

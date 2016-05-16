@@ -18,8 +18,8 @@
 		A4A0165B1CAA6D2E0086DDAA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A0165A1CAA6D2E0086DDAA /* User.m */; };
 		A4D37D5C1CB3E9150040F5A2 /* weibo.json in Resources */ = {isa = PBXBuildFile; fileRef = A4D37D5B1CB3E9150040F5A2 /* weibo.json */; };
 		A4D37D5F1CB3E9450040F5A2 /* YYWeiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D37D5E1CB3E9450040F5A2 /* YYWeiboModel.m */; };
-		A4D54F971CAD26B800D93714 /* ZYModelMeta.h in Headers */ = {isa = PBXBuildFile; fileRef = A4D54F951CAD26B800D93714 /* ZYModelMeta.h */; };
-		A4D54F981CAD26B800D93714 /* ZYModelMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D54F961CAD26B800D93714 /* ZYModelMeta.m */; };
+		A4D54F971CAD26B800D93714 /* ZYModelTransformInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = A4D54F951CAD26B800D93714 /* ZYModelTransformInfo.h */; };
+		A4D54F981CAD26B800D93714 /* ZYModelTransformInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D54F961CAD26B800D93714 /* ZYModelTransformInfo.m */; };
 		A4F87E221CACFF930060AE54 /* ZYClassInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = A4F87E201CACFF930060AE54 /* ZYClassInfo.h */; };
 		A4F87E231CACFF930060AE54 /* ZYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F87E211CACFF930060AE54 /* ZYClassInfo.m */; };
 		A4F87E291CAD142F0060AE54 /* ZYModelWhitelistAndBlacklistTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F87E281CAD142F0060AE54 /* ZYModelWhitelistAndBlacklistTest.m */; };
@@ -53,8 +53,8 @@
 		A4D37D5B1CB3E9150040F5A2 /* weibo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weibo.json; sourceTree = "<group>"; };
 		A4D37D5D1CB3E9450040F5A2 /* YYWeiboModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeiboModel.h; sourceTree = "<group>"; };
 		A4D37D5E1CB3E9450040F5A2 /* YYWeiboModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeiboModel.m; sourceTree = "<group>"; };
-		A4D54F951CAD26B800D93714 /* ZYModelMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYModelMeta.h; sourceTree = "<group>"; };
-		A4D54F961CAD26B800D93714 /* ZYModelMeta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYModelMeta.m; sourceTree = "<group>"; };
+		A4D54F951CAD26B800D93714 /* ZYModelTransformInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYModelTransformInfo.h; sourceTree = "<group>"; };
+		A4D54F961CAD26B800D93714 /* ZYModelTransformInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYModelTransformInfo.m; sourceTree = "<group>"; };
 		A4F87E201CACFF930060AE54 /* ZYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClassInfo.h; sourceTree = "<group>"; };
 		A4F87E211CACFF930060AE54 /* ZYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClassInfo.m; sourceTree = "<group>"; };
 		A4F87E281CAD142F0060AE54 /* ZYModelWhitelistAndBlacklistTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYModelWhitelistAndBlacklistTest.m; sourceTree = "<group>"; };
@@ -105,8 +105,8 @@
 				A4A016541CAA6C4E0086DDAA /* NSObject+ZYModel.m */,
 				A4F87E201CACFF930060AE54 /* ZYClassInfo.h */,
 				A4F87E211CACFF930060AE54 /* ZYClassInfo.m */,
-				A4D54F951CAD26B800D93714 /* ZYModelMeta.h */,
-				A4D54F961CAD26B800D93714 /* ZYModelMeta.m */,
+				A4D54F951CAD26B800D93714 /* ZYModelTransformInfo.h */,
+				A4D54F961CAD26B800D93714 /* ZYModelTransformInfo.m */,
 				A4A0163E1CAA6C010086DDAA /* Info.plist */,
 			);
 			path = ZYModel;
@@ -156,7 +156,7 @@
 			files = (
 				A4A0163D1CAA6C010086DDAA /* ZYModel.h in Headers */,
 				A4A016551CAA6C4E0086DDAA /* NSObject+ZYModel.h in Headers */,
-				A4D54F971CAD26B800D93714 /* ZYModelMeta.h in Headers */,
+				A4D54F971CAD26B800D93714 /* ZYModelTransformInfo.h in Headers */,
 				A4F87E221CACFF930060AE54 /* ZYClassInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,7 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A016561CAA6C4E0086DDAA /* NSObject+ZYModel.m in Sources */,
-				A4D54F981CAD26B800D93714 /* ZYModelMeta.m in Sources */,
+				A4D54F981CAD26B800D93714 /* ZYModelTransformInfo.m in Sources */,
 				A4F87E231CACFF930060AE54 /* ZYClassInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

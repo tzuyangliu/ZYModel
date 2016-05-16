@@ -77,7 +77,7 @@ typedef NS_OPTIONS(NSUInteger, ZYEncodingType) {
 };
 
 
-@interface ZYClassProperty : NSObject
+@interface ZYClassPropertyInfo : NSObject
 {
     @package
     objc_property_t _property;
@@ -104,7 +104,7 @@ typedef NS_OPTIONS(NSUInteger, ZYEncodingType) {
 @interface ZYClassInfo : NSObject
 {
     @package
-    NSDictionary<NSString*, ZYClassProperty*>* _properties;
+    NSDictionary<NSString *, ZYClassPropertyInfo *>* _properties;
 }
 - (instancetype)initWithClass:(Class) class;
 + (instancetype)classInfoWithClass:(Class) class;

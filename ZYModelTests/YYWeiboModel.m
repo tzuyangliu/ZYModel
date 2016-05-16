@@ -119,7 +119,7 @@
              @"picInfos" : @"pic_infos",
              @"inReplyToUserId" : @"in_reply_to_user_id"};
 }
-+ (NSDictionary *)zy_containerPropertyGenericClass {
++ (NSDictionary *)zy_containerPropertyClassMapper {
     return @{@"picIds" : [NSString class],
              @"picInfos" : [YYWeiboPicture class],
              @"urlStruct" : [YYWeiboURL class]};

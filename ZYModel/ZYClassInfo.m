@@ -127,7 +127,7 @@ static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetTyp
 }
 
 
-@implementation ZYClassProperty
+@implementation ZYClassPropertyInfo
 
 - (instancetype)initWithProperty:(objc_property_t)property
 {
@@ -226,14 +226,14 @@ static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetTyp
     self = [super init];
     if (self) {
         _properties = nil;
-        NSDictionary *modelContainerPropertyGenericClassMap = [(id<ZYModel>)cls zy_containerPropertyGenericClass];
+        NSDictionary *modelContainerPropertyGenericClassMap = [(id<ZYModel>)cls zy_containerPropertyClassMapper];
         unsigned int propertyCount = 0;
         objc_property_t* properties = class_copyPropertyList(cls, &propertyCount);
         if (properties) {
             NSMutableDictionary* propertyInfos = [NSMutableDictionary new];
             _properties = propertyInfos;
             for (unsigned int i = 0; i < propertyCount; i++) {
-                ZYClassProperty* info = [[ZYClassProperty alloc] initWithProperty:properties[i]];
+                ZYClassPropertyInfo* info = [[ZYClassPropertyInfo alloc] initWithProperty:properties[i]];
                 if (info->_name)
                     propertyInfos[info->_name] = info;
                 if (info->_hasCustomContainCls)
