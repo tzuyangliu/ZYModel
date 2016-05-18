@@ -94,6 +94,9 @@
     // long double
     XCTAssert(sizeof(obj.longDoubleValue) == sizeof(long double));
     XCTAssert(obj.longDoubleValue == 1.0);
+    
+    // NSDate
+    XCTAssertNotNil(obj.date);
 }
 
 - (void)testJsonToModel

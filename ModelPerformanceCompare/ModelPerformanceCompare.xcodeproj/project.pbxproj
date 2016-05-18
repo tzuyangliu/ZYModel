@@ -7,6 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322632131CEBFFE700CE4B87 /* ZYModelTransformInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632121CEBFFE700CE4B87 /* ZYModelTransformInfo.m */; };
+		3226321A1CEC049B00CE4B87 /* FEWeiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632151CEC049B00CE4B87 /* FEWeiboModel.m */; };
+		3226321B1CEC049B00CE4B87 /* JSWeiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632171CEC049B00CE4B87 /* JSWeiboModel.m */; };
+		3226321C1CEC049B00CE4B87 /* MTWeiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632191CEC049B00CE4B87 /* MTWeiboModel.m */; };
+		322632921CEC04B200CE4B87 /* FEMAssignmentPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632211CEC04B200CE4B87 /* FEMAssignmentPolicy.m */; };
+		322632931CEC04B200CE4B87 /* FEMRelationshipAssignmentContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632241CEC04B200CE4B87 /* FEMRelationshipAssignmentContext.m */; };
+		322632941CEC04B200CE4B87 /* FEMManagedObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632271CEC04B200CE4B87 /* FEMManagedObjectCache.m */; };
+		322632951CEC04B200CE4B87 /* FEMDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226322A1CEC04B200CE4B87 /* FEMDeserializer.m */; };
+		322632961CEC04B200CE4B87 /* FEMAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226322F1CEC04B200CE4B87 /* FEMAttribute.m */; };
+		322632971CEC04B200CE4B87 /* FEMMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632321CEC04B200CE4B87 /* FEMMapping.m */; };
+		322632981CEC04B200CE4B87 /* FEMRelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632361CEC04B200CE4B87 /* FEMRelationship.m */; };
+		322632991CEC04B200CE4B87 /* FEMSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632391CEC04B200CE4B87 /* FEMSerializer.m */; };
+		3226329A1CEC04B200CE4B87 /* FEMManagedObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226323C1CEC04B200CE4B87 /* FEMManagedObjectStore.m */; };
+		3226329B1CEC04B200CE4B87 /* FEMObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226323E1CEC04B200CE4B87 /* FEMObjectStore.m */; };
+		3226329C1CEC04B200CE4B87 /* FEMExcludableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632421CEC04B200CE4B87 /* FEMExcludableCollection.m */; };
+		3226329D1CEC04B200CE4B87 /* FEMMergeableCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632441CEC04B200CE4B87 /* FEMMergeableCollection.m */; };
+		3226329E1CEC04B200CE4B87 /* NSArray+FEMPropertyRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632471CEC04B200CE4B87 /* NSArray+FEMPropertyRepresentation.m */; };
+		3226329F1CEC04B200CE4B87 /* NSObject+FEMKVCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632491CEC04B200CE4B87 /* NSObject+FEMKVCExtension.m */; };
+		322632A01CEC04B200CE4B87 /* FEMMappingUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226324D1CEC04B200CE4B87 /* FEMMappingUtility.m */; };
+		322632A11CEC04B200CE4B87 /* FEMRepresentationUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226324F1CEC04B200CE4B87 /* FEMRepresentationUtility.m */; };
+		322632A21CEC04B200CE4B87 /* FEMTypeIntrospection.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632511CEC04B200CE4B87 /* FEMTypeIntrospection.m */; };
+		322632A31CEC04B200CE4B87 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632561CEC04B200CE4B87 /* JSONModel.m */; };
+		322632A41CEC04B200CE4B87 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632581CEC04B200CE4B87 /* JSONModelArray.m */; };
+		322632A51CEC04B200CE4B87 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226325A1CEC04B200CE4B87 /* JSONModelClassProperty.m */; };
+		322632A61CEC04B200CE4B87 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226325C1CEC04B200CE4B87 /* JSONModelError.m */; };
+		322632A71CEC04B200CE4B87 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226325F1CEC04B200CE4B87 /* NSArray+JSONModel.m */; };
+		322632A81CEC04B200CE4B87 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632631CEC04B200CE4B87 /* JSONAPI.m */; };
+		322632A91CEC04B200CE4B87 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632651CEC04B200CE4B87 /* JSONHTTPClient.m */; };
+		322632AA1CEC04B200CE4B87 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632671CEC04B200CE4B87 /* JSONModel+networking.m */; };
+		322632AB1CEC04B200CE4B87 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226326A1CEC04B200CE4B87 /* JSONKeyMapper.m */; };
+		322632AC1CEC04B200CE4B87 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226326C1CEC04B200CE4B87 /* JSONValueTransformer.m */; };
+		322632AD1CEC04B200CE4B87 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632711CEC04B200CE4B87 /* EXTRuntimeExtensions.m */; };
+		322632AE1CEC04B200CE4B87 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632731CEC04B200CE4B87 /* EXTScope.m */; };
+		322632AF1CEC04B200CE4B87 /* MTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632771CEC04B200CE4B87 /* MTLJSONAdapter.m */; };
+		322632B01CEC04B200CE4B87 /* MTLModel+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632791CEC04B200CE4B87 /* MTLModel+NSCoding.m */; };
+		322632B11CEC04B200CE4B87 /* MTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226327B1CEC04B200CE4B87 /* MTLModel.m */; };
+		322632B21CEC04B200CE4B87 /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226327D1CEC04B200CE4B87 /* MTLReflection.m */; };
+		322632B31CEC04B200CE4B87 /* MTLTransformerErrorHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226327F1CEC04B200CE4B87 /* MTLTransformerErrorHandling.m */; };
+		322632B41CEC04B200CE4B87 /* MTLValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632811CEC04B200CE4B87 /* MTLValueTransformer.m */; };
+		322632B51CEC04B200CE4B87 /* NSArray+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632831CEC04B200CE4B87 /* NSArray+MTLManipulationAdditions.m */; };
+		322632B61CEC04B200CE4B87 /* NSDictionary+MTLJSONKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632851CEC04B200CE4B87 /* NSDictionary+MTLJSONKeyPath.m */; };
+		322632B71CEC04B200CE4B87 /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632871CEC04B200CE4B87 /* NSDictionary+MTLManipulationAdditions.m */; };
+		322632B81CEC04B200CE4B87 /* NSDictionary+MTLMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632891CEC04B200CE4B87 /* NSDictionary+MTLMappingAdditions.m */; };
+		322632B91CEC04B200CE4B87 /* NSError+MTLModelException.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226328B1CEC04B200CE4B87 /* NSError+MTLModelException.m */; };
+		322632BA1CEC04B200CE4B87 /* NSObject+MTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226328D1CEC04B200CE4B87 /* NSObject+MTLComparisonAdditions.m */; };
+		322632BB1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226328F1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.m */; };
+		322632BC1CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632911CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */; };
+		322632BF1CEC05CA00CE4B87 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632BE1CEC05CA00CE4B87 /* DateFormatter.m */; };
 		A493B4EF1CC65A6900EAE35A /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4DC1CC65A6900EAE35A /* MJExtensionConst.m */; };
 		A493B4F01CC65A6900EAE35A /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4DE1CC65A6900EAE35A /* MJFoundation.m */; };
 		A493B4F11CC65A6900EAE35A /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4E01CC65A6900EAE35A /* MJProperty.m */; };
@@ -23,7 +71,6 @@
 		A4BDD74E1CC6352000B5710D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4BDD7461CC6352000B5710D /* Info.plist */; };
 		A4BDD74F1CC6352000B5710D /* NSObject+ZYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD7481CC6352000B5710D /* NSObject+ZYModel.m */; };
 		A4BDD7501CC6352000B5710D /* ZYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD74A1CC6352000B5710D /* ZYClassInfo.m */; };
-		A4BDD7511CC6352000B5710D /* ZYModelMeta.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD74D1CC6352000B5710D /* ZYModelMeta.m */; };
 		A4BDD7581CC6353D00B5710D /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD7541CC6353D00B5710D /* NSObject+YYModel.m */; };
 		A4BDD7591CC6353D00B5710D /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD7561CC6353D00B5710D /* YYClassInfo.m */; };
 		A4BDD75D1CC6357500B5710D /* YYWeiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD75C1CC6357500B5710D /* YYWeiboModel.m */; };
@@ -41,6 +88,114 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		322632111CEBFFE700CE4B87 /* ZYModelTransformInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYModelTransformInfo.h; sourceTree = "<group>"; };
+		322632121CEBFFE700CE4B87 /* ZYModelTransformInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYModelTransformInfo.m; sourceTree = "<group>"; };
+		322632141CEC049B00CE4B87 /* FEWeiboModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEWeiboModel.h; sourceTree = "<group>"; };
+		322632151CEC049B00CE4B87 /* FEWeiboModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEWeiboModel.m; sourceTree = "<group>"; };
+		322632161CEC049B00CE4B87 /* JSWeiboModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSWeiboModel.h; sourceTree = "<group>"; };
+		322632171CEC049B00CE4B87 /* JSWeiboModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSWeiboModel.m; sourceTree = "<group>"; };
+		322632181CEC049B00CE4B87 /* MTWeiboModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTWeiboModel.h; sourceTree = "<group>"; };
+		322632191CEC049B00CE4B87 /* MTWeiboModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTWeiboModel.m; sourceTree = "<group>"; };
+		322632201CEC04B200CE4B87 /* FEMAssignmentPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMAssignmentPolicy.h; sourceTree = "<group>"; };
+		322632211CEC04B200CE4B87 /* FEMAssignmentPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMAssignmentPolicy.m; sourceTree = "<group>"; };
+		322632221CEC04B200CE4B87 /* FEMRelationshipAssignmentContext+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FEMRelationshipAssignmentContext+Internal.h"; sourceTree = "<group>"; };
+		322632231CEC04B200CE4B87 /* FEMRelationshipAssignmentContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMRelationshipAssignmentContext.h; sourceTree = "<group>"; };
+		322632241CEC04B200CE4B87 /* FEMRelationshipAssignmentContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMRelationshipAssignmentContext.m; sourceTree = "<group>"; };
+		322632261CEC04B200CE4B87 /* FEMManagedObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMManagedObjectCache.h; sourceTree = "<group>"; };
+		322632271CEC04B200CE4B87 /* FEMManagedObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMManagedObjectCache.m; sourceTree = "<group>"; };
+		322632291CEC04B200CE4B87 /* FEMDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMDeserializer.h; sourceTree = "<group>"; };
+		3226322A1CEC04B200CE4B87 /* FEMDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMDeserializer.m; sourceTree = "<group>"; };
+		3226322B1CEC04B200CE4B87 /* FEMManagedObjectDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMManagedObjectDeserializer.h; sourceTree = "<group>"; };
+		3226322C1CEC04B200CE4B87 /* FEMObjectDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMObjectDeserializer.h; sourceTree = "<group>"; };
+		3226322E1CEC04B200CE4B87 /* FEMAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMAttribute.h; sourceTree = "<group>"; };
+		3226322F1CEC04B200CE4B87 /* FEMAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMAttribute.m; sourceTree = "<group>"; };
+		322632301CEC04B200CE4B87 /* FEMManagedObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMManagedObjectMapping.h; sourceTree = "<group>"; };
+		322632311CEC04B200CE4B87 /* FEMMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMMapping.h; sourceTree = "<group>"; };
+		322632321CEC04B200CE4B87 /* FEMMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMMapping.m; sourceTree = "<group>"; };
+		322632331CEC04B200CE4B87 /* FEMObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMObjectMapping.h; sourceTree = "<group>"; };
+		322632341CEC04B200CE4B87 /* FEMProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMProperty.h; sourceTree = "<group>"; };
+		322632351CEC04B200CE4B87 /* FEMRelationship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMRelationship.h; sourceTree = "<group>"; };
+		322632361CEC04B200CE4B87 /* FEMRelationship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMRelationship.m; sourceTree = "<group>"; };
+		322632381CEC04B200CE4B87 /* FEMSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMSerializer.h; sourceTree = "<group>"; };
+		322632391CEC04B200CE4B87 /* FEMSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMSerializer.m; sourceTree = "<group>"; };
+		3226323B1CEC04B200CE4B87 /* FEMManagedObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMManagedObjectStore.h; sourceTree = "<group>"; };
+		3226323C1CEC04B200CE4B87 /* FEMManagedObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMManagedObjectStore.m; sourceTree = "<group>"; };
+		3226323D1CEC04B200CE4B87 /* FEMObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMObjectStore.h; sourceTree = "<group>"; };
+		3226323E1CEC04B200CE4B87 /* FEMObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMObjectStore.m; sourceTree = "<group>"; };
+		322632411CEC04B200CE4B87 /* FEMExcludableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMExcludableCollection.h; sourceTree = "<group>"; };
+		322632421CEC04B200CE4B87 /* FEMExcludableCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMExcludableCollection.m; sourceTree = "<group>"; };
+		322632431CEC04B200CE4B87 /* FEMMergeableCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMMergeableCollection.h; sourceTree = "<group>"; };
+		322632441CEC04B200CE4B87 /* FEMMergeableCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMMergeableCollection.m; sourceTree = "<group>"; };
+		322632461CEC04B200CE4B87 /* NSArray+FEMPropertyRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FEMPropertyRepresentation.h"; sourceTree = "<group>"; };
+		322632471CEC04B200CE4B87 /* NSArray+FEMPropertyRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FEMPropertyRepresentation.m"; sourceTree = "<group>"; };
+		322632481CEC04B200CE4B87 /* NSObject+FEMKVCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FEMKVCExtension.h"; sourceTree = "<group>"; };
+		322632491CEC04B200CE4B87 /* NSObject+FEMKVCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FEMKVCExtension.m"; sourceTree = "<group>"; };
+		3226324A1CEC04B200CE4B87 /* FastEasyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastEasyMapping.h; sourceTree = "<group>"; };
+		3226324C1CEC04B200CE4B87 /* FEMMappingUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMMappingUtility.h; sourceTree = "<group>"; };
+		3226324D1CEC04B200CE4B87 /* FEMMappingUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMMappingUtility.m; sourceTree = "<group>"; };
+		3226324E1CEC04B200CE4B87 /* FEMRepresentationUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMRepresentationUtility.h; sourceTree = "<group>"; };
+		3226324F1CEC04B200CE4B87 /* FEMRepresentationUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMRepresentationUtility.m; sourceTree = "<group>"; };
+		322632501CEC04B200CE4B87 /* FEMTypeIntrospection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMTypeIntrospection.h; sourceTree = "<group>"; };
+		322632511CEC04B200CE4B87 /* FEMTypeIntrospection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMTypeIntrospection.m; sourceTree = "<group>"; };
+		322632521CEC04B200CE4B87 /* FEMTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMTypes.h; sourceTree = "<group>"; };
+		322632551CEC04B200CE4B87 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		322632561CEC04B200CE4B87 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		322632571CEC04B200CE4B87 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
+		322632581CEC04B200CE4B87 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
+		322632591CEC04B200CE4B87 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		3226325A1CEC04B200CE4B87 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		3226325B1CEC04B200CE4B87 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		3226325C1CEC04B200CE4B87 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		3226325E1CEC04B200CE4B87 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
+		3226325F1CEC04B200CE4B87 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
+		322632601CEC04B200CE4B87 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		322632621CEC04B200CE4B87 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		322632631CEC04B200CE4B87 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		322632641CEC04B200CE4B87 /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		322632651CEC04B200CE4B87 /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		322632661CEC04B200CE4B87 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		322632671CEC04B200CE4B87 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		322632691CEC04B200CE4B87 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		3226326A1CEC04B200CE4B87 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		3226326B1CEC04B200CE4B87 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		3226326C1CEC04B200CE4B87 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		3226326F1CEC04B200CE4B87 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
+		322632701CEC04B200CE4B87 /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		322632711CEC04B200CE4B87 /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		322632721CEC04B200CE4B87 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
+		322632731CEC04B200CE4B87 /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTScope.m; sourceTree = "<group>"; };
+		322632741CEC04B200CE4B87 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		322632751CEC04B200CE4B87 /* Mantle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mantle.h; sourceTree = "<group>"; };
+		322632761CEC04B200CE4B87 /* MTLJSONAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLJSONAdapter.h; sourceTree = "<group>"; };
+		322632771CEC04B200CE4B87 /* MTLJSONAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLJSONAdapter.m; sourceTree = "<group>"; };
+		322632781CEC04B200CE4B87 /* MTLModel+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTLModel+NSCoding.h"; sourceTree = "<group>"; };
+		322632791CEC04B200CE4B87 /* MTLModel+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTLModel+NSCoding.m"; sourceTree = "<group>"; };
+		3226327A1CEC04B200CE4B87 /* MTLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLModel.h; sourceTree = "<group>"; };
+		3226327B1CEC04B200CE4B87 /* MTLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLModel.m; sourceTree = "<group>"; };
+		3226327C1CEC04B200CE4B87 /* MTLReflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLReflection.h; sourceTree = "<group>"; };
+		3226327D1CEC04B200CE4B87 /* MTLReflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLReflection.m; sourceTree = "<group>"; };
+		3226327E1CEC04B200CE4B87 /* MTLTransformerErrorHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLTransformerErrorHandling.h; sourceTree = "<group>"; };
+		3226327F1CEC04B200CE4B87 /* MTLTransformerErrorHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLTransformerErrorHandling.m; sourceTree = "<group>"; };
+		322632801CEC04B200CE4B87 /* MTLValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLValueTransformer.h; sourceTree = "<group>"; };
+		322632811CEC04B200CE4B87 /* MTLValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLValueTransformer.m; sourceTree = "<group>"; };
+		322632821CEC04B200CE4B87 /* NSArray+MTLManipulationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		322632831CEC04B200CE4B87 /* NSArray+MTLManipulationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		322632841CEC04B200CE4B87 /* NSDictionary+MTLJSONKeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MTLJSONKeyPath.h"; sourceTree = "<group>"; };
+		322632851CEC04B200CE4B87 /* NSDictionary+MTLJSONKeyPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MTLJSONKeyPath.m"; sourceTree = "<group>"; };
+		322632861CEC04B200CE4B87 /* NSDictionary+MTLManipulationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
+		322632871CEC04B200CE4B87 /* NSDictionary+MTLManipulationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
+		322632881CEC04B200CE4B87 /* NSDictionary+MTLMappingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MTLMappingAdditions.h"; sourceTree = "<group>"; };
+		322632891CEC04B200CE4B87 /* NSDictionary+MTLMappingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MTLMappingAdditions.m"; sourceTree = "<group>"; };
+		3226328A1CEC04B200CE4B87 /* NSError+MTLModelException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+MTLModelException.h"; sourceTree = "<group>"; };
+		3226328B1CEC04B200CE4B87 /* NSError+MTLModelException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+MTLModelException.m"; sourceTree = "<group>"; };
+		3226328C1CEC04B200CE4B87 /* NSObject+MTLComparisonAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MTLComparisonAdditions.h"; sourceTree = "<group>"; };
+		3226328D1CEC04B200CE4B87 /* NSObject+MTLComparisonAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MTLComparisonAdditions.m"; sourceTree = "<group>"; };
+		3226328E1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MTLInversionAdditions.h"; sourceTree = "<group>"; };
+		3226328F1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MTLInversionAdditions.m"; sourceTree = "<group>"; };
+		322632901CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValueTransformer+MTLPredefinedTransformerAdditions.h"; sourceTree = "<group>"; };
+		322632911CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
+		322632BD1CEC05CA00CE4B87 /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormatter.h; sourceTree = "<group>"; };
+		322632BE1CEC05CA00CE4B87 /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormatter.m; sourceTree = "<group>"; };
 		A493B4DA1CC65A6900EAE35A /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		A493B4DB1CC65A6900EAE35A /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
 		A493B4DC1CC65A6900EAE35A /* MJExtensionConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConst.m; sourceTree = "<group>"; };
@@ -74,8 +229,6 @@
 		A4BDD7491CC6352000B5710D /* ZYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClassInfo.h; sourceTree = "<group>"; };
 		A4BDD74A1CC6352000B5710D /* ZYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYClassInfo.m; sourceTree = "<group>"; };
 		A4BDD74B1CC6352000B5710D /* ZYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYModel.h; sourceTree = "<group>"; };
-		A4BDD74C1CC6352000B5710D /* ZYModelMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYModelMeta.h; sourceTree = "<group>"; };
-		A4BDD74D1CC6352000B5710D /* ZYModelMeta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYModelMeta.m; sourceTree = "<group>"; };
 		A4BDD7531CC6353D00B5710D /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		A4BDD7541CC6353D00B5710D /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
 		A4BDD7551CC6353D00B5710D /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
@@ -105,6 +258,253 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3226321D1CEC04B200CE4B87 /* FastEasyMapping */ = {
+			isa = PBXGroup;
+			children = (
+				3226321E1CEC04B200CE4B87 /* Core */,
+				3226323F1CEC04B200CE4B87 /* Extensions */,
+				3226324A1CEC04B200CE4B87 /* FastEasyMapping.h */,
+				3226324B1CEC04B200CE4B87 /* Utility */,
+			);
+			path = FastEasyMapping;
+			sourceTree = "<group>";
+		};
+		3226321E1CEC04B200CE4B87 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3226321F1CEC04B200CE4B87 /* Assignment Policy */,
+				322632251CEC04B200CE4B87 /* Cache */,
+				322632281CEC04B200CE4B87 /* Deserializer */,
+				3226322D1CEC04B200CE4B87 /* Mapping */,
+				322632371CEC04B200CE4B87 /* Serializer */,
+				3226323A1CEC04B200CE4B87 /* Store */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3226321F1CEC04B200CE4B87 /* Assignment Policy */ = {
+			isa = PBXGroup;
+			children = (
+				322632201CEC04B200CE4B87 /* FEMAssignmentPolicy.h */,
+				322632211CEC04B200CE4B87 /* FEMAssignmentPolicy.m */,
+				322632221CEC04B200CE4B87 /* FEMRelationshipAssignmentContext+Internal.h */,
+				322632231CEC04B200CE4B87 /* FEMRelationshipAssignmentContext.h */,
+				322632241CEC04B200CE4B87 /* FEMRelationshipAssignmentContext.m */,
+			);
+			path = "Assignment Policy";
+			sourceTree = "<group>";
+		};
+		322632251CEC04B200CE4B87 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				322632261CEC04B200CE4B87 /* FEMManagedObjectCache.h */,
+				322632271CEC04B200CE4B87 /* FEMManagedObjectCache.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		322632281CEC04B200CE4B87 /* Deserializer */ = {
+			isa = PBXGroup;
+			children = (
+				322632291CEC04B200CE4B87 /* FEMDeserializer.h */,
+				3226322A1CEC04B200CE4B87 /* FEMDeserializer.m */,
+				3226322B1CEC04B200CE4B87 /* FEMManagedObjectDeserializer.h */,
+				3226322C1CEC04B200CE4B87 /* FEMObjectDeserializer.h */,
+			);
+			path = Deserializer;
+			sourceTree = "<group>";
+		};
+		3226322D1CEC04B200CE4B87 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				3226322E1CEC04B200CE4B87 /* FEMAttribute.h */,
+				3226322F1CEC04B200CE4B87 /* FEMAttribute.m */,
+				322632301CEC04B200CE4B87 /* FEMManagedObjectMapping.h */,
+				322632311CEC04B200CE4B87 /* FEMMapping.h */,
+				322632321CEC04B200CE4B87 /* FEMMapping.m */,
+				322632331CEC04B200CE4B87 /* FEMObjectMapping.h */,
+				322632341CEC04B200CE4B87 /* FEMProperty.h */,
+				322632351CEC04B200CE4B87 /* FEMRelationship.h */,
+				322632361CEC04B200CE4B87 /* FEMRelationship.m */,
+			);
+			path = Mapping;
+			sourceTree = "<group>";
+		};
+		322632371CEC04B200CE4B87 /* Serializer */ = {
+			isa = PBXGroup;
+			children = (
+				322632381CEC04B200CE4B87 /* FEMSerializer.h */,
+				322632391CEC04B200CE4B87 /* FEMSerializer.m */,
+			);
+			path = Serializer;
+			sourceTree = "<group>";
+		};
+		3226323A1CEC04B200CE4B87 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				3226323B1CEC04B200CE4B87 /* FEMManagedObjectStore.h */,
+				3226323C1CEC04B200CE4B87 /* FEMManagedObjectStore.m */,
+				3226323D1CEC04B200CE4B87 /* FEMObjectStore.h */,
+				3226323E1CEC04B200CE4B87 /* FEMObjectStore.m */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		3226323F1CEC04B200CE4B87 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				322632401CEC04B200CE4B87 /* Collection */,
+				322632451CEC04B200CE4B87 /* Foundation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		322632401CEC04B200CE4B87 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				322632411CEC04B200CE4B87 /* FEMExcludableCollection.h */,
+				322632421CEC04B200CE4B87 /* FEMExcludableCollection.m */,
+				322632431CEC04B200CE4B87 /* FEMMergeableCollection.h */,
+				322632441CEC04B200CE4B87 /* FEMMergeableCollection.m */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		322632451CEC04B200CE4B87 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				322632461CEC04B200CE4B87 /* NSArray+FEMPropertyRepresentation.h */,
+				322632471CEC04B200CE4B87 /* NSArray+FEMPropertyRepresentation.m */,
+				322632481CEC04B200CE4B87 /* NSObject+FEMKVCExtension.h */,
+				322632491CEC04B200CE4B87 /* NSObject+FEMKVCExtension.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		3226324B1CEC04B200CE4B87 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3226324C1CEC04B200CE4B87 /* FEMMappingUtility.h */,
+				3226324D1CEC04B200CE4B87 /* FEMMappingUtility.m */,
+				3226324E1CEC04B200CE4B87 /* FEMRepresentationUtility.h */,
+				3226324F1CEC04B200CE4B87 /* FEMRepresentationUtility.m */,
+				322632501CEC04B200CE4B87 /* FEMTypeIntrospection.h */,
+				322632511CEC04B200CE4B87 /* FEMTypeIntrospection.m */,
+				322632521CEC04B200CE4B87 /* FEMTypes.h */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		322632531CEC04B200CE4B87 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				322632541CEC04B200CE4B87 /* JSONModel */,
+				3226325D1CEC04B200CE4B87 /* JSONModelCategories */,
+				322632601CEC04B200CE4B87 /* JSONModelLib.h */,
+				322632611CEC04B200CE4B87 /* JSONModelNetworking */,
+				322632681CEC04B200CE4B87 /* JSONModelTransformations */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		322632541CEC04B200CE4B87 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				322632551CEC04B200CE4B87 /* JSONModel.h */,
+				322632561CEC04B200CE4B87 /* JSONModel.m */,
+				322632571CEC04B200CE4B87 /* JSONModelArray.h */,
+				322632581CEC04B200CE4B87 /* JSONModelArray.m */,
+				322632591CEC04B200CE4B87 /* JSONModelClassProperty.h */,
+				3226325A1CEC04B200CE4B87 /* JSONModelClassProperty.m */,
+				3226325B1CEC04B200CE4B87 /* JSONModelError.h */,
+				3226325C1CEC04B200CE4B87 /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		3226325D1CEC04B200CE4B87 /* JSONModelCategories */ = {
+			isa = PBXGroup;
+			children = (
+				3226325E1CEC04B200CE4B87 /* NSArray+JSONModel.h */,
+				3226325F1CEC04B200CE4B87 /* NSArray+JSONModel.m */,
+			);
+			path = JSONModelCategories;
+			sourceTree = "<group>";
+		};
+		322632611CEC04B200CE4B87 /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				322632621CEC04B200CE4B87 /* JSONAPI.h */,
+				322632631CEC04B200CE4B87 /* JSONAPI.m */,
+				322632641CEC04B200CE4B87 /* JSONHTTPClient.h */,
+				322632651CEC04B200CE4B87 /* JSONHTTPClient.m */,
+				322632661CEC04B200CE4B87 /* JSONModel+networking.h */,
+				322632671CEC04B200CE4B87 /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		322632681CEC04B200CE4B87 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				322632691CEC04B200CE4B87 /* JSONKeyMapper.h */,
+				3226326A1CEC04B200CE4B87 /* JSONKeyMapper.m */,
+				3226326B1CEC04B200CE4B87 /* JSONValueTransformer.h */,
+				3226326C1CEC04B200CE4B87 /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
+			sourceTree = "<group>";
+		};
+		3226326D1CEC04B200CE4B87 /* Mantle */ = {
+			isa = PBXGroup;
+			children = (
+				3226326E1CEC04B200CE4B87 /* extobjc */,
+				322632751CEC04B200CE4B87 /* Mantle.h */,
+				322632761CEC04B200CE4B87 /* MTLJSONAdapter.h */,
+				322632771CEC04B200CE4B87 /* MTLJSONAdapter.m */,
+				322632781CEC04B200CE4B87 /* MTLModel+NSCoding.h */,
+				322632791CEC04B200CE4B87 /* MTLModel+NSCoding.m */,
+				3226327A1CEC04B200CE4B87 /* MTLModel.h */,
+				3226327B1CEC04B200CE4B87 /* MTLModel.m */,
+				3226327C1CEC04B200CE4B87 /* MTLReflection.h */,
+				3226327D1CEC04B200CE4B87 /* MTLReflection.m */,
+				3226327E1CEC04B200CE4B87 /* MTLTransformerErrorHandling.h */,
+				3226327F1CEC04B200CE4B87 /* MTLTransformerErrorHandling.m */,
+				322632801CEC04B200CE4B87 /* MTLValueTransformer.h */,
+				322632811CEC04B200CE4B87 /* MTLValueTransformer.m */,
+				322632821CEC04B200CE4B87 /* NSArray+MTLManipulationAdditions.h */,
+				322632831CEC04B200CE4B87 /* NSArray+MTLManipulationAdditions.m */,
+				322632841CEC04B200CE4B87 /* NSDictionary+MTLJSONKeyPath.h */,
+				322632851CEC04B200CE4B87 /* NSDictionary+MTLJSONKeyPath.m */,
+				322632861CEC04B200CE4B87 /* NSDictionary+MTLManipulationAdditions.h */,
+				322632871CEC04B200CE4B87 /* NSDictionary+MTLManipulationAdditions.m */,
+				322632881CEC04B200CE4B87 /* NSDictionary+MTLMappingAdditions.h */,
+				322632891CEC04B200CE4B87 /* NSDictionary+MTLMappingAdditions.m */,
+				3226328A1CEC04B200CE4B87 /* NSError+MTLModelException.h */,
+				3226328B1CEC04B200CE4B87 /* NSError+MTLModelException.m */,
+				3226328C1CEC04B200CE4B87 /* NSObject+MTLComparisonAdditions.h */,
+				3226328D1CEC04B200CE4B87 /* NSObject+MTLComparisonAdditions.m */,
+				3226328E1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.h */,
+				3226328F1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.m */,
+				322632901CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */,
+				322632911CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */,
+			);
+			path = Mantle;
+			sourceTree = "<group>";
+		};
+		3226326E1CEC04B200CE4B87 /* extobjc */ = {
+			isa = PBXGroup;
+			children = (
+				3226326F1CEC04B200CE4B87 /* EXTKeyPathCoding.h */,
+				322632701CEC04B200CE4B87 /* EXTRuntimeExtensions.h */,
+				322632711CEC04B200CE4B87 /* EXTRuntimeExtensions.m */,
+				322632721CEC04B200CE4B87 /* EXTScope.h */,
+				322632731CEC04B200CE4B87 /* EXTScope.m */,
+				322632741CEC04B200CE4B87 /* metamacros.h */,
+			);
+			path = extobjc;
+			sourceTree = "<group>";
+		};
 		A493B4D91CC65A6900EAE35A /* MJExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,9 +563,20 @@
 		A4BDD7391CC634FB00B5710D /* ModelPerformanceCompareTests */ = {
 			isa = PBXGroup;
 			children = (
+				322632BD1CEC05CA00CE4B87 /* DateFormatter.h */,
+				322632BE1CEC05CA00CE4B87 /* DateFormatter.m */,
 				A4BDD75B1CC6357500B5710D /* YYWeiboModel.h */,
 				A4BDD75C1CC6357500B5710D /* YYWeiboModel.m */,
+				322632141CEC049B00CE4B87 /* FEWeiboModel.h */,
+				322632151CEC049B00CE4B87 /* FEWeiboModel.m */,
+				322632161CEC049B00CE4B87 /* JSWeiboModel.h */,
+				322632171CEC049B00CE4B87 /* JSWeiboModel.m */,
+				322632181CEC049B00CE4B87 /* MTWeiboModel.h */,
+				322632191CEC049B00CE4B87 /* MTWeiboModel.m */,
 				A4BDD75E1CC6357C00B5710D /* weibo.json */,
+				3226321D1CEC04B200CE4B87 /* FastEasyMapping */,
+				322632531CEC04B200CE4B87 /* JSONModel */,
+				3226326D1CEC04B200CE4B87 /* Mantle */,
 				A493B4D91CC65A6900EAE35A /* MJExtension */,
 				A4BDD7521CC6353D00B5710D /* YYModel */,
 				A4BDD7451CC6352000B5710D /* ZYModel */,
@@ -184,8 +595,8 @@
 				A4BDD7491CC6352000B5710D /* ZYClassInfo.h */,
 				A4BDD74A1CC6352000B5710D /* ZYClassInfo.m */,
 				A4BDD74B1CC6352000B5710D /* ZYModel.h */,
-				A4BDD74C1CC6352000B5710D /* ZYModelMeta.h */,
-				A4BDD74D1CC6352000B5710D /* ZYModelMeta.m */,
+				322632111CEBFFE700CE4B87 /* ZYModelTransformInfo.h */,
+				322632121CEBFFE700CE4B87 /* ZYModelTransformInfo.m */,
 			);
 			name = ZYModel;
 			path = ../../ZYModel;
@@ -322,19 +733,66 @@
 				A493B4F51CC65A6900EAE35A /* NSObject+MJCoding.m in Sources */,
 				A493B4EF1CC65A6900EAE35A /* MJExtensionConst.m in Sources */,
 				A493B4F41CC65A6900EAE35A /* NSObject+MJClass.m in Sources */,
+				322632131CEBFFE700CE4B87 /* ZYModelTransformInfo.m in Sources */,
+				322632AC1CEC04B200CE4B87 /* JSONValueTransformer.m in Sources */,
+				322632AB1CEC04B200CE4B87 /* JSONKeyMapper.m in Sources */,
+				322632A21CEC04B200CE4B87 /* FEMTypeIntrospection.m in Sources */,
+				322632B71CEC04B200CE4B87 /* NSDictionary+MTLManipulationAdditions.m in Sources */,
+				322632B11CEC04B200CE4B87 /* MTLModel.m in Sources */,
+				322632991CEC04B200CE4B87 /* FEMSerializer.m in Sources */,
 				A493B4F21CC65A6900EAE35A /* MJPropertyKey.m in Sources */,
+				322632921CEC04B200CE4B87 /* FEMAssignmentPolicy.m in Sources */,
+				322632A01CEC04B200CE4B87 /* FEMMappingUtility.m in Sources */,
+				3226321A1CEC049B00CE4B87 /* FEWeiboModel.m in Sources */,
+				322632BA1CEC04B200CE4B87 /* NSObject+MTLComparisonAdditions.m in Sources */,
+				3226329A1CEC04B200CE4B87 /* FEMManagedObjectStore.m in Sources */,
+				322632A31CEC04B200CE4B87 /* JSONModel.m in Sources */,
+				322632BC1CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
+				322632A41CEC04B200CE4B87 /* JSONModelArray.m in Sources */,
 				A4BDD74F1CC6352000B5710D /* NSObject+ZYModel.m in Sources */,
 				A4BDD7581CC6353D00B5710D /* NSObject+YYModel.m in Sources */,
+				322632AE1CEC04B200CE4B87 /* EXTScope.m in Sources */,
+				3226329B1CEC04B200CE4B87 /* FEMObjectStore.m in Sources */,
+				322632B41CEC04B200CE4B87 /* MTLValueTransformer.m in Sources */,
+				322632A81CEC04B200CE4B87 /* JSONAPI.m in Sources */,
+				322632981CEC04B200CE4B87 /* FEMRelationship.m in Sources */,
+				322632A51CEC04B200CE4B87 /* JSONModelClassProperty.m in Sources */,
+				3226329F1CEC04B200CE4B87 /* NSObject+FEMKVCExtension.m in Sources */,
+				322632BF1CEC05CA00CE4B87 /* DateFormatter.m in Sources */,
+				322632AD1CEC04B200CE4B87 /* EXTRuntimeExtensions.m in Sources */,
+				322632A91CEC04B200CE4B87 /* JSONHTTPClient.m in Sources */,
 				A493B4F11CC65A6900EAE35A /* MJProperty.m in Sources */,
+				322632B31CEC04B200CE4B87 /* MTLTransformerErrorHandling.m in Sources */,
+				322632AA1CEC04B200CE4B87 /* JSONModel+networking.m in Sources */,
+				3226321C1CEC049B00CE4B87 /* MTWeiboModel.m in Sources */,
+				3226329E1CEC04B200CE4B87 /* NSArray+FEMPropertyRepresentation.m in Sources */,
+				322632B21CEC04B200CE4B87 /* MTLReflection.m in Sources */,
+				322632B51CEC04B200CE4B87 /* NSArray+MTLManipulationAdditions.m in Sources */,
+				322632A71CEC04B200CE4B87 /* NSArray+JSONModel.m in Sources */,
+				322632961CEC04B200CE4B87 /* FEMAttribute.m in Sources */,
+				322632B91CEC04B200CE4B87 /* NSError+MTLModelException.m in Sources */,
 				A493B4F01CC65A6900EAE35A /* MJFoundation.m in Sources */,
+				322632A11CEC04B200CE4B87 /* FEMRepresentationUtility.m in Sources */,
+				322632971CEC04B200CE4B87 /* FEMMapping.m in Sources */,
+				322632B61CEC04B200CE4B87 /* NSDictionary+MTLJSONKeyPath.m in Sources */,
+				322632A61CEC04B200CE4B87 /* JSONModelError.m in Sources */,
 				A4BDD73B1CC634FB00B5710D /* ModelPerformanceCompareTests.m in Sources */,
 				A4BDD7501CC6352000B5710D /* ZYClassInfo.m in Sources */,
+				322632AF1CEC04B200CE4B87 /* MTLJSONAdapter.m in Sources */,
+				322632B81CEC04B200CE4B87 /* NSDictionary+MTLMappingAdditions.m in Sources */,
+				322632BB1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
 				A4BDD7591CC6353D00B5710D /* YYClassInfo.m in Sources */,
+				322632B01CEC04B200CE4B87 /* MTLModel+NSCoding.m in Sources */,
+				322632951CEC04B200CE4B87 /* FEMDeserializer.m in Sources */,
 				A493B4F31CC65A6900EAE35A /* MJPropertyType.m in Sources */,
-				A4BDD7511CC6352000B5710D /* ZYModelMeta.m in Sources */,
+				3226329C1CEC04B200CE4B87 /* FEMExcludableCollection.m in Sources */,
 				A493B4F61CC65A6900EAE35A /* NSObject+MJKeyValue.m in Sources */,
 				A493B4F81CC65A6900EAE35A /* NSString+MJExtension.m in Sources */,
 				A4BDD75D1CC6357500B5710D /* YYWeiboModel.m in Sources */,
+				3226329D1CEC04B200CE4B87 /* FEMMergeableCollection.m in Sources */,
+				322632931CEC04B200CE4B87 /* FEMRelationshipAssignmentContext.m in Sources */,
+				322632941CEC04B200CE4B87 /* FEMManagedObjectCache.m in Sources */,
+				3226321B1CEC049B00CE4B87 /* JSWeiboModel.m in Sources */,
 				A493B4F71CC65A6900EAE35A /* NSObject+MJProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

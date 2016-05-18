@@ -7,6 +7,7 @@
 //
 
 #import "YYWeiboModel.h"
+#import "MJExtension.h"
 
 //#define YYModelSynthCoderAndHash \
 //- (void)encodeWithCoder:(NSCoder *)aCoder { [self yy_modelEncodeWithCoder:aCoder]; } \
@@ -83,6 +84,17 @@
 @end
 
 @implementation YYWeiboUser
+
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
+{
+    if (property.type.typeClass == [NSDate class]) {
+        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+        fmt.dateFormat = @"EE MMM dd HH:mm:ss ZZZ yyyy";
+        return [fmt dateFromString:oldValue];
+    }
+    return oldValue;
+}
+
 + (NSDictionary *)zy_propertyToJsonKeyMapper
 {
     return [self mapper];
@@ -143,6 +155,17 @@
 @end
 
 @implementation YYWeiboStatus
+
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
+{
+    if (property.type.typeClass == [NSDate class]) {
+        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+        fmt.dateFormat = @"EE MMM dd HH:mm:ss ZZZ yyyy";
+        return [fmt dateFromString:oldValue];
+    }
+    return oldValue;
+}
+
 + (NSDictionary *)zy_propertyToJsonKeyMapper
 {
     return [self mapper];

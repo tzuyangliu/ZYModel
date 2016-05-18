@@ -27,6 +27,7 @@
              @"floatValue": @"c_float",
              @"doubleValue": @"c_double",
              @"longDoubleValue": @"c_long_double",
+             @"date": @"date",
              };
 }
 
