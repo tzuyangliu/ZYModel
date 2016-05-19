@@ -28,6 +28,8 @@
              @"doubleValue": @"c_double",
              @"longDoubleValue": @"c_long_double",
              @"date": @"date",
+             @"string": @"string",
+             @"nsNumber": @"ns_number",
              };
 }
 

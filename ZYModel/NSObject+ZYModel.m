@@ -17,6 +17,7 @@ NS_INLINE NSDateFormatter *GlobalDateFormatter()
     static NSDateFormatter *formatter;
     dispatch_once(&onceToken, ^{
         formatter = [[NSDateFormatter alloc] init];
+        [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
         formatter.dateFormat = @"EE MMM dd HH:mm:ss ZZZ yyyy";
     });
     return formatter;

@@ -27,4 +27,6 @@
 @property (assign, nonatomic) long double longDoubleValue;
 // NS-
 @property (strong, nonatomic) NSDate *date;
+@property (strong, nonatomic) NSString *string;
+@property (strong, nonatomic) NSNumber *nsNumber;
 @end

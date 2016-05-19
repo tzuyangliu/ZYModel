@@ -97,6 +97,15 @@
     
     // NSDate
     XCTAssertNotNil(obj.date);
+    XCTAssert([obj.date isKindOfClass:[NSDate class]]);
+    
+    // NSString
+    XCTAssert([obj.string isKindOfClass:[NSString class]]);
+    XCTAssert([obj.string isEqual:@"I'm a string"]);
+    
+    // NSNumber
+    XCTAssert([obj.nsNumber isKindOfClass:[NSNumber class]]);
+    XCTAssert([obj.nsNumber isEqual:[NSNumber numberWithInteger:123456]]);
 }
 
 - (void)testJsonToModel

@@ -14,5 +14,7 @@
     "c_float":1.0,
     "c_double":1.0,
     "c_long_double":1.0,
-    "date" : "Wed Sep 16 12:20:09 +0800 2015",
+    "date":"Wed Sep 16 12:20:09 +0800 2015",
+    "string":"I'm a string",
+    "ns_number":123456,
 }
