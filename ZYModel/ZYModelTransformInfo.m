@@ -35,7 +35,6 @@
     {
         Class curCls = cls;
         _propertyMetas = [NSMutableArray array];
-        _modelContainerPropertyGenericClassMap = [cls zy_containerPropertyClassMapper];
         NSArray *whitelistProperties = [cls zy_whitelistProperties];
         NSArray *blacklistProperties = [cls zy_blacklistProperties];
         while (curCls && [curCls superclass] != nil)

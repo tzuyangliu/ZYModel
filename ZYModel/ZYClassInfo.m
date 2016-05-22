@@ -165,7 +165,9 @@ static __inline__ __attribute__((always_inline)) ZYEncodingType ZYEncodingGetTyp
                         if ((_type & ZYEncodingTypeMask) == ZYEncodingTypeObject)
                         {
                             _nsType = ZYClassGetNSType(_cls);
-                            if (_nsType == ZYEncodingTypeNSArray
+                            if (_nsType == ZYEncodingTypeNSSet
+                                ||_nsType == ZYEncodingTypeNSMutableSet
+                                ||_nsType == ZYEncodingTypeNSArray
                                 || _nsType == ZYEncodingTypeNSMutableArray
                                 || _nsType == ZYEncodingTypeNSDictionary
                                 || _nsType == ZYEncodingTypeNSMutableDictionary)

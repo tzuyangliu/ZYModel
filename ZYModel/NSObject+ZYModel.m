@@ -136,7 +136,7 @@ NS_INLINE void SetNSObjectToProperty(id target, ZYClassPropertyInfo *property, i
                             }
                         }
                     }];
-                    if (property->_nsType == ZYEncodingTypeNSMutableDictionary)
+                    if (property->_nsType == ZYEncodingTypeNSDictionary)
                     {
                         setterObject = [setterObject copy];
                     }

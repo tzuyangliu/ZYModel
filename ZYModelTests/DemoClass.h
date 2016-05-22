@@ -37,8 +37,24 @@
 @property (strong, nonatomic) NSData *nsMutableData;
 @property (strong, nonatomic) NSString *nsString;
 @property (strong, nonatomic) NSString *nsMutableString;
-// 集合
+// NSSet
 @property (strong, nonatomic) NSSet<NSNumber *> *nsSet;
 @property (strong, nonatomic) NSMutableSet<NSNumber *> *nsMutableSet;
 @property (strong, nonatomic) NSSet<DemoContainerClass *> *nsDemoClassSet;
+// NSArray
+@property (strong, nonatomic) NSArray<NSNumber *> *nsArray;
+@property (strong, nonatomic) NSMutableArray<NSNumber *> *nsMutableArray;
+@property (strong, nonatomic) NSArray<DemoContainerClass *> *nsDemoClassArray;
+// NSDictionary
+@property (strong, nonatomic) NSDictionary<NSString *, NSNumber *> *nsDictionary;
+@property (strong, nonatomic) NSMutableDictionary<NSString *, NSNumber *> *nsMutableDictionary;
+@property (strong, nonatomic) NSDictionary<NSString *, DemoContainerClass *> *nsDemoClassDictionary;
+// Property With Custom Class
+@property (strong, nonatomic) DemoContainerClass *customClass;
+// Auto Mapping
+@property (strong, nonatomic) NSString *autoMappingString;
+@end
+
+
+@interface InheritClass : DemoClass
 @end

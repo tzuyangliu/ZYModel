@@ -47,13 +47,31 @@
              @"nsSet": @"ns_set",
              @"nsMutableSet": @"ns_mutable_set",
              @"nsDemoClassSet": @"ns_democlass_set",
+             @"nsArray": @"ns_array",
+             @"nsMutableArray": @"ns_mutable_array",
+             @"nsDemoClassArray": @"ns_democlass_array",
+             @"nsDictionary": @"ns_dictionary",
+             @"nsMutableDictionary": @"ns_mutable_dictionary",
+             @"nsDemoClassDictionary": @"ns_democlass_dictionary",
+             @"customClass": @"custom_class",
              };
 }
 
 + (NSDictionary *)zy_containerPropertyClassMapper {
     return @{
+             @"nsSet" : [NSNumber class],
+             @"nsMutableSet": [NSNumber class],
              @"nsDemoClassSet" : [DemoContainerClass class],
+             @"nsArray" : [NSNumber class],
+             @"nsMutableArray": [NSNumber class],
+             @"nsDemoClassArray" : [DemoContainerClass class],
+             @"nsDictionary" : [NSNumber class],
+             @"nsMutableDictionary": [NSNumber class],
+             @"nsDemoClassDictionary" : [DemoContainerClass class],
              };
 }
 
+@end
+
+@implementation InheritClass
 @end

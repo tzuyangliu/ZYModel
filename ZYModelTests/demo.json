@@ -34,4 +34,34 @@
             "name": "name3"
         }
     ],
+    "ns_array":[1, 2, 3],
+    "ns_mutable_array":[1, 2, 3],
+    "ns_democlass_array":[
+                        {
+                        "name": "name1"
+                        },
+                        {
+                        "name": "name2"
+                        },
+                        {
+                        "name": "name3"
+                        }
+                        ],
+    "ns_dictionary":{"1": 1,"2": 2,"3": 3},
+    "ns_mutable_dictionary":{"1": 1,"2": 2,"3": 3},
+    "ns_democlass_dictionary":{
+                          "1":{
+                          "name": "name1"
+                          },
+                          "2":{
+                          "name": "name2"
+                          },
+                          "3":{
+                          "name": "name3"
+                          }
+    },
+    "custom_class": {
+        "name": "name"
+    },
+    "autoMappingString": "string",
 }
