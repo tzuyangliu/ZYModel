@@ -9,14 +9,6 @@
 #import "YYWeiboModel.h"
 #import "MJExtension.h"
 
-//#define YYModelSynthCoderAndHash \
-//- (void)encodeWithCoder:(NSCoder *)aCoder { [self yy_modelEncodeWithCoder:aCoder]; } \
-//- (id)initWithCoder:(NSCoder *)aDecoder { return [self yy_modelInitWithCoder:aDecoder]; } \
-//- (id)copyWithZone:(NSZone *)zone { return [self yy_modelCopy]; } \
-//- (NSUInteger)hash { return [self yy_modelHash]; } \
-//- (BOOL)isEqual:(id)object { return [self yy_modelIsEqual:object]; }
-
-
 @implementation YYWeiboPictureMetadata
 + (NSDictionary *)zy_propertyToJsonKeyMapper
 {
@@ -33,7 +25,7 @@
 + (NSDictionary *)mapper {
     return @{@"cutType" : @"cut_type"};
 }
-//YYModelSynthCoderAndHash
+
 @end
 
 @implementation YYWeiboPicture
@@ -55,7 +47,7 @@
              @"objectID" : @"object_id",
              @"middlePlus" : @"middleplus"};
 }
-//YYModelSynthCoderAndHash
+
 @end
 
 @implementation YYWeiboURL
@@ -80,7 +72,7 @@
              @"pageID" : @"page_id",
              @"storageType" : @"storage_type"};
 }
-//YYModelSynthCoderAndHash
+
 @end
 
 @implementation YYWeiboUser
@@ -151,7 +143,7 @@
              @"verifiedSource" : @"verified_source",
              @"userAbility" : @"user_ability"};
 }
-//YYModelSynthCoderAndHash
+
 @end
 
 @implementation YYWeiboStatus
@@ -219,5 +211,4 @@
              @"picInfos" : [YYWeiboPicture class],
              @"urlStruct" : [YYWeiboURL class]};
 }
-//YYModelSynthCoderAndHash
 @end

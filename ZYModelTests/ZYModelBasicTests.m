@@ -96,16 +96,46 @@
     XCTAssert(obj.longDoubleValue == 1.0);
     
     // NSDate
-    XCTAssertNotNil(obj.date);
-    XCTAssert([obj.date isKindOfClass:[NSDate class]]);
+    XCTAssertNotNil(obj.nsDate);
+    XCTAssert([obj.nsDate isKindOfClass:[NSDate class]]);
     
-    // NSString
-    XCTAssert([obj.string isKindOfClass:[NSString class]]);
-    XCTAssert([obj.string isEqual:@"I'm a string"]);
+    // NSValue
+    XCTAssert([obj.nsValue isKindOfClass:[NSValue class]]);
+    XCTAssert([obj.nsValue isEqual:@123]);
     
     // NSNumber
     XCTAssert([obj.nsNumber isKindOfClass:[NSNumber class]]);
     XCTAssert([obj.nsNumber isEqual:[NSNumber numberWithInteger:123456]]);
+    
+    // NSData
+    XCTAssert([obj.nsData isKindOfClass:[NSData class]]);
+    XCTAssertNotNil(obj.nsData);
+    
+    // NSMutableData
+    XCTAssert([obj.nsMutableData isKindOfClass:[NSMutableData class]]);
+    XCTAssertNotNil(obj.nsMutableData);
+    
+    // NSString
+    XCTAssert([obj.nsString isKindOfClass:[NSString class]]);
+    XCTAssert([obj.nsString isEqual:@"I'm a string"]);
+    
+    // NSMutableString
+    XCTAssert([obj.nsMutableString isKindOfClass:[NSMutableString class]]);
+    XCTAssert([obj.nsMutableString isEqual:@"I'm a string"]);
+    
+    // NSSet
+    XCTAssert([obj.nsSet isKindOfClass:[NSSet class]]);
+    XCTAssert(obj.nsSet.count == 3);
+    
+    // NSMutableSet
+    
+    
+    // NSSet With DemoContainerClass inside
+}
+
+- (void)testNSClassWithDemoClassObject:(DemoClass *)obj
+{
+
 }
 
 - (void)testJsonToModel
@@ -113,6 +143,7 @@
     id json = self.json;
     DemoClass *obj = [DemoClass zy_modelWithJson:json];
     [self testCNumbersWithDemoClassObject:obj];
+    [self testNSClassWithDemoClassObject:obj];
 }
 
 - (void)testModelToJson

@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@interface DemoContainerClass : NSObject
+@property (strong, nonatomic) NSString *name;
+@end
+
 @interface DemoClass : NSObject
 // CNumber
 @property (assign, nonatomic) bool cBoolTrue;
@@ -26,7 +30,15 @@
 @property (assign, nonatomic) double doubleValue;
 @property (assign, nonatomic) long double longDoubleValue;
 // NS-
-@property (strong, nonatomic) NSDate *date;
-@property (strong, nonatomic) NSString *string;
+@property (strong, nonatomic) NSDate *nsDate;
+@property (strong, nonatomic) NSValue *nsValue;
 @property (strong, nonatomic) NSNumber *nsNumber;
+@property (strong, nonatomic) NSData *nsData;
+@property (strong, nonatomic) NSData *nsMutableData;
+@property (strong, nonatomic) NSString *nsString;
+@property (strong, nonatomic) NSString *nsMutableString;
+// 集合
+@property (strong, nonatomic) NSSet<NSNumber *> *nsSet;
+@property (strong, nonatomic) NSMutableSet<NSNumber *> *nsMutableSet;
+@property (strong, nonatomic) NSSet<DemoContainerClass *> *nsDemoClassSet;
 @end

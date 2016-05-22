@@ -1,5 +1,5 @@
 //
-//  WBModel.h
+//  YYWeiboModel.h
 //  ModelBenchmark
 //
 //  Created by ibireme on 15/9/18.

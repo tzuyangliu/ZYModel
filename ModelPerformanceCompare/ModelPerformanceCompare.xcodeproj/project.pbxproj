@@ -55,6 +55,7 @@
 		322632BB1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3226328F1CEC04B200CE4B87 /* NSValueTransformer+MTLInversionAdditions.m */; };
 		322632BC1CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632911CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */; };
 		322632BF1CEC05CA00CE4B87 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632BE1CEC05CA00CE4B87 /* DateFormatter.m */; };
+		32F27B8F1CF1615200ACB3B6 /* ZYModelPerformaceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F27B8E1CF1615200ACB3B6 /* ZYModelPerformaceTest.m */; };
 		A493B4EF1CC65A6900EAE35A /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4DC1CC65A6900EAE35A /* MJExtensionConst.m */; };
 		A493B4F01CC65A6900EAE35A /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4DE1CC65A6900EAE35A /* MJFoundation.m */; };
 		A493B4F11CC65A6900EAE35A /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4E01CC65A6900EAE35A /* MJProperty.m */; };
@@ -196,6 +197,7 @@
 		322632911CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValueTransformer+MTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
 		322632BD1CEC05CA00CE4B87 /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormatter.h; sourceTree = "<group>"; };
 		322632BE1CEC05CA00CE4B87 /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormatter.m; sourceTree = "<group>"; };
+		32F27B8E1CF1615200ACB3B6 /* ZYModelPerformaceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYModelPerformaceTest.m; sourceTree = "<group>"; };
 		A493B4DA1CC65A6900EAE35A /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		A493B4DB1CC65A6900EAE35A /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
 		A493B4DC1CC65A6900EAE35A /* MJExtensionConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConst.m; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 				A493B4D91CC65A6900EAE35A /* MJExtension */,
 				A4BDD7521CC6353D00B5710D /* YYModel */,
 				A4BDD7451CC6352000B5710D /* ZYModel */,
+				32F27B8E1CF1615200ACB3B6 /* ZYModelPerformaceTest.m */,
 				A4BDD73A1CC634FB00B5710D /* ModelPerformanceCompareTests.m */,
 				A4BDD73C1CC634FB00B5710D /* Info.plist */,
 			);
@@ -741,6 +744,7 @@
 				322632B11CEC04B200CE4B87 /* MTLModel.m in Sources */,
 				322632991CEC04B200CE4B87 /* FEMSerializer.m in Sources */,
 				A493B4F21CC65A6900EAE35A /* MJPropertyKey.m in Sources */,
+				32F27B8F1CF1615200ACB3B6 /* ZYModelPerformaceTest.m in Sources */,
 				322632921CEC04B200CE4B87 /* FEMAssignmentPolicy.m in Sources */,
 				322632A01CEC04B200CE4B87 /* FEMMappingUtility.m in Sources */,
 				3226321A1CEC049B00CE4B87 /* FEWeiboModel.m in Sources */,

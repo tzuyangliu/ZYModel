@@ -8,11 +8,21 @@
 
 #import "DemoClass.h"
 
+@implementation DemoContainerClass
+
++ (NSDictionary *)zy_propertyToJsonKeyMapper
+{
+    return @{@"name": @"name",};
+}
+
+@end
+
 @implementation DemoClass
 
 + (NSDictionary *)zy_propertyToJsonKeyMapper
 {
-    return @{@"cBoolTrue": @"c_bool_true",
+    return @{
+             @"cBoolTrue": @"c_bool_true",
              @"cBoolFalse": @"c_bool_false",
              @"ocBoolTrue": @"oc_bool_true",
              @"ocBoolFalse": @"oc_bool_false",
@@ -27,9 +37,22 @@
              @"floatValue": @"c_float",
              @"doubleValue": @"c_double",
              @"longDoubleValue": @"c_long_double",
-             @"date": @"date",
-             @"string": @"string",
+             @"nsDate": @"ns_date",
              @"nsNumber": @"ns_number",
+             @"nsValue": @"ns_value",
+             @"nsData": @"ns_data",
+             @"nsMutableData": @"ns_mutable_data",
+             @"nsString": @"ns_string",
+             @"nsMutableString": @"ns_mutable_string",
+             @"nsSet": @"ns_set",
+             @"nsMutableSet": @"ns_mutable_set",
+             @"nsDemoClassSet": @"ns_democlass_set",
+             };
+}
+
++ (NSDictionary *)zy_containerPropertyClassMapper {
+    return @{
+             @"nsDemoClassSet" : [DemoContainerClass class],
              };
 }
 

@@ -46,16 +46,7 @@
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-}
-
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-    
-//    YYWeiboStatus *weiboStatus = [YYWeiboStatus mj_objectWithKeyValues:self.json];
-//    NSLog(@"%@", weiboStatus.createdAt);
 }
 
 static const NSUInteger kRepeatTimes = 1000;
@@ -104,7 +95,6 @@ static const NSUInteger kRepeatTimes = 1000;
 
 - (void)testMJExtensionPerformace
 {
-    // 这货没解析NSDate，强行让它解析
     id json = self.json;
     [self measureBlock:^{
         for (NSInteger i = 0; i < kRepeatTimes; i++){

@@ -14,7 +14,24 @@
     "c_float":1.0,
     "c_double":1.0,
     "c_long_double":1.0,
-    "date":"Wed Sep 16 12:20:09 +0800 2015",
-    "string":"I'm a string",
+    "ns_date":"Wed Sep 16 12:20:09 +0800 2015",
     "ns_number":123456,
+    "ns_value":123,
+    "ns_data":"data",
+    "ns_mutable_data":"data",
+    "ns_string":"I'm a string",
+    "ns_mutable_string":"I'm a string",
+    "ns_set":[1, 2, 3],
+    "ns_mutable_set":[1, 2, 3],
+    "ns_democlass_set":[
+        {
+            "name": "name1"
+        },
+        {
+            "name": "name2"
+        },
+        {
+            "name": "name3"
+        }
+    ],
 }
