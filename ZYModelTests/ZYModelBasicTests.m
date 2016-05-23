@@ -209,8 +209,6 @@
     NSDictionary *json = self.json;
     DemoClass *obj = [DemoClass zy_modelWithJson:json];
     __unused NSDictionary *modelJson = [obj zy_modelJson];
-    NSLog(@"%@", modelJson);
-//    XCTAssert([json isEqualToDictionary:modelJson]);
 }
 
 @end
