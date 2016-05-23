@@ -2,8 +2,8 @@
 //  NSObject+ZYModel.h
 //  ZYModel
 //
-//  Created by sheepliu on 16/3/29.
-//  Copyright © 2016年 tzuyangliu. All rights reserved.
+//  Created by 刘子洋 on 16/3/29.
+//  Copyright © 2016年 刘子洋. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -24,7 +24,7 @@
 + (instancetype)zy_modelWithJson:(id)json;
 + (instancetype)zy_modelWithDictionary:(NSDictionary*)dictionary;
 
-- (NSDictionary *)zy_modelJson;
+- (id)zy_modelJson;
 
 + (NSArray *)zy_modelArrayWithJson:(id)json;
 

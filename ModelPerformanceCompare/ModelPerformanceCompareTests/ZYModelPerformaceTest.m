@@ -34,11 +34,21 @@
 
 static const NSUInteger kRepeatTimes = 1000;
 
-- (void)testPerformance {
+- (void)testJSONToModelPerformance {
     id json = self.json;
     [self measureBlock:^{
         for (NSInteger i = 0; i < kRepeatTimes; i++){
             __unused YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJson:json];
+        }
+    }];
+}
+
+- (void)testModelToJSONPerformance {
+    id json = self.json;
+    YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJson:json];
+    [self measureBlock:^{
+        for (NSInteger i = 0; i < kRepeatTimes; i++){
+            __unused id json = [weiboStatus zy_modelJson];
         }
     }];
 }

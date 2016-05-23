@@ -2,8 +2,8 @@
 //  NSObject+ZYModel.m
 //  ZYModel
 //
-//  Created by sheepliu on 16/3/29.
-//  Copyright © 2016年 tzuyangliu. All rights reserved.
+//  Created by 刘子洋 on 16/3/29.
+//  Copyright © 2016年 刘子洋. All rights reserved.
 //
 
 #import "NSObject+ZYModel.h"
@@ -615,7 +615,8 @@ static id ModelToJson(NSObject *model)
         }
         else if (propertyMeta->_classProperty->_nsType)
         {
-            
+            id v = ((id (*)(id, SEL))(void *) objc_msgSend)((id)model, propertyMeta->_classProperty->_getter);
+            jsonValue = ModelToJson(v);
         }
         if (jsonValue)
         {
@@ -655,7 +656,7 @@ static id ModelToJson(NSObject *model)
     return obj;
 }
 
-- (NSDictionary *)zy_modelJson
+- (id)zy_modelJson
 {
     id json = ModelToJson(self);
     if ([json isKindOfClass:[NSArray class]]

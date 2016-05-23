@@ -1,9 +1,9 @@
 //
-//  ZYModelMeta.m
+//  ZYModelTransformInfo.m
 //  ZYModel
 //
-//  Created by sheepliu on 16/3/31.
-//  Copyright © 2016年 tzuyangliu. All rights reserved.
+//  Created by 刘子洋 on 16/3/31.
+//  Copyright © 2016年 刘子洋. All rights reserved.
 //
 
 #import "ZYModelTransformInfo.h"

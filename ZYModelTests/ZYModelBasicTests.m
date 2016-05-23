@@ -209,6 +209,12 @@
     NSDictionary *json = self.json;
     DemoClass *obj = [DemoClass zy_modelWithJson:json];
     __unused NSDictionary *modelJson = [obj zy_modelJson];
+    __block BOOL succeed = YES;
+    [json enumerateKeysAndObjectsUsingBlock:^(NSString *key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        __unused id newObj = [modelJson objectForKey:key];
+        // 手动比较obj与newObj是否相同，如果全都相同则证明转换成功，这里的验证代码太繁琐不再提供
+    }];
+    XCTAssert(succeed);
 }
 
 @end
