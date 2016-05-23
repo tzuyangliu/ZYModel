@@ -5,17 +5,13 @@
 //  Created by 刘子洋 on 16/5/22.
 //  Copyright © 2016年 Ziyang Liu. All rights reserved.
 //
-
 #import <XCTest/XCTest.h>
 #import "ZYModel.h"
 #import "YYWeiboModel.h"
-
 @interface ZYModelPerformaceTest : XCTestCase
 @property (strong, nonatomic) NSDictionary* json;
 @end
-
 @implementation ZYModelPerformaceTest
-
 - (void)setUp {
     [super setUp];
     NSError* error = nil;
@@ -27,13 +23,10 @@
                                                            error:&error];
     self.json = data;
 }
-
 - (void)tearDown {
     [super tearDown];
 }
-
-static const NSUInteger kRepeatTimes = 1000;
-
+static const NSUInteger kRepeatTimes = 1;
 - (void)testJSONToModelPerformance {
     id json = self.json;
     [self measureBlock:^{
@@ -42,7 +35,6 @@ static const NSUInteger kRepeatTimes = 1000;
         }
     }];
 }
-
 - (void)testModelToJSONPerformance {
     id json = self.json;
     YYWeiboStatus *weiboStatus = [YYWeiboStatus zy_modelWithJson:json];
@@ -52,5 +44,4 @@ static const NSUInteger kRepeatTimes = 1000;
         }
     }];
 }
-
 @end

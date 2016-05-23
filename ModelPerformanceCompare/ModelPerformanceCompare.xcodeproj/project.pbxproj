@@ -56,6 +56,7 @@
 		322632BC1CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632911CEC04B200CE4B87 /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */; };
 		322632BF1CEC05CA00CE4B87 /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 322632BE1CEC05CA00CE4B87 /* DateFormatter.m */; };
 		32F27B8F1CF1615200ACB3B6 /* ZYModelPerformaceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F27B8E1CF1615200ACB3B6 /* ZYModelPerformaceTest.m */; };
+		32F99DFD1CF2EA1300D8EDA4 /* ModelToJSONPerformanceCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F99DFC1CF2EA1300D8EDA4 /* ModelToJSONPerformanceCompare.m */; };
 		A493B4EF1CC65A6900EAE35A /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4DC1CC65A6900EAE35A /* MJExtensionConst.m */; };
 		A493B4F01CC65A6900EAE35A /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4DE1CC65A6900EAE35A /* MJFoundation.m */; };
 		A493B4F11CC65A6900EAE35A /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4E01CC65A6900EAE35A /* MJProperty.m */; };
@@ -68,7 +69,7 @@
 		A493B4F81CC65A6900EAE35A /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A493B4EE1CC65A6900EAE35A /* NSString+MJExtension.m */; };
 		A4BDD72F1CC634FB00B5710D /* ModelPerformanceCompare.h in Headers */ = {isa = PBXBuildFile; fileRef = A4BDD72E1CC634FB00B5710D /* ModelPerformanceCompare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A4BDD7361CC634FB00B5710D /* ModelPerformanceCompare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDD72B1CC634FB00B5710D /* ModelPerformanceCompare.framework */; };
-		A4BDD73B1CC634FB00B5710D /* ModelPerformanceCompareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD73A1CC634FB00B5710D /* ModelPerformanceCompareTests.m */; };
+		A4BDD73B1CC634FB00B5710D /* JSONToModelPerformanceCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD73A1CC634FB00B5710D /* JSONToModelPerformanceCompare.m */; };
 		A4BDD74E1CC6352000B5710D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4BDD7461CC6352000B5710D /* Info.plist */; };
 		A4BDD74F1CC6352000B5710D /* NSObject+ZYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD7481CC6352000B5710D /* NSObject+ZYModel.m */; };
 		A4BDD7501CC6352000B5710D /* ZYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD74A1CC6352000B5710D /* ZYClassInfo.m */; };
@@ -198,6 +199,7 @@
 		322632BD1CEC05CA00CE4B87 /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormatter.h; sourceTree = "<group>"; };
 		322632BE1CEC05CA00CE4B87 /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormatter.m; sourceTree = "<group>"; };
 		32F27B8E1CF1615200ACB3B6 /* ZYModelPerformaceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYModelPerformaceTest.m; sourceTree = "<group>"; };
+		32F99DFC1CF2EA1300D8EDA4 /* ModelToJSONPerformanceCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelToJSONPerformanceCompare.m; sourceTree = "<group>"; };
 		A493B4DA1CC65A6900EAE35A /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		A493B4DB1CC65A6900EAE35A /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
 		A493B4DC1CC65A6900EAE35A /* MJExtensionConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConst.m; sourceTree = "<group>"; };
@@ -223,7 +225,7 @@
 		A4BDD72E1CC634FB00B5710D /* ModelPerformanceCompare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelPerformanceCompare.h; sourceTree = "<group>"; };
 		A4BDD7301CC634FB00B5710D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4BDD7351CC634FB00B5710D /* ModelPerformanceCompareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelPerformanceCompareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4BDD73A1CC634FB00B5710D /* ModelPerformanceCompareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelPerformanceCompareTests.m; sourceTree = "<group>"; };
+		A4BDD73A1CC634FB00B5710D /* JSONToModelPerformanceCompare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONToModelPerformanceCompare.m; sourceTree = "<group>"; };
 		A4BDD73C1CC634FB00B5710D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4BDD7461CC6352000B5710D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4BDD7471CC6352000B5710D /* NSObject+ZYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZYModel.h"; sourceTree = "<group>"; };
@@ -583,7 +585,8 @@
 				A4BDD7521CC6353D00B5710D /* YYModel */,
 				A4BDD7451CC6352000B5710D /* ZYModel */,
 				32F27B8E1CF1615200ACB3B6 /* ZYModelPerformaceTest.m */,
-				A4BDD73A1CC634FB00B5710D /* ModelPerformanceCompareTests.m */,
+				A4BDD73A1CC634FB00B5710D /* JSONToModelPerformanceCompare.m */,
+				32F99DFC1CF2EA1300D8EDA4 /* ModelToJSONPerformanceCompare.m */,
 				A4BDD73C1CC634FB00B5710D /* Info.plist */,
 			);
 			path = ModelPerformanceCompareTests;
@@ -770,6 +773,7 @@
 				322632AA1CEC04B200CE4B87 /* JSONModel+networking.m in Sources */,
 				3226321C1CEC049B00CE4B87 /* MTWeiboModel.m in Sources */,
 				3226329E1CEC04B200CE4B87 /* NSArray+FEMPropertyRepresentation.m in Sources */,
+				32F99DFD1CF2EA1300D8EDA4 /* ModelToJSONPerformanceCompare.m in Sources */,
 				322632B21CEC04B200CE4B87 /* MTLReflection.m in Sources */,
 				322632B51CEC04B200CE4B87 /* NSArray+MTLManipulationAdditions.m in Sources */,
 				322632A71CEC04B200CE4B87 /* NSArray+JSONModel.m in Sources */,
@@ -780,7 +784,7 @@
 				322632971CEC04B200CE4B87 /* FEMMapping.m in Sources */,
 				322632B61CEC04B200CE4B87 /* NSDictionary+MTLJSONKeyPath.m in Sources */,
 				322632A61CEC04B200CE4B87 /* JSONModelError.m in Sources */,
-				A4BDD73B1CC634FB00B5710D /* ModelPerformanceCompareTests.m in Sources */,
+				A4BDD73B1CC634FB00B5710D /* JSONToModelPerformanceCompare.m in Sources */,
 				A4BDD7501CC6352000B5710D /* ZYClassInfo.m in Sources */,
 				322632AF1CEC04B200CE4B87 /* MTLJSONAdapter.m in Sources */,
 				322632B81CEC04B200CE4B87 /* NSDictionary+MTLMappingAdditions.m in Sources */,
