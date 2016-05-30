@@ -27,7 +27,7 @@
 - (void)tearDown {
   [super tearDown];
 }
-static const NSUInteger kRepeatTimes = 1;
+static const NSUInteger kRepeatTimes = 1000;
 - (void)testJSONToModelPerformance {
   id json = self.json;
   [self measureBlock:^{
