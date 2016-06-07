@@ -12,22 +12,28 @@
 
 @interface ZYModelPropertyTransformInfo : NSObject {
 @package
-  ZYClassPropertyInfo *_classProperty;
-  NSString *_jsonKey;
+    NSString* _jsonKey;
+    Class _cls;
+    Class _containCls;
+    SEL _setter;
+    SEL _getter;
+    ZYEncodingType _type;
+    ZYEncodingNSType _nsType;
+    BOOL _isCNumber;
+    BOOL _hasCustomContainCls;
 }
 
-- (instancetype)initWithClassPropertyInfo:(ZYClassPropertyInfo *)classProperty
-                                  jsonKey:(NSString *)jsonKey;
+- (instancetype)initWithClassPropertyInfo:(ZYClassPropertyInfo*)classProperty
+                                  jsonKey:(NSString*)jsonKey;
 
 @end
 
 @interface ZYModelTransformInfo : NSObject {
 @package
-  ZYClassInfo *_classInfo;
-  NSDictionary<NSString *, NSString *> *_mapper;
-  NSDictionary<NSString *, Class> *_modelContainerPropertyGenericClassMap;
+    NSDictionary<NSString*, NSString*>* _mapper;
+    NSDictionary<NSString*, Class>* _modelContainerPropertyGenericClassMap;
 
-  NSMutableArray<ZYModelPropertyTransformInfo *> *_propertyMetas;
+    NSMutableArray<ZYModelPropertyTransformInfo*>* _propertyMetas;
 }
 
 - (instancetype)initWithClass:(Class)cls;

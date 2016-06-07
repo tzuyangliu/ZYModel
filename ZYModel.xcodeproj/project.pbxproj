@@ -17,7 +17,6 @@
 		A4A016581CAA6D220086DDAA /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = A4A016571CAA6D220086DDAA /* user.json */; };
 		A4A0165B1CAA6D2E0086DDAA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A0165A1CAA6D2E0086DDAA /* User.m */; };
 		A4D37D5C1CB3E9150040F5A2 /* weibo.json in Resources */ = {isa = PBXBuildFile; fileRef = A4D37D5B1CB3E9150040F5A2 /* weibo.json */; };
-		A4D37D5F1CB3E9450040F5A2 /* YYWeiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D37D5E1CB3E9450040F5A2 /* YYWeiboModel.m */; };
 		A4D54F971CAD26B800D93714 /* ZYModelTransformInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = A4D54F951CAD26B800D93714 /* ZYModelTransformInfo.h */; };
 		A4D54F981CAD26B800D93714 /* ZYModelTransformInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D54F961CAD26B800D93714 /* ZYModelTransformInfo.m */; };
 		A4F87E221CACFF930060AE54 /* ZYClassInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = A4F87E201CACFF930060AE54 /* ZYClassInfo.h */; };
@@ -51,8 +50,6 @@
 		A4A016591CAA6D2E0086DDAA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A4A0165A1CAA6D2E0086DDAA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A4D37D5B1CB3E9150040F5A2 /* weibo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weibo.json; sourceTree = "<group>"; };
-		A4D37D5D1CB3E9450040F5A2 /* YYWeiboModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeiboModel.h; sourceTree = "<group>"; };
-		A4D37D5E1CB3E9450040F5A2 /* YYWeiboModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeiboModel.m; sourceTree = "<group>"; };
 		A4D54F951CAD26B800D93714 /* ZYModelTransformInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYModelTransformInfo.h; sourceTree = "<group>"; };
 		A4D54F961CAD26B800D93714 /* ZYModelTransformInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYModelTransformInfo.m; sourceTree = "<group>"; };
 		A4F87E201CACFF930060AE54 /* ZYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYClassInfo.h; sourceTree = "<group>"; };
@@ -137,8 +134,6 @@
 		A4A0165D1CAA722B0086DDAA /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				A4D37D5D1CB3E9450040F5A2 /* YYWeiboModel.h */,
-				A4D37D5E1CB3E9450040F5A2 /* YYWeiboModel.m */,
 				A4A016591CAA6D2E0086DDAA /* User.h */,
 				A4A0165A1CAA6D2E0086DDAA /* User.m */,
 				A487030E1CC87BAC00B14E02 /* DemoClass.h */,
@@ -273,7 +268,6 @@
 				A4A0165B1CAA6D2E0086DDAA /* User.m in Sources */,
 				A4F87E291CAD142F0060AE54 /* ZYModelWhitelistAndBlacklistTest.m in Sources */,
 				A48703101CC87BAC00B14E02 /* DemoClass.m in Sources */,
-				A4D37D5F1CB3E9450040F5A2 /* YYWeiboModel.m in Sources */,
 				A4A016491CAA6C010086DDAA /* ZYModelBasicTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
