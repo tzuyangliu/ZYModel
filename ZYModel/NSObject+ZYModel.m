@@ -392,32 +392,32 @@ NS_INLINE void SetValueToProperty(id target, ZYModelPropertyTransformInfo* prope
     }
 }
 typedef struct {
-    void* modelMeta; ///< ZYModelMeta
+    void* modelTransformInfo; ///< ZYModelTransformInfo
     void* model; ///< id (self)
     void* dictionary; ///< NSDictionary (json)
 } ModelSetContext;
-static void ModelSetWithPropertyMetaArrayFunction(const void* _propertyMeta,
+static void ModelSetWithPropertyTransformInfoArrayFunction(const void* _propertyTransformInfo,
     void* _context)
 {
     ModelSetContext* context = _context;
     __unsafe_unretained NSDictionary* dictionary = (__bridge NSDictionary*)(context->dictionary);
-    __unsafe_unretained ZYModelPropertyTransformInfo* propertyMeta = (__bridge ZYModelPropertyTransformInfo*)(_propertyMeta);
-    if (!propertyMeta->_setter)
+    __unsafe_unretained ZYModelPropertyTransformInfo* propertyTransformInfo = (__bridge ZYModelPropertyTransformInfo*)(_propertyTransformInfo);
+    if (!propertyTransformInfo->_setter)
         return;
     id value = nil;
-    value = [dictionary objectForKey:propertyMeta->_jsonKey];
+    value = [dictionary objectForKey:propertyTransformInfo->_jsonKey];
     if (value) {
         __unsafe_unretained id model = (__bridge id)(context->model);
-        SetValueToProperty(model, propertyMeta, value);
+        SetValueToProperty(model, propertyTransformInfo, value);
     }
 }
 static __inline__ __attribute__((always_inline)) NSNumber*
 ModelCreateNumberFromProperty(
     __unsafe_unretained id model,
-    __unsafe_unretained ZYModelPropertyTransformInfo* meta)
+    __unsafe_unretained ZYModelPropertyTransformInfo* propertyTransformInfo)
 {
-    SEL getter = meta->_getter;
-    switch (meta->_type & ZYEncodingTypeMask) {
+    SEL getter = propertyTransformInfo->_getter;
+    switch (propertyTransformInfo->_type & ZYEncodingTypeMask) {
     case ZYEncodingTypeBool: {
         return @(((bool (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
@@ -542,22 +542,22 @@ static id ModelToJson(NSObject* model)
     }
     if ([model isKindOfClass:[NSData class]])
         return nil;
-    ZYModelTransformInfo* modelMeta =
-        [ZYModelTransformInfo metaWithClass:[model class]];
-    if (!modelMeta) {
+    ZYModelTransformInfo* modelTransformInfo =
+        [ZYModelTransformInfo modelTransformInfoWithClass:[model class]];
+    if (!modelTransformInfo) {
         return nil;
     }
     NSMutableDictionary* newDict = [NSMutableDictionary dictionary];
-    for (ZYModelPropertyTransformInfo* propertyMeta in modelMeta
-             ->_propertyMetas) {
-        NSString* jsonKey = propertyMeta->_jsonKey;
+    for (ZYModelPropertyTransformInfo* propertyTransformInfo in modelTransformInfo
+             ->_propertyTransformInfos) {
+        NSString* jsonKey = propertyTransformInfo->_jsonKey;
         id jsonValue = nil;
-        if (propertyMeta->_isCNumber) {
-            jsonValue = ModelCreateNumberFromProperty(model, propertyMeta);
+        if (propertyTransformInfo->_isCNumber) {
+            jsonValue = ModelCreateNumberFromProperty(model, propertyTransformInfo);
         }
-        else if (propertyMeta->_nsType) {
+        else if (propertyTransformInfo->_nsType) {
             id v = ((id (*)(id, SEL))(void*)objc_msgSend)(
-                (id)model, propertyMeta->_getter);
+                (id)model, propertyTransformInfo->_getter);
             jsonValue = ModelToJson(v);
         }
         if (jsonValue) {
@@ -569,14 +569,14 @@ static id ModelToJson(NSObject* model)
 - (void)zy_setPropertiesWithDictionary:(NSDictionary*)dictionary
 {
     Class cls = [self class];
-    ZYModelTransformInfo* meta = [ZYModelTransformInfo metaWithClass:cls];
+    ZYModelTransformInfo* modelTransformInfo = [ZYModelTransformInfo modelTransformInfoWithClass:cls];
     ModelSetContext context = { 0 };
-    context.modelMeta = (__bridge void*)(meta);
+    context.modelTransformInfo = (__bridge void*)(modelTransformInfo);
     context.model = (__bridge void*)(self);
     context.dictionary = (__bridge void*)(dictionary);
-    CFArrayApplyFunction((CFArrayRef)meta->_propertyMetas,
-        CFRangeMake(0, meta->_propertyMetas.count),
-        ModelSetWithPropertyMetaArrayFunction, &context);
+    CFArrayApplyFunction((CFArrayRef)modelTransformInfo->_propertyTransformInfos,
+        CFRangeMake(0, modelTransformInfo->_propertyTransformInfos.count),
+        ModelSetWithPropertyTransformInfoArrayFunction, &context);
 }
 + (instancetype)zy_modelWithJson:(id)json
 {

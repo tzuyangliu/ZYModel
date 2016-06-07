@@ -41,14 +41,14 @@
     self = [super init];
     if (self) {
         Class curCls = cls;
-        _propertyMetas = [NSMutableArray array];
+        _propertyTransformInfos = [NSMutableArray array];
         NSArray* whitelistProperties = [cls zy_whitelistProperties];
         NSArray* blacklistProperties = [cls zy_blacklistProperties];
         while (curCls && [curCls superclass] != nil) {
             id<ZYModel> modelCls = (id<ZYModel>)curCls;
             NSDictionary* userMapper = [modelCls zy_propertyToJsonKeyMapper];
             ZYClassInfo* classInfo = [ZYClassInfo classInfoWithClass:curCls];
-            NSDictionary* propertyDictionary = classInfo->_properties;
+            NSDictionary* propertyDictionary = classInfo->_propertyInfos;
             NSArray* propertyNames = propertyDictionary.allKeys;
             for (NSString* propertyName in propertyNames) {
                 if (whitelistProperties.count && ![whitelistProperties containsObject:propertyName])
@@ -66,7 +66,7 @@
                     [[ZYModelPropertyTransformInfo alloc]
                         initWithClassPropertyInfo:propertyDictionary[propertyName]
                                           jsonKey:jsonKey];
-                [_propertyMetas addObject:propertyMeta];
+                [_propertyTransformInfos addObject:propertyMeta];
             }
             curCls = [curCls superclass];
         }
@@ -74,7 +74,7 @@
     return self;
 }
 
-+ (instancetype)metaWithClass:(Class)cls
++ (instancetype)modelTransformInfoWithClass:(Class)cls
 {
     if (!cls)
         return nil;

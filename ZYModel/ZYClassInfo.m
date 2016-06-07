@@ -261,14 +261,14 @@ ZYEncodingGetType(const char* typeEncoding)
 {
     self = [super init];
     if (self) {
-        _properties = nil;
+        _propertyInfos = nil;
         NSDictionary* modelContainerPropertyGenericClassMap =
             [(id<ZYModel>)cls zy_containerPropertyClassMapper];
         unsigned int propertyCount = 0;
         objc_property_t* properties = class_copyPropertyList(cls, &propertyCount);
         if (properties) {
             NSMutableDictionary* propertyInfos = [NSMutableDictionary new];
-            _properties = propertyInfos;
+            _propertyInfos = propertyInfos;
             for (unsigned int i = 0; i < propertyCount; i++) {
                 ZYClassPropertyInfo* info =
                     [[ZYClassPropertyInfo alloc] initWithProperty:properties[i]];
@@ -280,8 +280,8 @@ ZYEncodingGetType(const char* typeEncoding)
             }
             free(properties);
         }
-        if (!_properties)
-            _properties = @{};
+        if (!_propertyInfos)
+            _propertyInfos = @{};
     }
     return self;
 }

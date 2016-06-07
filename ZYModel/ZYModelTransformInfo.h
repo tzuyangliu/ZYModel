@@ -32,11 +32,10 @@
 @package
     NSDictionary<NSString*, NSString*>* _mapper;
     NSDictionary<NSString*, Class>* _modelContainerPropertyGenericClassMap;
-
-    NSMutableArray<ZYModelPropertyTransformInfo*>* _propertyMetas;
+    NSMutableArray<ZYModelPropertyTransformInfo*>* _propertyTransformInfos;
 }
 
 - (instancetype)initWithClass:(Class)cls;
-+ (instancetype)metaWithClass:(Class)cls;
++ (instancetype)modelTransformInfoWithClass:(Class)cls;
 
 @end
