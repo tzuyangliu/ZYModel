@@ -31,7 +31,6 @@
 @interface ZYModelTransformInfo : NSObject {
 @package
     NSDictionary<NSString*, NSString*>* _mapper;
-    NSDictionary<NSString*, Class>* _modelContainerPropertyGenericClassMap;
     NSMutableArray<ZYModelPropertyTransformInfo*>* _propertyTransformInfos;
 }
 

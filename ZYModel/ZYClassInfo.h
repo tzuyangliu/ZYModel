@@ -9,31 +9,61 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-/// Foundation Class Type
-// 已支持的在后面会有勾
+typedef NS_ENUM(NSUInteger, ZYType){
+    ZYTypeUnknown = 0,
+    ZYTypeBool,
+    ZYTypeInt8,
+    ZYTypeUInt8,
+    ZYTypeInt16,
+    ZYTypeUInt16,
+    ZYTypeInt32,
+    ZYTypeUInt32,
+    ZYTypeInt64,
+    ZYTypeUInt64,
+    ZYTypeFloat,
+    ZYTypeDouble,
+    ZYTypeLongDouble,
+    ZYTypeNSUnknown,
+    ZYTypeNSString,
+    ZYTypeNSMutableString,
+    ZYTypeNSValue,
+    ZYTypeNSNumber,
+    ZYTypeNSDecimalNumber,
+    ZYTypeNSData,
+    ZYTypeNSMutableData,
+    ZYTypeNSDate,
+    ZYTypeNSURL,
+    ZYTypeNSArray,
+    ZYTypeNSMutableArray,
+    ZYTypeNSDictionary,
+    ZYTypeNSMutableDictionary,
+    ZYTypeNSSet,
+    ZYTypeNSMutableSet,
+};
+
 typedef NS_ENUM(NSUInteger, ZYEncodingNSType) {
-    ZYEncodingTypeNSUnknown = 0, //√ 这种是自定义类型
-    ZYEncodingTypeNSString, //√
-    ZYEncodingTypeNSMutableString, //√
-    ZYEncodingTypeNSValue, //√
+    ZYEncodingTypeNSUnknown = 0,
+    ZYEncodingTypeNSString,
+    ZYEncodingTypeNSMutableString,
+    ZYEncodingTypeNSValue,
     ZYEncodingTypeNSNumber,
     ZYEncodingTypeNSDecimalNumber,
-    ZYEncodingTypeNSData, //√
-    ZYEncodingTypeNSMutableData, //√
-    ZYEncodingTypeNSDate, //√
-    ZYEncodingTypeNSURL, //√
-    ZYEncodingTypeNSArray, //√
-    ZYEncodingTypeNSMutableArray, //√
-    ZYEncodingTypeNSDictionary, //√
-    ZYEncodingTypeNSMutableDictionary, //√
-    ZYEncodingTypeNSSet, //√
-    ZYEncodingTypeNSMutableSet, //√
+    ZYEncodingTypeNSData,
+    ZYEncodingTypeNSMutableData,
+    ZYEncodingTypeNSDate,
+    ZYEncodingTypeNSURL,
+    ZYEncodingTypeNSArray,
+    ZYEncodingTypeNSMutableArray,
+    ZYEncodingTypeNSDictionary,
+    ZYEncodingTypeNSMutableDictionary,
+    ZYEncodingTypeNSSet,
+    ZYEncodingTypeNSMutableSet,
 };
 
 typedef NS_OPTIONS(NSUInteger, ZYEncodingType) {
     ZYEncodingTypeMask = 0xFF, ///< mask of type value
     ZYEncodingTypeUnknown = 0, ///< unknown
-    ZYEncodingTypeVoid = 1, ///< void
+
     ZYEncodingTypeBool = 2, ///< bool
     ZYEncodingTypeInt8 = 3, ///< char / BOOL
     ZYEncodingTypeUInt8 = 4, ///< unsigned char
@@ -47,42 +77,15 @@ typedef NS_OPTIONS(NSUInteger, ZYEncodingType) {
     ZYEncodingTypeDouble = 12, ///< double
     ZYEncodingTypeLongDouble = 13, ///< long double
     ZYEncodingTypeObject = 14, ///< id
-    ZYEncodingTypeClass = 15, ///< Class
-    ZYEncodingTypeSEL = 16, ///< SEL
-    ZYEncodingTypeBlock = 17, ///< block
-    ZYEncodingTypePointer = 18, ///< void*
-    ZYEncodingTypeStruct = 19, ///< struct
-    ZYEncodingTypeUnion = 20, ///< union
-    ZYEncodingTypeCString = 21, ///< char*
-    ZYEncodingTypeCArray = 22, ///< char[10] (for example)
-
-    ZYEncodingTypeQualifierMask = 0xFF00, ///< mask of qualifier
-    ZYEncodingTypeQualifierConst = 1 << 8, ///< const
-    ZYEncodingTypeQualifierIn = 1 << 9, ///< in
-    ZYEncodingTypeQualifierInout = 1 << 10, ///< inout
-    ZYEncodingTypeQualifierOut = 1 << 11, ///< out
-    ZYEncodingTypeQualifierBycopy = 1 << 12, ///< bycopy
-    ZYEncodingTypeQualifierByref = 1 << 13, ///< byref
-    ZYEncodingTypeQualifierOneway = 1 << 14, ///< oneway
-
-    ZYEncodingTypePropertyMask = 0xFF0000, ///< mask of property
-    ZYEncodingTypePropertyReadonly = 1 << 16, ///< readonly
-    ZYEncodingTypePropertyCopy = 1 << 17, ///< copy
-    ZYEncodingTypePropertyRetain = 1 << 18, ///< retain
-    ZYEncodingTypePropertyNonatomic = 1 << 19, ///< nonatomic
-    ZYEncodingTypePropertyWeak = 1 << 20, ///< weak
-    ZYEncodingTypePropertyCustomGetter = 1 << 21, ///< getter=
-    ZYEncodingTypePropertyCustomSetter = 1 << 22, ///< setter=
-    ZYEncodingTypePropertyDynamic = 1 << 23, ///< @dynamic
 };
 
 @interface ZYClassPropertyInfo : NSObject {
 @package
     objc_property_t _property;
     NSString* _name;
+    ZYType _zyType;
     ZYEncodingType _type;
     ZYEncodingNSType _nsType;
-    NSString* _typeEncoding;
     // Class
     Class _cls;
     Class _containCls;
