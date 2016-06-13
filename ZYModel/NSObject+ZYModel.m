@@ -10,14 +10,13 @@
 #import "ZYClassInfo.h"
 #import "ZYModelTransformInfo.h"
 #import <objc/objc-runtime.h>
-NS_INLINE NSDateFormatter* GlobalDateFormatter()
+NS_INLINE NSDateFormatter* ZYGetDateFormatter()
 {
     static dispatch_once_t onceToken;
     static NSDateFormatter* formatter;
     dispatch_once(&onceToken, ^{
         formatter = [[NSDateFormatter alloc] init];
-        [formatter
-            setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+        [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
         formatter.dateFormat = @"EE MMM dd HH:mm:ss ZZZ yyyy";
     });
     return formatter;
@@ -136,7 +135,7 @@ NS_INLINE void SetNSObjectToProperty(id target,
             setterObject = value;
         }
         else if ([value isKindOfClass:[NSString class]]) {
-            NSDate* date = [GlobalDateFormatter() dateFromString:(NSString*)value];
+            NSDate* date = [ZYGetDateFormatter() dateFromString:(NSString*)value];
             if (date) {
                 setterObject = date;
             }
@@ -529,7 +528,7 @@ static id ModelToJson(NSObject* model)
         return ((NSAttributedString*)model).string;
     }
     if ([model isKindOfClass:[NSDate class]]) {
-        NSDateFormatter* dateFormatter = GlobalDateFormatter();
+        NSDateFormatter* dateFormatter = ZYGetDateFormatter();
         NSString* dateString = [dateFormatter stringFromDate:(NSDate*)model];
         return dateString;
     }

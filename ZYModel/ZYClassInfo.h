@@ -39,42 +39,6 @@ typedef NS_ENUM(NSUInteger, ZYType){
     ZYTypeNSSet,
     ZYTypeNSMutableSet,
 };
-
-typedef NS_ENUM(NSUInteger, ZYEncodingNSType) {
-    ZYEncodingTypeNSUnknown = 0,
-    ZYEncodingTypeNSString,
-    ZYEncodingTypeNSMutableString,
-    ZYEncodingTypeNSValue,
-    ZYEncodingTypeNSNumber,
-    ZYEncodingTypeNSDecimalNumber,
-    ZYEncodingTypeNSData,
-    ZYEncodingTypeNSMutableData,
-    ZYEncodingTypeNSDate,
-    ZYEncodingTypeNSURL,
-    ZYEncodingTypeNSArray,
-    ZYEncodingTypeNSMutableArray,
-    ZYEncodingTypeNSDictionary,
-    ZYEncodingTypeNSMutableDictionary,
-    ZYEncodingTypeNSSet,
-    ZYEncodingTypeNSMutableSet,
-};
-typedef NS_ENUM(NSUInteger, ZYEncodingType) {
-    ZYEncodingTypeUnknown = 0,
-    ZYEncodingTypeBool = 2,
-    ZYEncodingTypeInt8 = 3,
-    ZYEncodingTypeUInt8 = 4,
-    ZYEncodingTypeInt16 = 5,
-    ZYEncodingTypeUInt16 = 6,
-    ZYEncodingTypeInt32 = 7,
-    ZYEncodingTypeUInt32 = 8,
-    ZYEncodingTypeInt64 = 9,
-    ZYEncodingTypeUInt64 = 10,
-    ZYEncodingTypeFloat = 11,
-    ZYEncodingTypeDouble = 12,
-    ZYEncodingTypeLongDouble = 13,
-    ZYEncodingTypeObject = 14,
-};
-
 @interface ZYClassPropertyInfo : NSObject {
 @package
     objc_property_t _property;
