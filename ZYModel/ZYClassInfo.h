@@ -8,6 +8,38 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
+typedef NS_ENUM(NSUInteger, ZYType){
+    ZYTypeUnknown = 0,
+    ZYTypeBool,
+    ZYTypeInt8,
+    ZYTypeUInt8,
+    ZYTypeInt16,
+    ZYTypeUInt16,
+    ZYTypeInt32,
+    ZYTypeUInt32,
+    ZYTypeInt64,
+    ZYTypeUInt64,
+    ZYTypeFloat,
+    ZYTypeDouble,
+    ZYTypeLongDouble,
+    ZYTypeNSUnknown = 100,
+    ZYTypeNSString,
+    ZYTypeNSMutableString,
+    ZYTypeNSValue,
+    ZYTypeNSNumber,
+    ZYTypeNSDecimalNumber,
+    ZYTypeNSData,
+    ZYTypeNSMutableData,
+    ZYTypeNSDate,
+    ZYTypeNSURL,
+    ZYTypeNSArray,
+    ZYTypeNSMutableArray,
+    ZYTypeNSDictionary,
+    ZYTypeNSMutableDictionary,
+    ZYTypeNSSet,
+    ZYTypeNSMutableSet,
+};
+
 typedef NS_ENUM(NSUInteger, ZYEncodingNSType) {
     ZYEncodingTypeNSUnknown = 0,
     ZYEncodingTypeNSString,
@@ -42,12 +74,14 @@ typedef NS_ENUM(NSUInteger, ZYEncodingType) {
     ZYEncodingTypeLongDouble = 13,
     ZYEncodingTypeObject = 14,
 };
+
 @interface ZYClassPropertyInfo : NSObject {
 @package
     objc_property_t _property;
     NSString* _name;
     ZYEncodingType _type;
     ZYEncodingNSType _nsType;
+    ZYType _zyType;
     Class _cls;
     Class _containCls;
     BOOL _hasCustomContainCls;
