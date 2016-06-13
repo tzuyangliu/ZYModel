@@ -8,6 +8,19 @@
 
 #import "NSObject+ZYModel.h"
 #import "ZYClassInfo.h"
+NS_INLINE BOOL ZYTypeGetHasContainClass(ZYType type){
+    switch (type) {
+        case ZYTypeNSSet:
+        case ZYTypeNSMutableSet:
+        case ZYTypeNSArray:
+        case ZYTypeNSMutableArray:
+        case ZYTypeNSDictionary:
+        case ZYTypeNSMutableDictionary:
+            return YES;
+        default:
+            return NO;
+    }
+}
 NS_INLINE BOOL ZYTypeGetIsCNumber(ZYType type)
 {
     switch (type) {
@@ -28,8 +41,7 @@ NS_INLINE BOOL ZYTypeGetIsCNumber(ZYType type)
             return NO;
     }
 }
-NS_INLINE Class ZYTypeGetClass(ZYType type, const char* typeEncoding){
-    if (type < ZYTypeNSUnknown) return nil;
+NS_INLINE Class ZYTypeGetClass(const char* typeEncoding){
     size_t len = strlen(typeEncoding);
     if (len > 3) {
         char name[len - 2];
@@ -77,14 +89,7 @@ NS_INLINE ZYType ZYClassGetType(const char* typeEncoding){
             return ZYTypeLongDouble;
         case '@': {
             if (!(len == 2 && *(type + 1) == '?')){
-                Class cls;
-                size_t len = strlen(typeEncoding);
-                if (len > 3) {
-                    char name[len - 2];
-                    name[len - 3] = '\0';
-                    memcpy(name, typeEncoding + 2, len - 3);
-                    cls = objc_getClass(name);
-                }
+                Class cls = ZYTypeGetClass(typeEncoding);
                 if (!cls) return ZYTypeNSUnknown;
                 if ([cls isSubclassOfClass:[NSMutableString class]])
                     return ZYTypeNSMutableString;
@@ -123,112 +128,6 @@ NS_INLINE ZYType ZYClassGetType(const char* typeEncoding){
             return ZYTypeUnknown;
     }
 }
-static __inline__ __attribute__((always_inline)) ZYEncodingNSType ZYClassGetNSType(Class cls)
-{
-    if (!cls) return ZYEncodingTypeNSUnknown;
-    if ([cls isSubclassOfClass:[NSMutableString class]])
-        return ZYEncodingTypeNSMutableString;
-    if ([cls isSubclassOfClass:[NSString class]])
-        return ZYEncodingTypeNSString;
-    if ([cls isSubclassOfClass:[NSDecimalNumber class]])
-        return ZYEncodingTypeNSDecimalNumber;
-    if ([cls isSubclassOfClass:[NSNumber class]])
-        return ZYEncodingTypeNSNumber;
-    if ([cls isSubclassOfClass:[NSValue class]])
-        return ZYEncodingTypeNSValue;
-    if ([cls isSubclassOfClass:[NSMutableData class]])
-        return ZYEncodingTypeNSMutableData;
-    if ([cls isSubclassOfClass:[NSData class]])
-        return ZYEncodingTypeNSData;
-    if ([cls isSubclassOfClass:[NSDate class]])
-        return ZYEncodingTypeNSDate;
-    if ([cls isSubclassOfClass:[NSURL class]])
-        return ZYEncodingTypeNSURL;
-    if ([cls isSubclassOfClass:[NSMutableArray class]])
-        return ZYEncodingTypeNSMutableArray;
-    if ([cls isSubclassOfClass:[NSArray class]])
-        return ZYEncodingTypeNSArray;
-    if ([cls isSubclassOfClass:[NSMutableDictionary class]])
-        return ZYEncodingTypeNSMutableDictionary;
-    if ([cls isSubclassOfClass:[NSDictionary class]])
-        return ZYEncodingTypeNSDictionary;
-    if ([cls isSubclassOfClass:[NSMutableSet class]])
-        return ZYEncodingTypeNSMutableSet;
-    if ([cls isSubclassOfClass:[NSSet class]])
-        return ZYEncodingTypeNSSet;
-    return ZYEncodingTypeNSUnknown;
-}
-static __inline__ __attribute__((always_inline)) BOOL
-ZYEncodingGetIsCNumber(ZYEncodingType encodingType)
-{
-    switch (encodingType) {
-    case ZYEncodingTypeBool:
-    case ZYEncodingTypeInt8:
-    case ZYEncodingTypeUInt8:
-    case ZYEncodingTypeInt16:
-    case ZYEncodingTypeUInt16:
-    case ZYEncodingTypeInt32:
-    case ZYEncodingTypeUInt32:
-    case ZYEncodingTypeInt64:
-    case ZYEncodingTypeUInt64:
-    case ZYEncodingTypeFloat:
-    case ZYEncodingTypeDouble:
-    case ZYEncodingTypeLongDouble:
-        return YES;
-    default:
-        return NO;
-    }
-}
-static __inline__ __attribute__((always_inline)) ZYEncodingType
-ZYEncodingGetType(const char* typeEncoding)
-{
-    char* type = (char*)typeEncoding;
-    if (!type)
-        return ZYEncodingTypeUnknown;
-    size_t len = strlen(type);
-    if (len == 0)
-        return ZYEncodingTypeUnknown;
-    len = strlen(type);
-    if (len == 0)
-        return ZYEncodingTypeUnknown;
-
-    switch (*type) {
-    case 'B':
-        return ZYEncodingTypeBool;
-    case 'c':
-        return ZYEncodingTypeInt8;
-    case 'C':
-        return ZYEncodingTypeUInt8;
-    case 's':
-        return ZYEncodingTypeInt16;
-    case 'S':
-        return ZYEncodingTypeUInt16;
-    case 'i':
-        return ZYEncodingTypeInt32;
-    case 'I':
-        return ZYEncodingTypeUInt32;
-    case 'l':
-        return ZYEncodingTypeInt32;
-    case 'L':
-        return ZYEncodingTypeUInt32;
-    case 'q':
-        return ZYEncodingTypeInt64;
-    case 'Q':
-        return ZYEncodingTypeUInt64;
-    case 'f':
-        return ZYEncodingTypeFloat;
-    case 'd':
-        return ZYEncodingTypeDouble;
-    case 'D':
-        return ZYEncodingTypeLongDouble;
-    case '@': {
-        if (!(len == 2 && *(type + 1) == '?'))
-            return ZYEncodingTypeObject;
-    }
-    default:
-        return ZYEncodingTypeUnknown;
-    }
-}
 @implementation ZYClassPropertyInfo
 - (instancetype)initWithProperty:(objc_property_t)property
 {
@@ -249,20 +148,9 @@ ZYEncodingGetType(const char* typeEncoding)
             case 'T': {
                 if (attrs[i].value) {
                     _zyType = ZYClassGetType(attrs[i].value);
-                    _cls = ZYTypeGetClass(_zyType, attrs[i].value);
-//                    _type = ZYEncodingGetType(attrs[i].value);
+                    _cls = ZYTypeGetClass(attrs[i].value);
                     _isCNumber = ZYTypeGetIsCNumber(_zyType);
-                    if (_zyType == ZYTypeNSSet
-                        || _zyType == ZYTypeNSMutableSet
-                        || _zyType == ZYTypeNSArray
-                        || _zyType == ZYTypeNSMutableArray
-                        || _zyType == ZYTypeNSDictionary
-                        || _zyType == ZYTypeNSMutableDictionary) {
-                        _hasCustomContainCls = YES;
-                    }
-//                    if ((_type) == ZYEncodingTypeObject) {
-//                        _nsType = ZYClassGetNSType(_cls);
-//                    }
+                    _hasCustomContainCls = ZYTypeGetHasContainClass(_zyType);
                 }
                 break;
             }
