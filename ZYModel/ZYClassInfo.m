@@ -232,15 +232,6 @@ ZYEncodingGetType(const char* typeEncoding)
                     _cls = ZYTypeGetClass(_zyType, attrs[i].value);
                     _type = ZYEncodingGetType(attrs[i].value);
                     _isCNumber = ZYEncodingGetIsCNumber(_type);
-//                    if ((_type) == ZYEncodingTypeObject) {
-//                        size_t len = strlen(attrs[i].value);
-//                        if (len > 3) {
-//                            char name[len - 2];
-//                            name[len - 3] = '\0';
-//                            memcpy(name, attrs[i].value + 2, len - 3);
-//                            _cls = objc_getClass(name);
-//                        }
-//                    }
                     if (_zyType == ZYTypeNSSet
                         || _zyType == ZYTypeNSMutableSet
                         || _zyType == ZYTypeNSArray
@@ -251,9 +242,6 @@ ZYEncodingGetType(const char* typeEncoding)
                     }
                     if ((_type) == ZYEncodingTypeObject) {
                         _nsType = ZYClassGetNSType(_cls);
-//                        if (_nsType == ZYEncodingTypeNSSet || _nsType == ZYEncodingTypeNSMutableSet || _nsType == ZYEncodingTypeNSArray || _nsType == ZYEncodingTypeNSMutableArray || _nsType == ZYEncodingTypeNSDictionary || _nsType == ZYEncodingTypeNSMutableDictionary) {
-//                            _hasCustomContainCls = YES;
-//                        }
                     }
                 }
                 break;
