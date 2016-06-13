@@ -53,11 +53,11 @@
         } else {
           jsonKey = propertyName;
         }
-        ZYModelPropertyTransformInfo *propertyMeta =
+        ZYModelPropertyTransformInfo *propertyTransformInfos =
             [[ZYModelPropertyTransformInfo alloc]
                 initWithClassPropertyInfo:propertyDictionary[propertyName]
                                   jsonKey:jsonKey];
-        [_propertyTransformInfos addObject:propertyMeta];
+        [_propertyTransformInfos addObject:propertyTransformInfos];
       }
       curCls = [curCls superclass];
     }
@@ -77,18 +77,18 @@
     lock = dispatch_semaphore_create(1);
   });
   dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
-  ZYModelTransformInfo *meta =
+  ZYModelTransformInfo *modelTransformInfo =
       CFDictionaryGetValue(cache, (__bridge const void *)(cls));
   dispatch_semaphore_signal(lock);
-  if (!meta) {
-    meta = [[ZYModelTransformInfo alloc] initWithClass:cls];
-    if (meta) {
+  if (!modelTransformInfo) {
+    modelTransformInfo = [[ZYModelTransformInfo alloc] initWithClass:cls];
+    if (modelTransformInfo) {
       dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
       CFDictionarySetValue(cache, (__bridge const void *)(cls),
-                           (__bridge const void *)(meta));
+                           (__bridge const void *)(modelTransformInfo));
       dispatch_semaphore_signal(lock);
     }
   }
-  return meta;
+  return modelTransformInfo;
 }
 @end

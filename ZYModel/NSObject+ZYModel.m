@@ -281,21 +281,10 @@ NS_INLINE void SetValueToProperty(id target,
   }
 }
 @implementation NSObject (ZYModel)
-+ (NSDictionary *)zy_propertyToJsonKeyMapper {
-  return nil;
-}
-
-+ (NSArray *)zy_whitelistProperties {
-  return nil;
-}
-
-+ (NSArray *)zy_blacklistProperties {
-  return nil;
-}
-
-+ (NSDictionary *)zy_containerPropertyClassMapper {
-  return nil;
-}
++ (NSDictionary *)zy_propertyToJsonKeyMapper {return nil;}
++ (NSArray *)zy_whitelistProperties {return nil;}
++ (NSArray *)zy_blacklistProperties {return nil;}
++ (NSDictionary *)zy_containerPropertyClassMapper {return nil;}
 #pragma mark -
 + (NSArray *)_zy_arrayWithJSON:(id)json {
   if (!json || json == (id)kCFNull)
@@ -357,7 +346,7 @@ typedef struct {
   void *model;
   void *dictionary;
 } ZYModelSetContext;
-static void ModelSetWithPropertyTransformInfoArrayFunction(
+NS_INLINE void ModelSetWithPropertyTransformInfoArrayFunction(
     const void *_propertyTransformInfo, void *_context) {
   ZYModelSetContext *context = _context;
   __unsafe_unretained NSDictionary *dictionary =
@@ -373,8 +362,7 @@ static void ModelSetWithPropertyTransformInfoArrayFunction(
     SetValueToProperty(model, propertyTransformInfo, value);
   }
 }
-static __inline__ __attribute__((always_inline)) NSNumber *
-ModelCreateNumberFromPropertyTransformInfo(
+NS_INLINE NSNumber *ModelCreateNumberFromPropertyTransformInfo(
     __unsafe_unretained id model,
     __unsafe_unretained ZYModelPropertyTransformInfo *propertyTransformInfo) {
   SEL getter = propertyTransformInfo->_getter;
