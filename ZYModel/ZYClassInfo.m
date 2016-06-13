@@ -147,10 +147,10 @@ NS_INLINE ZYType ZYClassGetType(const char* typeEncoding){
             switch (attrs[i].name[0]) {
             case 'T': {
                 if (attrs[i].value) {
-                    _zyType = ZYClassGetType(attrs[i].value);
+                    _type = ZYClassGetType(attrs[i].value);
                     _cls = ZYTypeGetClass(attrs[i].value);
-                    _isCNumber = ZYTypeGetIsCNumber(_zyType);
-                    _hasCustomContainCls = ZYTypeGetHasContainClass(_zyType);
+                    _isCNumber = ZYTypeGetIsCNumber(_type);
+                    _hasCustomContainCls = ZYTypeGetHasContainClass(_type);
                 }
                 break;
             }

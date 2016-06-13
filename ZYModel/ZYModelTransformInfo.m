@@ -20,7 +20,7 @@
         _getter = classProperty->_getter;
 //        _type = classProperty->_type;
 //        _nsType = classProperty->_nsType;
-        _type = classProperty->_zyType;
+        _type = classProperty->_type;
         _isCNumber = classProperty->_isCNumber;
         _hasCustomContainCls = classProperty->_hasCustomContainCls;
         _jsonKey = jsonKey;

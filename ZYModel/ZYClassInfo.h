@@ -79,9 +79,7 @@ typedef NS_ENUM(NSUInteger, ZYEncodingType) {
 @package
     objc_property_t _property;
     NSString* _name;
-//    ZYEncodingType _type;
-//    ZYEncodingNSType _nsType;
-    ZYType _zyType;
+    ZYType _type;
     Class _cls;
     Class _containCls;
     BOOL _hasCustomContainCls;
