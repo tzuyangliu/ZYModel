@@ -8,22 +8,22 @@
 #import <Foundation/Foundation.h>
 @interface ZYModelPropertyTransformInfo : NSObject {
 @package
-  NSString *_jsonKey;
-  ZYType _type;
-  Class _cls;
-  Class _containCls;
-  SEL _setter;
-  SEL _getter;
-  BOOL _isCNumber;
-  BOOL _isContainerCls;
+    NSString* _jsonKey;
+    ZYType _type;
+    Class _cls;
+    Class _containCls;
+    SEL _setter;
+    SEL _getter;
+    BOOL _isCNumber;
+    BOOL _isContainerCls;
 }
-- (instancetype)initWithClassPropertyInfo:(ZYClassPropertyInfo *)classProperty
-                                  jsonKey:(NSString *)jsonKey;
+- (instancetype)initWithClassPropertyInfo:(ZYClassPropertyInfo*)classProperty
+                                  jsonKey:(NSString*)jsonKey;
 @end
 @interface ZYModelTransformInfo : NSObject {
 @package
-  NSDictionary<NSString *, NSString *> *_mapper;
-  NSMutableArray<ZYModelPropertyTransformInfo *> *_propertyTransformInfos;
+    NSDictionary<NSString*, NSString*>* _mapper;
+    NSMutableArray<ZYModelPropertyTransformInfo*>* _propertyTransformInfos;
 }
 - (instancetype)initWithClass:(Class)cls;
 + (instancetype)modelTransformInfoWithClass:(Class)cls;
