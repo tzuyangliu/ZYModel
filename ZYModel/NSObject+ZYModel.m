@@ -302,7 +302,6 @@ NS_INLINE void SetValueToProperty(id target,
     }
 }
 @implementation NSObject (ZYModel)
-#pragma mark - Virtual Methods
 + (NSDictionary*)zy_propertyToJsonKeyMapper
 {
     return nil;
@@ -384,9 +383,9 @@ NS_INLINE void SetValueToProperty(id target,
     }
 }
 typedef struct {
-    void* modelTransformInfo; ///< ZYModelTransformInfo
-    void* model; ///< id (self)
-    void* dictionary; ///< NSDictionary (json)
+    void* modelTransformInfo;
+    void* model;
+    void* dictionary;
 } ModelSetContext;
 static void ModelSetWithPropertyTransformInfoArrayFunction(
     const void* _propertyTransformInfo, void* _context)
@@ -404,7 +403,7 @@ static void ModelSetWithPropertyTransformInfoArrayFunction(
     }
 }
 static __inline__ __attribute__((always_inline)) NSNumber*
-ModelCreateNumberFromProperty(
+ModelCreateNumberFromPropertyTransformInfo(
     __unsafe_unretained id model,
     __unsafe_unretained ZYModelPropertyTransformInfo* propertyTransformInfo)
 {
@@ -545,7 +544,7 @@ static id ModelToJson(NSObject* model)
         NSString* jsonKey = propertyTransformInfo->_jsonKey;
         id jsonValue = nil;
         if (propertyTransformInfo->_isCNumber) {
-            jsonValue = ModelCreateNumberFromProperty(model, propertyTransformInfo);
+            jsonValue = ModelCreateNumberFromPropertyTransformInfo(model, propertyTransformInfo);
         }
         else if (propertyTransformInfo->_type) {
             id v = ((id (*)(id, SEL))(void*)objc_msgSend)(
