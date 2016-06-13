@@ -103,41 +103,41 @@ NS_INLINE ZYType ZYClassGetType(const char* typeEncoding){
             return ZYTypeUnknown;
     }
 }
-//static __inline__ __attribute__((always_inline)) ZYEncodingNSType ZYClassGetNSType(Class cls)
-//{
-//    if (!cls) return ZYEncodingTypeNSUnknown;
-//    if ([cls isSubclassOfClass:[NSMutableString class]])
-//        return ZYEncodingTypeNSMutableString;
-//    if ([cls isSubclassOfClass:[NSString class]])
-//        return ZYEncodingTypeNSString;
-//    if ([cls isSubclassOfClass:[NSDecimalNumber class]])
-//        return ZYEncodingTypeNSDecimalNumber;
-//    if ([cls isSubclassOfClass:[NSNumber class]])
-//        return ZYEncodingTypeNSNumber;
-//    if ([cls isSubclassOfClass:[NSValue class]])
-//        return ZYEncodingTypeNSValue;
-//    if ([cls isSubclassOfClass:[NSMutableData class]])
-//        return ZYEncodingTypeNSMutableData;
-//    if ([cls isSubclassOfClass:[NSData class]])
-//        return ZYEncodingTypeNSData;
-//    if ([cls isSubclassOfClass:[NSDate class]])
-//        return ZYEncodingTypeNSDate;
-//    if ([cls isSubclassOfClass:[NSURL class]])
-//        return ZYEncodingTypeNSURL;
-//    if ([cls isSubclassOfClass:[NSMutableArray class]])
-//        return ZYEncodingTypeNSMutableArray;
-//    if ([cls isSubclassOfClass:[NSArray class]])
-//        return ZYEncodingTypeNSArray;
-//    if ([cls isSubclassOfClass:[NSMutableDictionary class]])
-//        return ZYEncodingTypeNSMutableDictionary;
-//    if ([cls isSubclassOfClass:[NSDictionary class]])
-//        return ZYEncodingTypeNSDictionary;
-//    if ([cls isSubclassOfClass:[NSMutableSet class]])
-//        return ZYEncodingTypeNSMutableSet;
-//    if ([cls isSubclassOfClass:[NSSet class]])
-//        return ZYEncodingTypeNSSet;
-//    return ZYEncodingTypeNSUnknown;
-//}
+static __inline__ __attribute__((always_inline)) ZYEncodingNSType ZYClassGetNSType(Class cls)
+{
+    if (!cls) return ZYEncodingTypeNSUnknown;
+    if ([cls isSubclassOfClass:[NSMutableString class]])
+        return ZYEncodingTypeNSMutableString;
+    if ([cls isSubclassOfClass:[NSString class]])
+        return ZYEncodingTypeNSString;
+    if ([cls isSubclassOfClass:[NSDecimalNumber class]])
+        return ZYEncodingTypeNSDecimalNumber;
+    if ([cls isSubclassOfClass:[NSNumber class]])
+        return ZYEncodingTypeNSNumber;
+    if ([cls isSubclassOfClass:[NSValue class]])
+        return ZYEncodingTypeNSValue;
+    if ([cls isSubclassOfClass:[NSMutableData class]])
+        return ZYEncodingTypeNSMutableData;
+    if ([cls isSubclassOfClass:[NSData class]])
+        return ZYEncodingTypeNSData;
+    if ([cls isSubclassOfClass:[NSDate class]])
+        return ZYEncodingTypeNSDate;
+    if ([cls isSubclassOfClass:[NSURL class]])
+        return ZYEncodingTypeNSURL;
+    if ([cls isSubclassOfClass:[NSMutableArray class]])
+        return ZYEncodingTypeNSMutableArray;
+    if ([cls isSubclassOfClass:[NSArray class]])
+        return ZYEncodingTypeNSArray;
+    if ([cls isSubclassOfClass:[NSMutableDictionary class]])
+        return ZYEncodingTypeNSMutableDictionary;
+    if ([cls isSubclassOfClass:[NSDictionary class]])
+        return ZYEncodingTypeNSDictionary;
+    if ([cls isSubclassOfClass:[NSMutableSet class]])
+        return ZYEncodingTypeNSMutableSet;
+    if ([cls isSubclassOfClass:[NSSet class]])
+        return ZYEncodingTypeNSSet;
+    return ZYEncodingTypeNSUnknown;
+}
 static __inline__ __attribute__((always_inline)) BOOL
 ZYEncodingGetIsCNumber(ZYEncodingType encodingType)
 {
@@ -249,12 +249,12 @@ ZYEncodingGetType(const char* typeEncoding)
                         || _zyType == ZYTypeNSMutableDictionary) {
                         _hasCustomContainCls = YES;
                     }
-//                    if ((_type) == ZYEncodingTypeObject) {
-//                        _nsType = ZYClassGetNSType(_cls);
+                    if ((_type) == ZYEncodingTypeObject) {
+                        _nsType = ZYClassGetNSType(_cls);
 //                        if (_nsType == ZYEncodingTypeNSSet || _nsType == ZYEncodingTypeNSMutableSet || _nsType == ZYEncodingTypeNSArray || _nsType == ZYEncodingTypeNSMutableArray || _nsType == ZYEncodingTypeNSDictionary || _nsType == ZYEncodingTypeNSMutableDictionary) {
 //                            _hasCustomContainCls = YES;
 //                        }
-//                    }
+                    }
                 }
                 break;
             }
