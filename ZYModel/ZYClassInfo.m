@@ -150,7 +150,7 @@ NS_INLINE ZYType ZYClassGetType(const char* typeEncoding){
                     _type = ZYClassGetType(attrs[i].value);
                     _cls = ZYTypeGetClass(attrs[i].value);
                     _isCNumber = ZYTypeGetIsCNumber(_type);
-                    _hasCustomContainCls = ZYTypeGetHasContainClass(_type);
+                    _isContainerClass = ZYTypeGetHasContainClass(_type);
                 }
                 break;
             }
@@ -208,7 +208,7 @@ NS_INLINE ZYType ZYClassGetType(const char* typeEncoding){
                     [[ZYClassPropertyInfo alloc] initWithProperty:properties[i]];
                 if (info->_name)
                     propertyInfos[info->_name] = info;
-                if (info->_hasCustomContainCls) {
+                if (info->_isContainerClass) {
                     info->_containCls = containerPropertyClassMapper[info->_name];
                 }
             }

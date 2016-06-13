@@ -82,7 +82,7 @@ typedef NS_ENUM(NSUInteger, ZYEncodingType) {
     ZYType _type;
     Class _cls;
     Class _containCls;
-    BOOL _hasCustomContainCls;
+    BOOL _isContainerClass;
     BOOL _isCNumber;
     SEL _setter;
     SEL _getter;

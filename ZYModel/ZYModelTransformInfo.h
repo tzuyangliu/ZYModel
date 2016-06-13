@@ -9,15 +9,13 @@
 @interface ZYModelPropertyTransformInfo : NSObject {
 @package
     NSString* _jsonKey;
+    ZYType _type;
     Class _cls;
     Class _containCls;
     SEL _setter;
     SEL _getter;
-//    ZYEncodingType _type;
-//    ZYEncodingNSType _nsType;
-    ZYType _type;
     BOOL _isCNumber;
-    BOOL _hasCustomContainCls;
+    BOOL _isContainerCls;
 }
 - (instancetype)initWithClassPropertyInfo:(ZYClassPropertyInfo*)classProperty
                                   jsonKey:(NSString*)jsonKey;
