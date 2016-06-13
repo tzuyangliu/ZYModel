@@ -13,8 +13,9 @@
     Class _containCls;
     SEL _setter;
     SEL _getter;
-    ZYEncodingType _type;
-    ZYEncodingNSType _nsType;
+//    ZYEncodingType _type;
+//    ZYEncodingNSType _nsType;
+    ZYType _type;
     BOOL _isCNumber;
     BOOL _hasCustomContainCls;
 }

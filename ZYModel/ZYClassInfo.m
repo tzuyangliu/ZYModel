@@ -8,6 +8,26 @@
 
 #import "NSObject+ZYModel.h"
 #import "ZYClassInfo.h"
+NS_INLINE BOOL ZYTypeGetIsCNumber(ZYType type)
+{
+    switch (type) {
+        case ZYTypeBool:
+        case ZYTypeInt8:
+        case ZYTypeUInt8:
+        case ZYTypeInt16:
+        case ZYTypeUInt16:
+        case ZYTypeInt32:
+        case ZYTypeUInt32:
+        case ZYTypeInt64:
+        case ZYTypeUInt64:
+        case ZYTypeFloat:
+        case ZYTypeDouble:
+        case ZYTypeLongDouble:
+            return YES;
+        default:
+            return NO;
+    }
+}
 NS_INLINE Class ZYTypeGetClass(ZYType type, const char* typeEncoding){
     if (type < ZYTypeNSUnknown) return nil;
     size_t len = strlen(typeEncoding);
@@ -230,8 +250,8 @@ ZYEncodingGetType(const char* typeEncoding)
                 if (attrs[i].value) {
                     _zyType = ZYClassGetType(attrs[i].value);
                     _cls = ZYTypeGetClass(_zyType, attrs[i].value);
-                    _type = ZYEncodingGetType(attrs[i].value);
-                    _isCNumber = ZYEncodingGetIsCNumber(_type);
+//                    _type = ZYEncodingGetType(attrs[i].value);
+                    _isCNumber = ZYTypeGetIsCNumber(_zyType);
                     if (_zyType == ZYTypeNSSet
                         || _zyType == ZYTypeNSMutableSet
                         || _zyType == ZYTypeNSArray
@@ -240,9 +260,9 @@ ZYEncodingGetType(const char* typeEncoding)
                         || _zyType == ZYTypeNSMutableDictionary) {
                         _hasCustomContainCls = YES;
                     }
-                    if ((_type) == ZYEncodingTypeObject) {
-                        _nsType = ZYClassGetNSType(_cls);
-                    }
+//                    if ((_type) == ZYEncodingTypeObject) {
+//                        _nsType = ZYClassGetNSType(_cls);
+//                    }
                 }
                 break;
             }

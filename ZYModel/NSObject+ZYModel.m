@@ -27,18 +27,18 @@ NS_INLINE void SetNSObjectToProperty(id target,
     id value)
 {
     id setterObject = nil;
-    ZYEncodingNSType nsType = property->_nsType;
+    ZYType nsType= property->_type;
     switch (nsType) {
-    case ZYEncodingTypeNSUnknown: {
+    case ZYTypeNSUnknown: {
         setterObject = [property->_cls zy_modelWithJson:value];
         break;
     }
-    case ZYEncodingTypeNSString:
-    case ZYEncodingTypeNSMutableString: {
+    case ZYTypeNSString:
+    case ZYTypeNSMutableString: {
         if ([value isKindOfClass:[NSString class]]) {
             BOOL mutable = [value isKindOfClass:[NSMutableString class]];
-            if ((mutable && nsType == ZYEncodingTypeNSString) || (!mutable && nsType == ZYEncodingTypeNSMutableString)) {
-                setterObject = (nsType == ZYEncodingTypeNSString)
+            if ((mutable && nsType == ZYTypeNSString) || (!mutable && nsType == ZYTypeNSMutableString)) {
+                setterObject = (nsType == ZYTypeNSString)
                     ? ((NSString*)value).copy
                     : ((NSString*)value).mutableCopy;
             }
@@ -47,19 +47,19 @@ NS_INLINE void SetNSObjectToProperty(id target,
             }
         }
         else if ([value isKindOfClass:[NSAttributedString class]]) {
-            setterObject = (nsType == ZYEncodingTypeNSString)
+            setterObject = (nsType == ZYTypeNSString)
                 ? ((NSAttributedString*)value).string
                 : ((NSAttributedString*)value).string.mutableCopy;
         }
         else if ([value isKindOfClass:[NSNumber class]]) {
-            setterObject = (nsType == ZYEncodingTypeNSString)
+            setterObject = (nsType == ZYTypeNSString)
                 ? ((NSNumber*)value).stringValue
                 : ((NSNumber*)value).stringValue.mutableCopy;
         }
         break;
     }
-    case ZYEncodingTypeNSArray:
-    case ZYEncodingTypeNSMutableArray: {
+    case ZYTypeNSArray:
+    case ZYTypeNSMutableArray: {
         NSArray* array = nil;
         if ([value isKindOfClass:[NSArray class]]) {
             array = value;
@@ -83,16 +83,16 @@ NS_INLINE void SetNSObjectToProperty(id target,
                         }
                     }
                 }];
-                setterObject = (nsType == ZYEncodingTypeNSArray) ? finalArray.copy : finalArray;
+                setterObject = (nsType == ZYTypeNSArray) ? finalArray.copy : finalArray;
             }
             else {
-                setterObject = (nsType == ZYEncodingTypeNSArray) ? array : array.mutableCopy;
+                setterObject = (nsType == ZYTypeNSArray) ? array : array.mutableCopy;
             }
         }
         break;
     }
-    case ZYEncodingTypeNSDictionary:
-    case ZYEncodingTypeNSMutableDictionary: {
+    case ZYTypeNSDictionary:
+    case ZYTypeNSMutableDictionary: {
         if ([value isKindOfClass:[NSDictionary class]]) {
             if (property->_containCls) {
                 setterObject = [NSMutableDictionary dictionary];
@@ -110,19 +110,19 @@ NS_INLINE void SetNSObjectToProperty(id target,
                             }
                         }
                     }];
-                if (property->_nsType == ZYEncodingTypeNSDictionary) {
+                if (property->_type == ZYTypeNSDictionary) {
                     setterObject = [setterObject copy];
                 }
             }
             else {
-                setterObject = (nsType == ZYEncodingTypeNSDictionary)
+                setterObject = (nsType == ZYTypeNSDictionary)
                     ? [value copy]
                     : [value mutableCopy];
             }
         }
         break;
     }
-    case ZYEncodingTypeNSURL: {
+    case ZYTypeNSURL: {
         if ([value isKindOfClass:[NSURL class]]) {
             setterObject = value;
         }
@@ -131,7 +131,7 @@ NS_INLINE void SetNSObjectToProperty(id target,
         }
         break;
     }
-    case ZYEncodingTypeNSDate: {
+    case ZYTypeNSDate: {
         if ([value isKindOfClass:[NSDate class]]) {
             setterObject = value;
         }
@@ -143,27 +143,27 @@ NS_INLINE void SetNSObjectToProperty(id target,
         }
         break;
     }
-    case ZYEncodingTypeNSValue: {
+    case ZYTypeNSValue: {
         if ([value isKindOfClass:[NSValue class]]) {
             setterObject = value;
         }
         break;
     }
-    case ZYEncodingTypeNSData:
-    case ZYEncodingTypeNSMutableData: {
+    case ZYTypeNSData:
+    case ZYTypeNSMutableData: {
         if ([value isKindOfClass:[NSData class]]) {
-            setterObject = (nsType == ZYEncodingTypeNSData)
+            setterObject = (nsType == ZYTypeNSData)
                 ? ((NSData*)value).copy
                 : ((NSData*)value).mutableCopy;
         }
         else if ([value isKindOfClass:[NSString class]]) {
             NSData* data = [(NSString*)value dataUsingEncoding:NSUTF8StringEncoding];
-            setterObject = (nsType == ZYEncodingTypeNSData) ? data : data.mutableCopy;
+            setterObject = (nsType == ZYTypeNSData) ? data : data.mutableCopy;
         }
         break;
     }
-    case ZYEncodingTypeNSSet:
-    case ZYEncodingTypeNSMutableSet: {
+    case ZYTypeNSSet:
+    case ZYTypeNSMutableSet: {
         NSSet* set = nil;
         if ([value isKindOfClass:[NSSet class]]) {
             set = ((NSSet*)value).copy;
@@ -186,16 +186,16 @@ NS_INLINE void SetNSObjectToProperty(id target,
                         }
                     }
                 }];
-                setterObject = (nsType == ZYEncodingTypeNSSet) ? finalSet.copy : finalSet;
+                setterObject = (nsType == ZYTypeNSSet) ? finalSet.copy : finalSet;
             }
             else {
-                setterObject = (nsType == ZYEncodingTypeNSSet) ? set : set.mutableCopy;
+                setterObject = (nsType == ZYTypeNSSet) ? set : set.mutableCopy;
             }
         }
         break;
     }
-    case ZYEncodingTypeNSNumber:
-    case ZYEncodingTypeNSDecimalNumber: {
+    case ZYTypeNSNumber:
+    case ZYTypeNSDecimalNumber: {
         if ([value isKindOfClass:[NSNumber class]]) {
             setterObject = value;
         }
@@ -218,52 +218,52 @@ NS_INLINE void SetCNumberToProperty(id target,
     NSNumber* number)
 {
     switch (property->_type) {
-    case ZYEncodingTypeBool: {
+    case ZYTypeBool: {
         ((void (*)(id, SEL, BOOL))(void*)objc_msgSend)(
             (id)target, property->_setter, number.boolValue);
         break;
     }
-    case ZYEncodingTypeInt8: {
+    case ZYTypeInt8: {
         ((void (*)(id, SEL, int8_t))(void*)objc_msgSend)(
             (id)target, property->_setter, (int8_t)number.charValue);
         break;
     }
-    case ZYEncodingTypeUInt8: {
+    case ZYTypeUInt8: {
         ((void (*)(id, SEL, int8_t))(void*)objc_msgSend)(
             (id)target, property->_setter, (uint8_t)number.unsignedCharValue);
         break;
     }
-    case ZYEncodingTypeInt16: {
+    case ZYTypeInt16: {
         ((void (*)(id, SEL, int16_t))(void*)objc_msgSend)(
             (id)target, property->_setter, (int16_t)number.shortValue);
         break;
     }
-    case ZYEncodingTypeUInt16: {
+    case ZYTypeUInt16: {
         ((void (*)(id, SEL, uint16_t))(void*)objc_msgSend)(
             (id)target, property->_setter, (uint16_t)number.unsignedShortValue);
         break;
     }
-    case ZYEncodingTypeInt32: {
+    case ZYTypeInt32: {
         ((void (*)(id, SEL, int32_t))(void*)objc_msgSend)(
             (id)target, property->_setter, (int32_t)number.intValue);
         break;
     }
-    case ZYEncodingTypeUInt32: {
+    case ZYTypeUInt32: {
         ((void (*)(id, SEL, uint32_t))(void*)objc_msgSend)(
             (id)target, property->_setter, (uint32_t)number.unsignedIntValue);
         break;
     }
-    case ZYEncodingTypeInt64: {
+    case ZYTypeInt64: {
         ((void (*)(id, SEL, int64_t))(void*)objc_msgSend)(
             (id)target, property->_setter, number.longLongValue);
         break;
     }
-    case ZYEncodingTypeUInt64: {
+    case ZYTypeUInt64: {
         ((void (*)(id, SEL, uint64_t))(void*)objc_msgSend)(
             (id)target, property->_setter, number.unsignedLongLongValue);
         break;
     }
-    case ZYEncodingTypeFloat: {
+    case ZYTypeFloat: {
         float floatValue = number.floatValue;
         if (isnan(floatValue) || isinf(floatValue))
             floatValue = 0;
@@ -271,7 +271,7 @@ NS_INLINE void SetCNumberToProperty(id target,
             (id)target, property->_setter, (float)floatValue);
         break;
     }
-    case ZYEncodingTypeDouble: {
+    case ZYTypeDouble: {
         double doubleValue = number.doubleValue;
         if (isnan(doubleValue) || isinf(doubleValue))
             doubleValue = 0;
@@ -279,7 +279,7 @@ NS_INLINE void SetCNumberToProperty(id target,
             (id)target, property->_setter, (double)doubleValue);
         break;
     }
-    case ZYEncodingTypeLongDouble: {
+    case ZYTypeLongDouble: {
         long double longDoubleValue = (long double)number.doubleValue;
         if (isnan(longDoubleValue) || isinf(longDoubleValue))
             longDoubleValue = 0;
@@ -411,46 +411,46 @@ ModelCreateNumberFromProperty(
 {
     SEL getter = propertyTransformInfo->_getter;
     switch (propertyTransformInfo->_type) {
-    case ZYEncodingTypeBool: {
+    case ZYTypeBool: {
         return @(((bool (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeInt8: {
+    case ZYTypeInt8: {
         return @(((int8_t (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeUInt8: {
+    case ZYTypeUInt8: {
         return @(((uint8_t (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeInt16: {
+    case ZYTypeInt16: {
         return @(((int16_t (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeUInt16: {
+    case ZYTypeUInt16: {
         return @(((uint16_t (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeInt32: {
+    case ZYTypeInt32: {
         return @(((int32_t (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeUInt32: {
+    case ZYTypeUInt32: {
         return @(((uint32_t (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeInt64: {
+    case ZYTypeInt64: {
         return @(((int64_t (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeUInt64: {
+    case ZYTypeUInt64: {
         return @(((uint64_t (*)(id, SEL))(void*)objc_msgSend)((id)model, getter));
     }
-    case ZYEncodingTypeFloat: {
+    case ZYTypeFloat: {
         float num = ((float (*)(id, SEL))(void*)objc_msgSend)((id)model, getter);
         if (isnan(num) || isinf(num))
             return nil;
         return @(num);
     }
-    case ZYEncodingTypeDouble: {
+    case ZYTypeDouble: {
         double num = ((double (*)(id, SEL))(void*)objc_msgSend)((id)model, getter);
         if (isnan(num) || isinf(num))
             return nil;
         return @(num);
     }
-    case ZYEncodingTypeLongDouble: {
+    case ZYTypeLongDouble: {
         double num = ((long double (*)(id, SEL))(void*)objc_msgSend)((id)model, getter);
         if (isnan(num) || isinf(num))
             return nil;
@@ -548,7 +548,7 @@ static id ModelToJson(NSObject* model)
         if (propertyTransformInfo->_isCNumber) {
             jsonValue = ModelCreateNumberFromProperty(model, propertyTransformInfo);
         }
-        else if (propertyTransformInfo->_nsType) {
+        else if (propertyTransformInfo->_type) {
             id v = ((id (*)(id, SEL))(void*)objc_msgSend)(
                 (id)model, propertyTransformInfo->_getter);
             jsonValue = ModelToJson(v);

@@ -18,8 +18,9 @@
         _containCls = classProperty->_containCls;
         _setter = classProperty->_setter;
         _getter = classProperty->_getter;
-        _type = classProperty->_type;
-        _nsType = classProperty->_nsType;
+//        _type = classProperty->_type;
+//        _nsType = classProperty->_nsType;
+        _type = classProperty->_zyType;
         _isCNumber = classProperty->_isCNumber;
         _hasCustomContainCls = classProperty->_hasCustomContainCls;
         _jsonKey = jsonKey;
